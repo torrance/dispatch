@@ -38,7 +38,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 # Development-only gems
-group :development do
+group :development, :test do
   # Use rspec instead of Test::Unit
   gem 'rspec-rails'
 end
