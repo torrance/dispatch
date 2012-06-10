@@ -1,0 +1,138 @@
+/*
+ * @font-face declarations
+ */
+@font-face {
+  font-family: 'AdelleBasic';
+  src: font-url('adellebasic_bold.eot');
+  src: font-url('adellebasic_bold.eot?#iefix') format('embedded-opentype'),
+       font-url('adellebasic_bold.woff') format('woff'),
+       font-url('adellebasic_bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AdelleBasic';
+  src: font-url('adellebasic_bolditalic.eot');
+  src: font-url('adellebasic_bolditalic.eot?#iefix') format('embedded-opentype'),
+       font-url('adellebasic_bolditalic.woff') format('woff'),
+       font-url('adellebasic_bolditalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+body {
+  font: 14px/1.5em $body-fontstack;
+  color: $body-text-color;
+}
+
+h1, h2, h3,  h4, h5, h6 {
+  font-family: AdelleBasic;
+  line-height: 150%;
+}
+
+a {
+  color: #5EA120;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.plain-link {
+  color: $body-text-color;
+}
+
+input {
+  font-family: $body-fontstack;
+  font-size: 15px;
+  padding: 7px 7px;
+}
+
+input[type="text"] {
+  line-height: 1em;
+}
+
+/**
+ * Buttons
+ */
+
+.button {
+  background: image_url("button-bg.png") repeat-x;
+  display: block;
+  text-align: center;
+  color: #fff;
+  border-radius: 2px;
+  @include box-shadow(0, 1px, 3px, 1px, #333);
+}
+
+.button:hover {
+  background: image_url("button-bg-hover.png") repeat-x;
+  text-decoration: none;
+}
+
+.button-large {
+  height: 32px;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+/*
+ * Search fields
+ */
+.search {
+  position: relative;
+}
+
+.search input.text {
+  background: #353B2F;
+  border: 1px solid #5D6457;
+  border-radius: 2px;
+  color: #6C7466;
+  width: 123px;
+  padding-right: 25px;
+}
+
+.search input.submit {
+  border: 0;
+  text-indent: -999px;
+  overflow: hidden;
+  background: transparent image_url("search.png") no-repeat;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+#header {
+  background: image_url("header-bg.png") repeat-x;
+  height: 53px;
+  margin: 0 -20px; /* Cancel the padding of the container */
+  padding: 0 20px; /* ...but re-add it for the internal elements */
+}
+
+#header .search {
+  margin-top: 6px;
+}
+
+#header .button {
+  margin-top: 7px;
+}
+
+#logo {
+  margin-left: -8px; /* Compensate for background shadow */
+}
+
+#page {
+  margin-top: 40px;
+}
+
+.top-links {
+  font-weight: bold;
+  text-align: right;
+  margin-top: -47px;
+  font-size: 15px;
+  height: 30px;
+}

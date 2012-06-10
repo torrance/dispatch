@@ -8,6 +8,22 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
  */
+
+/**
+ * Mixins and global variables
+ */
+
+$body-fontstack: Cambria, Georgia, serif;
+
+$body-text-color: #3a3a3a;
+
+@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
+  -moz-box-shadow:    $horizontal $vertical $blur $spread $color;
+  -webkit-box-shadow: $horizontal $vertical $blur $spread $color;
+  box-shadow:         $horizontal $vertical $blur $spread $color;
+}
+
+@import "grid";
+@import "styles";
+@import "article";
