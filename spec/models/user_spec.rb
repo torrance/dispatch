@@ -24,4 +24,17 @@ describe User do
     user.password_confirmation = ''
     user.save.should be_false
   end
+
+  it 'should retrieve email addresses set to lowercase' do
+    user.save
+    user1 = User.find_by_email('tEsT123@GmaIl.COM')
+    (user == user1).should be_true
+  end
+
+  it 'should save email addresses set to lowercase' do
+    user.email = 'TEST123@TeSt.cOm'
+    user.save
+    user1 = User.find_by_email('test123@gmail.com')
+    (user == user1).should be_true
+  end
 end
