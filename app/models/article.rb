@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  attr_accessible :title, :summary, :body, :category
 
   CATEGORIES = [
     'Protest & Revolution',

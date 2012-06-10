@@ -7,8 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div id="header">
+      <div class="row">
+        <div class="eightcol">
+          <a id="logo" href="/"><img src="<%= asset_path 'logo.png' %>" /></a>
+        </div>
+        <div class="search twocol">
+          <input class="text" type="text" placeholder="Search"></input><input class="submit" type="submit" value="Search"></input>
+        </div>
+        <div class="twocol last">
+          <a class="button button-large" href="/">Publish</a>
+        </div>
+      </div>
+      <div class="row top-links">
+        <div class="tencol">
+          <a href="/">What is Indymedia?</a>
+        </div>
+        <div class="twocol last">
+          <a class="plain-link" href="/">Login | Register</a>
+        </div>
+      </div>
+    </div>
 
-<%= yield %>
+    <div id ="page">
+      <%= yield %>
+    </div>
 
+  </div>
 </body>
 </html>
