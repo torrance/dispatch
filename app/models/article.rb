@@ -1,6 +1,10 @@
 class Article < ActiveRecord::Base
   attr_accessible :title, :summary, :body, :category
 
+  belongs_to :user
+
+  default_scope :include => :user
+
   CATEGORIES = [
     'Protest & Revolution',
     'Ecology & Environment',
