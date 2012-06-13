@@ -34,11 +34,16 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-# Development-only gems
 group :development, :test do
   # Use rspec instead of Test::Unit
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 gem 'authlogic'
