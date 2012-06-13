@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title, :summary, :body, :category
+  attr_accessible :title, :summary, :body, :category, :user
 
   belongs_to :user
 
