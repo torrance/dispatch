@@ -1,6 +1,10 @@
 Dispatch::Application.routes.draw do
   resources :articles, :except => :index
 
+  resources :user, :controller => :user_sessions,
+    :only => [:new, :create, :destroy],
+    :path_names => { :new => 'login', :destroy => 'logout' }
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
