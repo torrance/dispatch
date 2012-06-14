@@ -21,6 +21,10 @@
   font-style: italic;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font: 14px/1.5em $body-fontstack;
   color: $body-text-color;
@@ -52,6 +56,10 @@ input {
 
 input[type="text"] {
   line-height: 1em;
+}
+
+ul.undecorated-list {
+  list-style-type: none;
 }
 
 /**
@@ -86,13 +94,18 @@ input[type="text"] {
   position: relative;
 }
 
-.search input.text {
+.search .search-text {
   background: #353B2F;
   border: 1px solid #5D6457;
   border-radius: 2px;
+  padding-right: 30px;
+}
+
+.search input.text {
+  width: 100%;
+  background: #353B2F;
+  border: none;
   color: #6C7466;
-  width: 123px;
-  padding-right: 25px;
 }
 
 .search input.submit {
@@ -110,8 +123,8 @@ input[type="text"] {
 #header {
   background: image_url("header-bg.png") repeat-x;
   height: 53px;
-  margin: 0 -20px; /* Cancel the padding of the container */
-  padding: 0 20px; /* ...but re-add it for the internal elements */
+  margin: 0 -40px; /* Cancel the padding of the container */
+  padding: 0 40px; /* ...but re-add it for the internal elements */
 }
 
 #header .search {
@@ -128,6 +141,7 @@ input[type="text"] {
 
 #page {
   margin-top: 40px;
+  min-height: 85%;
 }
 
 .top-links {
@@ -136,4 +150,90 @@ input[type="text"] {
   margin-top: -20px;
   font-size: 15px;
   height: 30px;
+}
+
+/**
+ * Sticky footer
+ */
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -220px;
+}
+
+#footer-push {
+  height: 220px + 30px; /* 30px margin */
+}
+
+#footer {
+  height: 150px;
+}
+
+/**
+ * Footer
+ */
+
+#footer {
+  background: image_url("footer-bg.png") repeat-x;
+  margin: 0 -40px; /* Cancel the padding of the container */
+  padding: 35px 40px 35px; /* ...but re-add it for the internal elements */
+  color: #fff;
+}
+
+#footer h3 {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+#footer a {
+  color: #fff;
+}
+
+#footer li {
+  margin: 3px 0;
+}
+
+#footer .threecol {
+  padding-right: 20px;
+  margin-left: -20px;
+  border-right: 1px solid #353C2E;
+  min-height: 150px;
+}
+
+#footer .first {
+  margin-left: 0;
+}
+
+#footer .last {
+  padding: 0;
+  border: none;
+}
+
+/* First column */
+#footer .first img {
+  float: left;
+  margin-right: 1em;
+}
+
+#footer .search {
+  clear: both;
+  margin-top: 1.5em;
+}
+
+/* Last column */
+#footer .last a {
+  display: block;
+  padding-left: 25px;
+}
+
+#footer .email {
+  background: image_url("email.png") no-repeat left 5px;
+}
+
+#footer .twitter {
+  background: image_url("twitter.png") no-repeat left 2px;
+}
+
+#footer .facebook {
+  background: image_url("facebook.png") no-repeat left 2px;
 }

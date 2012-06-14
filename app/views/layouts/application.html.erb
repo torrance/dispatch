@@ -7,33 +7,87 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
+  <div class="container page-wrapper">
     <div id="header">
       <div class="row">
+
         <div class="eightcol">
           <a id="logo" href="/"><img src="<%= asset_path 'logo-small.png' %>" /></a>
         </div>
+
         <div class="search twocol">
-          <input class="text" type="text" placeholder="Search"></input><input class="submit" type="submit" value="Search"></input>
+          <div class="search-text"><input class="text" type="text" placeholder="Search"></input></div><input class="submit" type="submit" value="Search"></input>
         </div>
+
         <div class="twocol last">
           <a class="button button-large" href="/">Publish</a>
         </div>
+
       </div>
+
       <div class="row top-links">
+
         <div class="tencol">
           <a href="/">What is Indymedia?</a>
         </div>
+
         <div class="twocol last">
           <a class="plain-link" href="/">Login | Register</a>
         </div>
-      </div>
-    </div>
 
-    <div id ="page">
+      </div> <!-- /row -->
+    </div> <!-- /header -->
+
+    <div id="page">
       <%= yield %>
     </div>
 
-  </div>
+    <div id="footer-push"></div>
+  </div> <!-- /page-wrapper -->
+
+  <div class="container footer-wrapper">
+    <div id="footer">
+
+      <div class="row">
+        <div class="threecol first">
+          <img src="<%= asset_path 'logo-little.png' %>" />
+          <h3>Aotearoa Independent <br />Media Centre</h3>
+          <div class="search">
+            <div class="search-text"><input class="text" type="text" placeholder="Search"></input></div><input class="submit" type="submit" value="Search"></input>
+          </div>
+        </div>
+
+        <div class="threecol">
+          <h3>Quick Links</h3>
+          <ul class="undecorated-list">
+            <li><a href="#">Indymedia FAQ</a></li>
+            <li><a href="#">Write for Indymedia</a></li>
+            <li><a href="#">Donate to Indymedia</a></li>
+            <li><a href="#">Join the editorial collective</a></li>
+          </ul>
+        </div>
+
+        <div class="threecol">
+          <h3>The Indymedia Network</h3>
+          <ul class="undecorated-list">
+            <li><a href="#">indymedia.org</a></li>
+            <li><a href="#">indymedia.org.au</a></li>
+            <li><a href="#">london.indymedia.org</a></li>
+            <li><a href="#">indymedia.org.au/melbourne</a></li>
+          </ul>
+        </div>
+
+        <div class="threecol last">
+          <h3>Contact Us</h3>
+          <ul class="undecorated-list">
+            <li><a class="email" href="#">editors@indymedia.org.nz</a></li>
+            <li><a class="twitter" href="#">Twitter</a></li>
+            <li><a class="facebook" href="#">Facebook</a></li>
+          </ul>
+        </div>
+
+      </div> <!-- /row -->
+    </div> <!-- /footer -->
+  </div> <!-- /footer-wrapper -->
 </body>
 </html>
