@@ -65,7 +65,6 @@ ul.undecorated-list {
 /**
  * Buttons
  */
-
 .button {
   background: image_url("button-bg.png") repeat-x;
   display: block;
@@ -94,18 +93,15 @@ ul.undecorated-list {
   position: relative;
 }
 
-.search .search-text {
-  background: #353B2F;
-  border: 1px solid #5D6457;
-  border-radius: 2px;
-  padding-right: 30px;
-}
-
 .search input.text {
   width: 100%;
+  @include border-box;
   background: #353B2F;
   border: none;
   color: #6C7466;
+  border-radius: 2px;
+  padding-right: 30px;
+  border: 1px solid #5D6457;
 }
 
 .search input.submit {
@@ -114,11 +110,15 @@ ul.undecorated-list {
   overflow: hidden;
   background: transparent image_url("search.png") no-repeat;
   position: absolute;
-  right: 0;
+  right: 3px;
   top: 10px;
   width: 20px;
   height: 20px;
 }
+
+/**
+ * Header
+ */
 
 #header {
   background: image_url("header-bg.png") repeat-x;
