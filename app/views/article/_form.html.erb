@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.select :category, Article::CATEGORIES.zip(Article::CATEGORIES) %>
+    <%= f.select :category, [['- no category -', 0]] + Article::CATEGORIES.zip(Article::CATEGORIES) %>
   </div>
 
   <div class="actions">
