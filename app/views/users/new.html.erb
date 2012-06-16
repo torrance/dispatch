@@ -1,59 +1,78 @@
-<h1>Login</h1>
+<div id="login-register" class="row">
 
-<%= form_for @user_session, :url => login_path do |f| %>
-  <% if @user_session.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited this example from being saved:</h2>
+  <div class="sixcol first">
+    <h2>Login</h2>
 
-      <ul>
-      <% @user_session.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <%= form_for @user_session, :url => login_path do |f| %>
+      <% if @user_session.errors.any? %>
+        <div id="error_explanation">
+          <h3>We weren't able to log you in</h3>
+
+          <ul>
+          <% @user_session.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => 'text' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class => 'text' %>
+      </div>
 
-  <div class="field">
-    <%= f.check_box :remember_me %><%= f.label :remember_me %>
-  </div>
+      <div class="field">
+        <%= f.check_box :remember_me %> <%= f.label :remember_me, :class => 'inline' %><br />
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= f.submit "Login", :class => 'submit' %> <%= link_to 'Forgot password?', '#' %>
+      </div>
+    <% end %>
 
-<h1>Register</h1>
+  </div> <!-- /sixcol -->
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this example from being saved:</h2>
+  <div class="sixcol last">
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <h2>Register</h2>
+
+    <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h3>Oops, we couldn't create your account</h3>
+
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => 'text' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.label :password %> 
+        <%= f.password_field :password, :class => 'text' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :display_name %>
+        <%= f.text_field :display_name, :class => 'text' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Register", :class => 'submit' %>
+      </div>
+    <% end %>
+
+  </div> <!-- /sixcol -->
+</div> <!-- /row -->

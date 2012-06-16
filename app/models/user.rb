@@ -1,13 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :biography, :display_name
-
-  def email=(email)
-    write_attribute(:email, email.downcase)
-  end
-
-  def self.find_by_email(email)
-    self.where(email.downcase)
-  end
+  attr_accessible :email, :password, :password_confirmation, :biography, :display_name, :activated
 
   has_many :articles
 
@@ -18,6 +10,5 @@ class User < ActiveRecord::Base
     c.transition_from_crypto_providers Authlogic::CryptoProviders::MD5
     c.crypto_provider Authlogic::CryptoProviders::Sha512
     c.require_password_confirmation false
-    #c.find_by_login_method :find_by_email
   end
 end

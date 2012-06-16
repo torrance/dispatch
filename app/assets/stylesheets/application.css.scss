@@ -18,18 +18,29 @@ $body-fontstack: Cambria, Georgia, serif;
 
 $body-text-color: #3a3a3a;
 
+$background-light: #F0F2ED;
+
+$link-color: #5EA120;
+
 @mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
   -moz-box-shadow:    $horizontal $vertical $blur $spread $color;
   -webkit-box-shadow: $horizontal $vertical $blur $spread $color;
   box-shadow:         $horizontal $vertical $blur $spread $color;
 }
 
+@mixin box-shadow-none {
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+}
+
 @mixin border-box {
-  -moz-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing:         border-box;
 }
 
 @import "grid";
 @import "styles";
 @import "articles";
+@import "users";
