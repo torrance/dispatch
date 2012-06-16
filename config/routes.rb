@@ -1,11 +1,11 @@
 Dispatch::Application.routes.draw do
-  resources :article, :except => :index
+  resources :articles, :except => :index
 
-  match 'login' => 'user#new', :as => :login, :via => :get
+  match 'login' => 'users#new', :as => :login, :via => :get
 
-  match 'login' => 'user#login', :as => :login, :via => :post
+  match 'login' => 'users#login', :as => :login, :via => :post
 
-  match 'logout' => 'user#logout', :as => :logout
+  match 'logout' => 'users#logout', :as => :logout
 
   resources :users
 
