@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     c.transition_from_crypto_providers Authlogic::CryptoProviders::MD5
     c.crypto_provider Authlogic::CryptoProviders::Sha512
     c.require_password_confirmation false
+    c.validates_length_of_password_field_options :minimum => 6, :if => :require_password?
   end
 
   def self.forgotten_password(email)

@@ -8,6 +8,7 @@ Dispatch::Application.routes.draw do
   post 'login' => 'users#login', :as => :login
   match 'logout' => 'users#logout', :as => :logout
   get 'users/validate/:token' => 'users#validate', :as => :validate
+  get 'users/:id/validate' => 'users#send_validation', :as => :send_validation
 
   # Reset passwords
   get 'users/reset' => 'forgotten_passwords#new', :as => :reset_password

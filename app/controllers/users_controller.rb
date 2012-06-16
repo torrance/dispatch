@@ -25,8 +25,7 @@ class UsersController < ApplicationController
     require_no_user
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Welcome back, #{current_user.display_name}"
-      redirect_back_or_default :root
+      redirect_to :root
     else
       @user = User.new
       render :action => :new
@@ -36,7 +35,6 @@ class UsersController < ApplicationController
   def logout
     require_user
     current_user_session.destroy
-    flash[:notice] = "You have been logged out."
     redirect_back_or_default :root
   end
 
@@ -51,5 +49,16 @@ class UsersController < ApplicationController
       flash[:notice] = "Your token has expired or is invalid."
       redirect_to :root
     end
+  end
+
+  def send_validation
+    user = User.find(params[:id])
+    if user && !user.active?
+      AccountNotifications.activate_account(user).deliver
+      flash[:notice] = "Your validation email has been resent."
+    else
+      flash[:notice] = "An error occurred sending the validation email. Perhaps the user account is already active or doesn't exist?"
+    end
+    redirect_to :login
   end
 end
