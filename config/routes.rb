@@ -3,11 +3,17 @@ Dispatch::Application.routes.draw do
 
   resources :articles, :except => :index
 
-  match 'login' => 'users#new', :as => :login, :via => :get
-  match 'login' => 'users#login', :as => :login, :via => :post
+  # Login, logout and account validation
+  get 'login' => 'users#new', :as => :login
+  post 'login' => 'users#login', :as => :login
   match 'logout' => 'users#logout', :as => :logout
-  match 'users/validate/:token' => 'users#validate', :as => :validate
-  match 'users/reset/:token' => 'users#reset_password', :as => :reset_password
+  get 'users/validate/:token' => 'users#validate', :as => :validate
+
+  # Reset passwords
+  get 'users/reset' => 'forgotten_passwords#new', :as => :reset_password
+  post 'users/reset' => 'forgotten_passwords#create', :as => :reset_password
+  get 'users/reset/:token' => 'forgotten_passwords#reset', :as => :reset_password_token
+
   resources :users
 
   # The priority is based upon order of creation:

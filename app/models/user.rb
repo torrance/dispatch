@@ -11,4 +11,16 @@ class User < ActiveRecord::Base
     c.crypto_provider Authlogic::CryptoProviders::Sha512
     c.require_password_confirmation false
   end
+
+  def self.forgotten_password(email)
+    user = self.find_by_smart_case_login_field(email)
+    if user && user.active?
+      user.reset_perishable_token!
+      user
+    else
+      user = User.new
+      user.errors.add(:email, "does not exist")
+      user
+    end
+  end
 end

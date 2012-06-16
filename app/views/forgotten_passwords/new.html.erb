@@ -1,0 +1,31 @@
+<div id="reset-password" class="row">
+  <div class="sixcol first">
+
+    <h1>Reset password</h1>
+
+    <%= form_for @user, :url => reset_password_path do |f| %>
+
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h3>We weren't able to reset your password</h3>
+
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => 'text' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Reset password", :class => 'submit' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

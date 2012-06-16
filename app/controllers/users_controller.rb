@@ -36,12 +36,12 @@ class UsersController < ApplicationController
   def logout
     require_user
     current_user_session.destroy
-    flash[:notice] = "You have logged out."
+    flash[:notice] = "You have been logged out."
     redirect_back_or_default :root
   end
 
   def validate
-    user = User.find_using_perishable_token(params['token'], 24.hours)
+    user = User.find_using_perishable_token(params['token'], 7.days)
     if user
       user.update_attribute(:active, true)
       UserSession.new(user).save
@@ -50,18 +50,6 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "Your token has expired or is invalid."
       redirect_to :root
-    end
-  end
-
-  def reset_password
-    user = User.find_using_perishable_token(params['token'], 24.hours)
-    if user
-      UserSession.new(user).save
-      flash[:notice] = "Please update your password."
-      redirect_to edit_user_path
-    else
-      flash[:notice] = "Your reset token has expired or is invalid. Try resetting your password again."
-      redirect_to :login
     end
   end
 end
