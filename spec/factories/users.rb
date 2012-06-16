@@ -6,6 +6,5 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     biography { Faker::Lorem.sentences 2 }
     password "password"
-    password_confirmation "password"
   end
 end

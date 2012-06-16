@@ -10,16 +10,11 @@ describe User do
   end
 
   it "rejects an empty password" do
-    build(:user, password: "", password_confirmation: "").should_not be_valid
+    build(:user, password: "").should_not be_valid
   end
 
   it "finds by email case insensitively" do
     build(:user, email: "user@domain.com").save
-    User.find_by_email("uSeR@DomAin.CoM").should_not be_nil
-  end
-
-  it "saves email addresses set to lowercase" do
-    user = build(:user, email: "uSeR@DOMaiN.cOm")
-    user.email.should == "user@domain.com"
+    User.find_by_smart_case_login_field("uSeR@DomAin.CoM").should_not be_nil
   end
 end

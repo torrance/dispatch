@@ -6,6 +6,8 @@ Dispatch::Application.routes.draw do
   match 'login' => 'users#new', :as => :login, :via => :get
   match 'login' => 'users#login', :as => :login, :via => :post
   match 'logout' => 'users#logout', :as => :logout
+  match 'users/validate/:token' => 'users#validate', :as => :validate
+  match 'users/reset/:token' => 'users#reset_password', :as => :reset_password
   resources :users
 
   # The priority is based upon order of creation:

@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
   def new
-    if current_user
-      flash[:notice] = "You are already logged in."
-      redirect_to :root
-    end
+    require_no_user
     @user = User.new
     @user_session = UserSession.new
   end
 
   def create
+    require_no_user
     @user = User.new(params[:user])
     if @user.save_without_session_maintenance # Don't immediately login
       AccountNotifications.activate_account(@user).deliver
@@ -20,7 +18,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def login
+    require_no_user
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Welcome back, #{current_user.display_name}"
@@ -32,8 +34,34 @@ class UsersController < ApplicationController
   end
 
   def logout
+    require_user
     current_user_session.destroy
     flash[:notice] = "You have logged out."
     redirect_back_or_default :root
+  end
+
+  def validate
+    user = User.find_using_perishable_token(params['token'], 24.hours)
+    if user
+      user.update_attribute(:active, true)
+      UserSession.new(user).save
+      flash[:notice] = "Success! Your account has been validated."
+      redirect_to :root
+    else
+      flash[:notice] = "Your token has expired or is invalid."
+      redirect_to :root
+    end
+  end
+
+  def reset_password
+    user = User.find_using_perishable_token(params['token'], 24.hours)
+    if user
+      UserSession.new(user).save
+      flash[:notice] = "Please update your password."
+      redirect_to edit_user_path
+    else
+      flash[:notice] = "Your reset token has expired or is invalid. Try resetting your password again."
+      redirect_to :login
+    end
   end
 end
