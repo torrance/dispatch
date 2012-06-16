@@ -9,7 +9,7 @@
 <body>
   <div class="container page-wrapper">
     <div id="header">
-      <div class="row">
+      <div class="row first-row">
 
         <div class="eightcol">
           <a id="logo" href="/"><img src="<%= asset_path 'logo-small.png' %>" /></a>
@@ -25,14 +25,18 @@
 
       </div>
 
-      <div class="row top-links">
+      <div class="row second-row">
 
         <div class="tencol">
           <a href="/">What is Indymedia?</a>
         </div>
 
         <div class="twocol last">
-          <a class="plain-link" href="/">Login | Register</a>
+          <% if current_user %>
+            <%= link_to "Hi, #{current_user.display_name}", '#', :class => 'plain-link' %> | <%= link_to 'Logout', logout_path, :class => 'plain-link' %>
+          <% else %>
+            <%= link_to 'Login | Register', login_path, :class => 'plain-link' %>
+          <% end %>
         </div>
 
       </div> <!-- /row -->

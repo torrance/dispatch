@@ -1,9 +1,13 @@
 Dispatch::Application.routes.draw do
   resources :article, :except => :index
 
-  resources :user
+  match 'login' => 'user#new', :as => :login, :via => :get
 
-  match 'login' => 'user'
+  match 'login' => 'user#login', :as => :login, :via => :post
+
+  match 'logout' => 'user#logout', :as => :logout
+
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,6 @@
 <h1>Login</h1>
 
-<%= form_for @user_session, :url => user_path do |f| %>
+<%= form_for @user_session, :url => login_path do |f| %>
   <% if @user_session.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited this example from being saved:</h2>
@@ -29,5 +29,31 @@
 
   <div class="actions">
     <%= f.submit "Login" %>
+  </div>
+<% end %>
+
+<h1>Register</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this example from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
   </div>
 <% end %>

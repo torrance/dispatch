@@ -8,7 +8,7 @@ class UserController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default account_url
+      redirect_back_or_default '/article/2'
     else
       render :action => :new
     end
