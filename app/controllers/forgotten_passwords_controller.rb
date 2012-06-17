@@ -17,7 +17,10 @@ class ForgottenPasswordsController < ApplicationController
   def reset
     user = User.find_using_perishable_token(params[:token], 24.hours)
     if user
-      UserSession.new(user).save
+      # TODO: We save @user_session to an instance variable solely so that we can
+      # test the success of failure of this method in rspec. This should probably
+      # be fixed.
+      @user_session = UserSession.create(user)
       flash[:notice] = "Please update your password."
       redirect_to edit_user_path(user)
     else

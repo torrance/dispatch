@@ -3,11 +3,11 @@ class AccountNotifications < ActionMailer::Base
 
   def activate_account(user)
     @user = user
-    mail :to => "#{user.display_name} <#{user.email}>", :subject => 'Activate your account'
+    mail :to => @user.pretty_email_address, :subject => 'Activate your account'
   end
 
   def reset_password(user)
     @user = user
-    mail :to => "#{user.display_name} <#{user.email}>", :subject => "Reset your password"
+    mail :to => @user.pretty_email_address, :subject => "Reset your password"
   end
 end

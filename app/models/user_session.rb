@@ -4,7 +4,7 @@ class UserSession < Authlogic::Session::Base
   validate :user_is_active
 
   def user_is_active
-    return true if attempted_record.nil?
+    return true if attempted_record.nil? || attempted_record.id.nil?
     if !attempted_record.active?
       # We have to manually import the routes helpers since this model doesn't
       # inherit form ActiveRecord.

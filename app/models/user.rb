@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :biography, :display_name, :active
+  attr_accessible :email, :password, :password_confirmation, :biography, :display_name
 
   has_many :articles
 
@@ -23,5 +23,9 @@ class User < ActiveRecord::Base
       user.errors.add(:email, "does not exist")
       user
     end
+  end
+
+  def pretty_email_address
+    "#{display_name} <#{email}>"
   end
 end
