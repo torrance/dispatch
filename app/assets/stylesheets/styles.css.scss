@@ -1,7 +1,7 @@
 /*
  * @font-face declarations
  */
-@font-face {
+/*@font-face {
   font-family: 'AdelleBasic';
   src: font-url('adellebasic_bold.eot');
   src: font-url('adellebasic_bold.eot?#iefix') format('embedded-opentype'),
@@ -19,6 +19,26 @@
        font-url('adellebasic_bolditalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
+}*/
+
+@font-face {
+    font-family: 'Adelle SemiBold';
+    src: font_url('AdelleSemiBold.eot');
+    src: font_url('AdelleSemiBold.eot?') format('embedded-opentype'),
+    font_url('AdelleSemiBold.woff') format('woff'),
+    font_url('AdelleSemiBold.ttf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Adelle SemiBold';
+    src: font_url('AdelleSemiBoldItalic.eot');
+    src: font_url('AdelleSemiBoldItalic.eot?') format('embedded-opentype'),
+    font_url('AdelleSemiBoldItalic.woff') format('woff'),
+    font_url('AdelleSemiBoldItalic.ttf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
 }
 
 html, body {
@@ -31,7 +51,7 @@ body {
 }
 
 h1, h2, h3,  h4, h5, h6 {
-  font-family: AdelleBasic;
+  font-family: $heading-fontstack;
   line-height: 150%;
   margin-bottom: 0.7em;
   margin-top: 1em;
@@ -81,7 +101,7 @@ form .actions input {
 }
 
 label {
-  font-family: AdelleBasic;
+  font-family: $heading-fontstack;
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 5px;
