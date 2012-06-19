@@ -37,7 +37,6 @@ gem 'jquery-rails'
 group :development, :test do
   # Use rspec instead of Test::Unit
   gem 'rspec-rails'
-  gem 'sqlite3'
   gem 'factory_girl_rails'
 end
 
@@ -48,3 +47,5 @@ group :test do
 end
 
 gem 'authlogic'
+gem 'dalli'
+gem 'pg'
