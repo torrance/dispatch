@@ -65,5 +65,9 @@ module Dispatch
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Use memcache across all environments for caching
+    config.cache_store = :dalli_store, 'localhost',
+        { :namespace => 'dispatch', :expires_in => 1.day, :compress => true, :keep_alive => true }
   end
 end
