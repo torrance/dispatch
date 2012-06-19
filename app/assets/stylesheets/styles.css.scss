@@ -197,7 +197,7 @@ input.submit {
   background: #353B2F;
   border: none;
   color: #6C7466;
-  border-radius: 2px;
+  border-radius: 3px;
   padding-right: 30px;
   border: 1px solid #5D6457;
 }
@@ -232,7 +232,6 @@ input.submit {
 #header .button {
   margin-top: 8px;
   display: block;
-  @include box-shadow(0, 1px, 3px, 0px, #333);
 }
 
 #logo {
