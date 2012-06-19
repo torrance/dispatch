@@ -15,6 +15,7 @@ development:
 test:
   <<: *common
   database: dispatch_test
+  host: /tmp
 
 production:
   <<: *common
