@@ -13,15 +13,12 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options :minimum => 6, :if => :require_password?
   end
 
-  def self.forgotten_password(email)
+  def self.can_reset_password?(email)
     user = self.find_by_smart_case_login_field(email)
     if user && user.active?
-      user.reset_perishable_token!
       user
     else
-      user = User.new
-      user.errors.add(:email, "does not exist")
-      user
+      false
     end
   end
 

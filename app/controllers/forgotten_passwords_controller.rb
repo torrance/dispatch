@@ -4,13 +4,16 @@ class ForgottenPasswordsController < ApplicationController
   end
 
   def create
-    @user = User.forgotten_password(params[:user][:email])
-    if @user.errors.any?
-      render :action => :new
-    else
+    @user = User.can_reset_password?(params[:user][:email])
+    if @user
+      @user.reset_perishable_token!
       AccountNotifications.reset_password(@user).deliver
       flash[:notice] = "Please check your email to reset your password."
       redirect_to :login
+    else
+      @user = User.new
+      @user.errors.add(:base, "That email address either does not exist or has not been activated.")
+      render :action => :new
     end
   end
 
