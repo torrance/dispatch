@@ -1,37 +1,102 @@
 <%= form_for(@article) do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this example from being saved:</h2>
+  <div class="row">
+    <div class="twelvecol">
+      <% if @article.errors.any? %>
+        <div id="error_explanation">
+          <h3>Oops, something was wrong with your article submission.</h3>
 
-      <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
-  </div>
+  <fieldset>
+    <div class="row">
+      <div class="eightcol first">
 
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title, :class => 'text' %>
+        </div>
 
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.select :category, [['- no category -', 0]] + Article::CATEGORIES.zip(Article::CATEGORIES) %>
-  </div>
+      </div>
+      <div class="fourcol last">
+        <div class="help first-help">
+          <p class="first-paragraph last-paragraph">This is the title of your article. Try something descriptive but short, and please avoid SHOUTING in all caps.</p>
+        </div>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="row">
+      <div class="eightcol first">
+
+        <div class="field">
+          <%= f.label :summary %>
+          <%= f.text_area :summary, :rows => 5 %>
+        </div>
+
+      </div>
+      <div class="fourcol last">
+        <div class="help">
+          <p class="first-paragraph">Your article summary will appear on the front page in the newswire as well as directly above your article body when viewed in full.</p>
+          <p class="last-paragraph">Try a short description of your article that gives both a clear overview of your article and lures the reader in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eightcol first">
+
+        <div class="field">
+          <%= f.label :body %>
+          <%= f.text_area :body %>
+        </div>
+
+      </div>
+      <div class="fourcol last">
+        <div class="help">
+          <p class="first-paragraph">This is your main article text. You can see what it will look like in the live preview below, once you start typing.</p>
+          <p class="last-paragraph">You can use Markdown formatting. See <a href="#">Text formatting help.</a></p>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+
+    <div class="row">
+      <div class="eightcol first">
+
+        <div class="field">
+          <%= f.label :category %>
+          <%= f.select :category, [['- Select a category -', 0]] + Article::CATEGORIES.zip(Article::CATEGORIES) %>
+        </div>
+
+      </div>
+
+      <div class="fourcol last">
+        <div class="help first-help">
+          <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your article.</p>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <div class="row">
+      <div class="eightcol first">
+        <div class="actions">
+          <%= f.submit 'Publish', :class => 'submit' %> <%= link_to 'Cancel', :back, :confirm => "Are you sure you want to cancel?" %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
 <% end %>

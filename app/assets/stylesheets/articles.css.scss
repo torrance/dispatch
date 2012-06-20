@@ -7,3 +7,25 @@
   font-size: 17px;
   line-height: 1.5em;
 }
+
+form.new_article {
+  .field, .actions {
+    background: $background-light;
+    padding: 20px 20px;
+    margin: 0;
+  }
+
+  label {
+    font-size: 16px;
+    margin-bottom: 0.7em;
+  }
+
+  .help {
+    margin-top: 20px;
+  }
+
+  .first-help {
+    margin-top: 0;
+  }
+}
+
