@@ -1,17 +1,38 @@
-<h1 class="row"><%= @article.title %></h1>
+<div id="content">
+  <div class="row">
+    <h1 class="twelvecol page-title"><%= @article.title %></h1>
+  </div>
 
-<div class="row">
-  <div class="eightcol first">
-    <% @article.images.each do |image| %>
-      <%= image_tag image.image.url :article %>
-    <% end %>
+  <div class="row">
+    <div class="fourcol floatright last sidebar">
+      <div class="attribution">
+        <p class="first-paragraph">by <%= link_to @article.user.display_name, @article.user %></p>
+        <p class="last-paragraph"><%= @article.created_at.strftime "%A, #{@article.created_at.day.ordinalize} %B %Y" %></p>
+      </div>
+
+      <div class="metadata">
+        <h3><%= @article.category %></h3>
+      </div>
+
+      <p class="creative-commons">
+        This work is licensed under a Creative Commons Attribution NonCommercial ShareAlike 3.0 Unported License
+      </p>
+
+      <p><%= image_tag "socialmediaicons.png" %></p>
+    </div>
+
+    <div class="eightcol first">
+      <% @article.images.each do |image| %>
+        <%= image_tag image.image.url(:article), :class => 'border', :id => 'image-feature' %>
+      <% end %>
+    </div>
+
+    <div class="eightcol first">
+      <p class="summary"><%= @article.summary %></p>
+    </div>
+
+    <div class="body sevencol first">
+      <%= Dispatch::ContentFilter.instance.render @article.body %>
+    </div>
   </div>
 </div>
-
-<div class="row"><%= @article.user.display_name %></div>
-
-<div class="row"><div class="summary eightcol first"><%= @article.summary %></div></div>
-
-<div class="row"><div class="body sevencol first"><%= Dispatch::ContentFilter.instance.render @article.body %></div></div>
-
-<div class="row"><div class="category first"><%= @article.category %></div></div>

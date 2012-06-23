@@ -19,10 +19,9 @@ $body-fontstack: Cambria, Georgia, serif;
 $heading-fontstack: "Adelle SemiBold", "Georgia";
 
 $body-text-color: #222;
-
 $background-light: #F0F2ED;
-
 $link-color: #5EA120;
+$dark-brown: #353B2F;
 
 @mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
   -moz-box-shadow:    $horizontal $vertical $blur $spread $color;
