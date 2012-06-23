@@ -89,9 +89,27 @@
 
   </fieldset>
 
-  <%= f.fields_for :images do |builder| %>
-    <%= builder.file_field :image %>
-  <% end %>
+  <fieldset>
+    <div class="row">
+      <div class="eightcol first">
+        <div class="field">
+          <%= f.label :images %>
+          <div class="sortable">
+            <%= f.fields_for :images do |builder| %>
+              <div class="file">
+                <%= image_tag "draggable.png", :class => "handle" %>
+                <%= builder.file_field :image, :class => "file" %>
+                <%= builder.check_box :_destroy %>
+                <%= builder.label :_destroy, "Delete?", :class => "inline" %>
+                <%= builder.hidden_field :weight, :class => 'image-weight' %>
+              </div>
+            <% end %>
+          </div>
+          <p><a href="#">Add another image</a></p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 
   <fieldset>
     <div class="row">

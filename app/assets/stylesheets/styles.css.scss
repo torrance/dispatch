@@ -151,7 +151,7 @@ label.inline {
   font-weight: normal;
 }
 
-input, textarea {
+input.text, input.submit, textarea {
   font-family: $body-fontstack;
   font-size: 15px;
   padding: 7px 6px 6px;
@@ -236,6 +236,12 @@ input.submit {
   height: 30px;
   font-size: 20px;
   line-height: 30px;
+}
+
+img.handle {
+  cursor: move;
+  padding-right: 1em;
+  padding-top: 0.2em;
 }
 
 /*

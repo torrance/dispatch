@@ -78,6 +78,15 @@ form.new_article {
     margin-bottom: 0.7em;
   }
 
+  div.file {
+    padding: 1em 0;
+    border-bottom: 1px dashed $link-color;
+  }
+
+  div.file input.text {
+    width: auto;
+  }
+
   .help {
     margin-top: 20px;
   }

@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery.markitup
 //= require markitup
+//= require content_form
