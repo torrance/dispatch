@@ -4,6 +4,6 @@
 
 <div class="row"><div class="summary eightcol"><%= @article.summary %></div></div>
 
-<div class="row"><div class="body sevencol"><%= @article.body %></div></div>
+<div class="row"><div class="body sevencol"><%= Dispatch::ContentFilter.instance.render @article.body %></div></div>
 
 <div class="row"><div class="category"><%= @article.category %></div></div>
