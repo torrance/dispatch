@@ -1,9 +1,12 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title, :summary, :body, :category, :user
+  attr_accessible :title, :summary, :body, :category, :user, :images_attributes
 
   belongs_to :user
+  has_many :images
 
-  default_scope :include => :user
+  accepts_nested_attributes_for :images
+
+  default_scope :include => :user, :include => :images
 
   CATEGORIES = [
     'Protest & Revolution',

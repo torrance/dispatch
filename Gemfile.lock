@@ -33,6 +33,7 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     builder (3.0.0)
+    cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -69,6 +70,12 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.3.6)
+    paperclip (3.1.2)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.13.2)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -141,9 +148,10 @@ DEPENDENCIES
   factory_girl_rails
   faker
   jquery-rails
+  paperclip (~> 3.1)
   pg
   rails (= 3.2.6)
-  redcarpet (>= 2)
+  redcarpet (~> 2.1)
   rspec-rails
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

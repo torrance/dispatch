@@ -1,9 +1,17 @@
 <h1 class="row"><%= @article.title %></h1>
 
+<div class="row">
+  <div class="eightcol first">
+    <% @article.images.each do |image| %>
+      <%= image_tag image.image.url :article %>
+    <% end %>
+  </div>
+</div>
+
 <div class="row"><%= @article.user.display_name %></div>
 
-<div class="row"><div class="summary eightcol"><%= @article.summary %></div></div>
+<div class="row"><div class="summary eightcol first"><%= @article.summary %></div></div>
 
-<div class="row"><div class="body sevencol"><%= Dispatch::ContentFilter.instance.render @article.body %></div></div>
+<div class="row"><div class="body sevencol first"><%= Dispatch::ContentFilter.instance.render @article.body %></div></div>
 
-<div class="row"><div class="category"><%= @article.category %></div></div>
+<div class="row"><div class="category first"><%= @article.category %></div></div>

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   def new
     @article = Article.new
+    2.times { @article.images.build }
   end
 
   def create

@@ -1,4 +1,4 @@
-<%= form_for(@article) do |f| %>
+<%= form_for @article, :html => { :multipart => true } do |f| %>
   <div class="row">
     <div class="twelvecol">
       <% if @article.errors.any? %>
@@ -88,6 +88,10 @@
     </div>
 
   </fieldset>
+
+  <%= f.fields_for :images do |builder| %>
+    <%= builder.file_field :image %>
+  <% end %>
 
   <fieldset>
     <div class="row">

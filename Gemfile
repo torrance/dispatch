@@ -49,4 +49,5 @@ end
 gem 'authlogic'
 gem 'dalli'
 gem 'pg'
-gem 'redcarpet', '>= 2'
+gem 'redcarpet', '~> 2.1'
+gem 'paperclip', '~> 3.1'
