@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623062906) do
+ActiveRecord::Schema.define(:version => 20120623234545) do
 
-  create_table "articles", :force => true do |t|
-    t.string   "title",      :null => false
-    t.text     "summary",    :null => false
-    t.text     "body",       :null => false
-    t.string   "category",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "contents", :force => true do |t|
+    t.string   "title",                         :null => false
+    t.text     "summary",                       :null => false
+    t.text     "body",                          :null => false
+    t.string   "category",                      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
+    t.string   "type",       :default => "nil", :null => false
   end
 
   create_table "images", :force => true do |t|
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20120623062906) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "article_id"
+    t.integer  "content_id"
     t.integer  "weight",             :default => 0, :null => false
   end
 

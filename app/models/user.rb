@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :biography, :display_name
 
-  has_many :articles
+  has_many :contents
 
   acts_as_authentic do |c|
     # Drupal used plain md5 passwords with no salt, so we are able to
