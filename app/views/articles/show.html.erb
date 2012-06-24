@@ -31,7 +31,7 @@
     </div>
 
     <div class="eightcol first">
-      <% @article.images.each do |image| %>
+      <% if image = @article.images.first %>
         <%= image_tag image.image.url(:article), :class => 'border', :id => 'image-feature' %>
       <% end %>
     </div>
