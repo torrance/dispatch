@@ -1,4 +1,4 @@
-<%= form_for @article, :html => { :multipart => true } do |f| %>
+<%= form_for @article, :html => { :multipart => true, :class => 'content' } do |f| %>
   <div class="row">
     <div class="twelvecol">
       <% if @article.errors.any? %>
@@ -114,13 +114,17 @@
         <div class="field">
           <%= f.label :images %>
           <div class="sortable">
-            <%= f.fields_for :images do |builder| %>
+            <%= f.fields_for :images do |image| %>
               <div class="file">
                 <%= image_tag "draggable.png", :class => "handle" %>
-                <%= builder.file_field :image, :class => "file" %>
-                <%= builder.check_box :_destroy %>
-                <%= builder.label :_destroy, "Delete?", :class => "inline" %>
-                <%= builder.hidden_field :weight, :class => 'image-weight' %>
+                <% if image.object.id? %>
+                  <%= image_tag image.object.image.url(:tiny) %>
+                  <%= image.check_box :_destroy %>
+                  <%= image.label :_destroy, "Delete?", :class => "inline" %>
+                <% elsif %>
+                  <%= image.file_field :image, :class => "file" %>
+                <% end %>
+                <%= image.hidden_field :weight, :class => 'image-weight' %>
               </div>
             <% end %>
           </div>
@@ -134,7 +138,7 @@
     <div class="row">
       <div class="eightcol first">
         <div class="actions">
-          <%= f.submit 'Publish', :class => 'submit' %> <%= link_to 'Cancel', :back, :confirm => "Are you sure you want to cancel?" %>
+          <%= f.submit 'Publish', :class => 'submit' %> <%= link_to 'Cancel', :back, :data => { :confirm => "Are you sure you want to cancel?" } %>
         </div>
       </div>
     </div>
