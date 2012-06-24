@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :biography, :display_name
 
+  ROLES = %w(Normal Editor)
+
   has_many :contents
 
   acts_as_authentic do |c|
@@ -24,5 +26,13 @@ class User < ActiveRecord::Base
 
   def pretty_email_address
     "#{display_name} <#{email}>"
+  end
+
+  def is_editor?
+    role == 1
+  end
+
+  def is_author?(content)
+    content.user == self
   end
 end
