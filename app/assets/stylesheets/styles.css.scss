@@ -107,12 +107,13 @@ a:hover {
 }
 
 ul, ol {
-  list-style-position: inside;
-  margin: 0.8em 0 0.8em 0.8em;
+  margin: 0.8em 0 0.8em 1.8em;
+  list-style-position: outside;
 }
 
 ul.no-indentation, ol.no-indentation {
   margin-left: 0;
+  list-style-position: inside;
 }
 
 ul {
