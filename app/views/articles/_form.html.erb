@@ -113,22 +113,12 @@
       <div class="eightcol first">
         <div class="field">
           <%= f.label :images %>
-          <div class="sortable">
+          <div id="add-images-field-to" class="sortable">
             <%= f.fields_for :images do |image| %>
-              <div class="file">
-                <%= image_tag "draggable.png", :class => "handle" %>
-                <% if image.object.id? %>
-                  <%= image_tag image.object.image.url(:tiny) %>
-                  <%= image.check_box :_destroy %>
-                  <%= image.label :_destroy, "Delete?", :class => "inline" %>
-                <% elsif %>
-                  <%= image.file_field :image, :class => "file" %>
-                <% end %>
-                <%= image.hidden_field :weight, :class => 'image-weight' %>
-              </div>
+              <%= render 'image_fields', :f => image  %>
             <% end %>
           </div>
-          <p><a href="#">Add another image</a></p>
+          <p><%= link_to_add_fields "Add another image", f, :images %></p>
         </div>
       </div>
     </div>

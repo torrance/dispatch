@@ -1,0 +1,11 @@
+<div class="file">
+  <%= image_tag "draggable.png", :class => "handle" %>
+  <% if f.object.new_record? %>
+    <%= f.file_field :image, :class => "file" %>
+  <% elsif %>
+    <%= image_tag f.object.image.url(:tiny) %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Delete?", :class => "inline" %>
+  <% end %>
+  <%= f.hidden_field :weight, :class => 'image-weight' %>
+</div>
