@@ -5,6 +5,15 @@
 
   <div class="row">
     <div class="fourcol floatright last sidebar">
+      <% if current_user && current_user.is_editor? %>
+        <div class="editor-tools">
+          <h3>Editor tools</h3>
+          <ul class="no-indentation">
+            <li><%= link_to "Edit this article", edit_article_path %></li>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="attribution">
         <p class="first-paragraph">by <%= link_to_author @article %> </p>
         <p class="last-paragraph"><%= @article.created_at.strftime "%A, #{@article.created_at.day.ordinalize} %B %Y" %></p>
@@ -16,19 +25,10 @@
 
       <% if @article.images.length > 1 %>
         <div class="image-gallery">
-          <h3>Image gallery</h3>
           <% @article.images.each do |image| %>
             <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image" %>
           <% end %>
-        </div>
-      <% end %>
-
-      <% if current_user && current_user.is_editor? %>
-        <div class="editor-tools">
-          <h3>Editor tools</h3>
-          <ul class="no-indentation">
-            <li><%= link_to "Edit this article", edit_article_path %></li>
-          </ul>
+          <%= link_to "Show all #{@article.images.length} images", "#", :id => "show-all-images" %>
         </div>
       <% end %>
 

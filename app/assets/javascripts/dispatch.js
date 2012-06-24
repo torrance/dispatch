@@ -32,5 +32,10 @@ $(function() {
  */
 $(function() {
   $('.image-gallery a.image').colorbox({rel: 'image', transition: 'none'});
-})
+
+  $('#show-all-images').click(function(e) {
+    $('.image-gallery a.image').first().click();
+    e.preventDefault();
+  });
+});
  

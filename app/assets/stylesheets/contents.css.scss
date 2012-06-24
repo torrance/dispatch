@@ -52,11 +52,17 @@
 
   .image-gallery {
     img {
-      margin-top: 1em;
-      width: 32%;
-      padding: 0 5px;
+      width: 29%;
+      margin: 0 5px 10px 5px;
     }
   }
+}
+
+#show-all-images {
+  display: block;
+  margin: -8px 0 -5px;
+  text-indent: 25px;
+  background: image_url("image.png") no-repeat 0 2px;
 }
 
 img.border {

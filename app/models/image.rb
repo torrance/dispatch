@@ -10,6 +10,6 @@ class Image < ActiveRecord::Base
     :article => ["700x467", :jpg],
     :tiny => ["60x60", :jpg],
     :gallery_thumbnail => ["95x95#", :jpg],
-    :gallery_full => ["900x900", :jpg]
+    :gallery_full => ["900x700", :jpg]
   }
 end
