@@ -4,7 +4,8 @@ class Content < ActiveRecord::Base
   belongs_to :user
   has_many :images
 
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images,
+    :reject_if => proc { |image_attributes| image_attributes[:image].blank? }
 
   default_scope :include => :user, :include => :images
 
