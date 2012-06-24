@@ -31,8 +31,4 @@ class User < ActiveRecord::Base
   def is_editor?
     role == 1
   end
-
-  def is_author?(content)
-    content.user == self
-  end
 end

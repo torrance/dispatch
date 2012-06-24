@@ -1,18 +1,27 @@
 <div id="content">
   <div class="row">
-    <h1 class="twelvecol page-title"><%= @article.title %></h1>
+    <h1 class="twelvecol page-title"><%= @article.title %> <% if @article.editable?(current_user) %><%= link_to "(edit your article)", edit_article_path(@article), :class => 'edit-own-article' %><% end %></h1>
   </div>
 
   <div class="row">
     <div class="fourcol floatright last sidebar">
       <div class="attribution">
-        <p class="first-paragraph">by <%= link_to_author @article %></p>
+        <p class="first-paragraph">by <%= link_to_author @article %> </p>
         <p class="last-paragraph"><%= @article.created_at.strftime "%A, #{@article.created_at.day.ordinalize} %B %Y" %></p>
       </div>
 
       <div class="metadata">
         <h3><%= @article.category %></h3>
       </div>
+
+      <% if current_user && current_user.is_editor? %>
+        <div class="editor-tools">
+          <h3>Editor tools</h3>
+          <ul class="no-indentation">
+            <li><%= link_to "Edit this article", edit_article_path %></li>
+          </ul>
+        </div>
+      <% end %>
 
       <p class="creative-commons">
         This work is licensed under a Creative Commons Attribution NonCommercial ShareAlike 3.0 Unported License

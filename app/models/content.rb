@@ -39,4 +39,20 @@ class Content < ActiveRecord::Base
       "Anonymous"
     end
   end
+  
+  def locked?
+    Time.now - created_at > 1.week
+  end
+
+  def editable?(user)
+    if user.blank?
+      false
+    elsif user.is_editor?
+      true
+    elsif user == self.user and not locked?
+      true
+    else
+      false
+    end
+  end
 end

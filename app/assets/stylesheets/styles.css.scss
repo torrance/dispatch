@@ -108,7 +108,11 @@ a:hover {
 
 ul, ol {
   list-style-position: inside;
-  margin: 1em 0 1em 1em;
+  margin: 0.8em 0 0.8em 0.8em;
+}
+
+ul.no-indentation, ol.no-indentation {
+  margin-left: 0;
 }
 
 ul {

@@ -4,6 +4,10 @@
     border-bottom: 1px dashed $dark-brown;
   }
 
+  .edit-own-article {
+    font-size: 14px;
+  }
+
   #image-feature {
     margin-bottom: 14px;
   }
@@ -26,7 +30,7 @@
     }
   }
 
-  .metadata {
+  .metadata, .editor-tools {
     h3 {
       margin: 0;
     }
