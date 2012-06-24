@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: 'Your article was successfully created.'
     else
+      2.times { @article.images.build }
       render action: "new"
     end
   end 
