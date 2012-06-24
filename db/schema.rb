@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624014721) do
+ActiveRecord::Schema.define(:version => 20120624074133) do
 
   create_table "contents", :force => true do |t|
     t.string   "title",                         :null => false
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20120624014721) do
     t.string   "type",       :default => "nil", :null => false
     t.string   "pseudonym"
   end
+
+  add_index "contents", ["type"], :name => "index_contents_on_type"
 
   create_table "images", :force => true do |t|
     t.datetime "created_at",                        :null => false
