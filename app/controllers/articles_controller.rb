@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def new
     @article = Article.new
-    2.times { @article.images.build }
+    2.times { |weight| @article.images.build(:weight => weight) }
   end
 
   def create
@@ -11,14 +11,14 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: 'Your article was successfully created.'
     else
-      2.times { @article.images.build }
+      (998..999).each { |weight| @article.images.build(:weight => weight) }
       render action: "new"
     end
   end
 
   def edit
     @article = Article.find(params[:id])
-    2.times { @article.images.build }
+    (998..999).each { |weight| @article.images.build(:weight => weight) }
   end
 
   def update

@@ -5,7 +5,7 @@ class Content < ActiveRecord::Base
   has_many :images
 
   accepts_nested_attributes_for :images, :allow_destroy => true,
-    :reject_if => proc { |image_attributes| image_attributes[:image].blank? }
+    :reject_if => proc { |image_attributes| image_attributes[:id].blank? && image_attributes[:image].blank? }
 
   default_scope :include => :user, :include => :images
 
