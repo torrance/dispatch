@@ -49,6 +49,14 @@
   .creative-commons:hover {
     opacity: 1;
   }
+
+  .image-gallery {
+    img {
+      margin-top: 1em;
+      width: 32%;
+      padding: 0 5px;
+    }
+  }
 }
 
 img.border {

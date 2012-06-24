@@ -6,5 +6,10 @@ class Image < ActiveRecord::Base
 
   default_scope order('weight ASC')
 
-  has_attached_file :image, :styles => { :article => ["700x467", :jpg], :tiny => ["60x60", :jpg] }
+  has_attached_file :image, :styles => {
+    :article => ["700x467", :jpg],
+    :tiny => ["60x60", :jpg],
+    :gallery_thumbnail => ["95x95#", :jpg],
+    :gallery_full => ["900x900", :jpg]
+  }
 end

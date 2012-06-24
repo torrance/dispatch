@@ -14,6 +14,15 @@
         <h3><%= @article.category %></h3>
       </div>
 
+      <% if @article.images.length > 1 %>
+        <div class="image-gallery">
+          <h3>Image gallery</h3>
+          <% @article.images.each do |image| %>
+            <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image" %>
+          <% end %>
+        </div>
+      <% end %>
+
       <% if current_user && current_user.is_editor? %>
         <div class="editor-tools">
           <h3>Editor tools</h3>

@@ -28,6 +28,9 @@ $(function() {
 });
 
 /**
- * Image galleries
+ * Colorbox
  */
-$('.image-slider').cycle();
+$(function() {
+  $('.image-gallery a.image').colorbox({rel: 'image', transition: 'none'});
+})
+ 
