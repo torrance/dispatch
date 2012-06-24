@@ -15,4 +15,4 @@
 //= require jquery-ui
 //= require jquery.markitup
 //= require markitup
-//= require content_form
+//= require dispatch

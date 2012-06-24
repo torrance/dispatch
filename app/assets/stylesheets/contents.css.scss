@@ -12,10 +12,16 @@
     margin-bottom: 14px;
   }
 
-  .sidebar div {
-    padding: 15px;
-    background: $background-light;
-    margin-bottom: 20px;
+  .sidebar {
+    div {
+      padding: 15px;
+      background: $background-light;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin: 0;
+    }
   }
 
   .attribution {
@@ -27,12 +33,6 @@
     .last-paragraph {
       margin-top: 10px;
       font-size: 16px;
-    }
-  }
-
-  .metadata, .editor-tools {
-    h3 {
-      margin: 0;
     }
   }
 
