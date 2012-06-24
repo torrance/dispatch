@@ -6,7 +6,7 @@
   <div class="row">
     <div class="fourcol floatright last sidebar">
       <div class="attribution">
-        <p class="first-paragraph">by <%= link_to @article.user.display_name, @article.user %></p>
+        <p class="first-paragraph">by <%= link_to_author @article %></p>
         <p class="last-paragraph"><%= @article.created_at.strftime "%A, #{@article.created_at.day.ordinalize} %B %Y" %></p>
       </div>
 

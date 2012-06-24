@@ -1,5 +1,5 @@
 class Content < ActiveRecord::Base
-  attr_accessible :title, :summary, :body, :category, :user, :images_attributes
+  attr_accessible :title, :summary, :body, :category, :user, :pseudonym, :images_attributes
 
   belongs_to :user
   has_many :images
@@ -21,4 +21,22 @@ class Content < ActiveRecord::Base
   validates :summary, :length => { :maximum => 305 }
   validates :category, :inclusion => { :in => self::CATEGORIES,
     :message => "%{value} is not a valid category" }
+  validate :require_author
+  validate :pseudonym,  :length => { :maximum => 40 }, :message => "^Author name is too long (maximum length 40 characters)."
+
+  def require_author
+    if user.blank? && pseudonym.blank?
+      errors.add :pseudonym, "^Author name cannot be blank."
+    end
+  end
+  
+  def author_name
+    if not user.blank?
+      user.display_name
+    elsif not pseudonym.blank?
+      pseudonym
+    else
+      "Anonymous"
+    end
+  end
 end
