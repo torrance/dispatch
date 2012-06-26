@@ -1,12 +1,12 @@
-<%= form_for @article, :html => { :multipart => true, :class => 'content' } do |f| %>
+<%= form_for @content, :html => { :multipart => true, :class => 'content' } do |f| %>
   <div class="row">
     <div class="twelvecol">
-      <% if @article.errors.any? %>
+      <% if @content.errors.any? %>
         <div id="error_explanation">
-          <h3>Oops, something was wrong with your article submission.</h3>
+          <h3>Oops, something was wrong with your <%= @type %> submission.</h3>
 
           <ul>
-          <% @article.errors.full_messages.each do |msg| %>
+          <% @content.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
           </ul>
@@ -27,7 +27,7 @@
       </div>
       <div class="fourcol last">
         <div class="help first-help">
-          <p class="first-paragraph last-paragraph">This is the title of your article. Try something descriptive but short.</p>
+          <p class="first-paragraph last-paragraph">This is the title of your <%= @type %>. Try something descriptive but short.</p>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="fourcol last">
         <div class="help">
-          <p class="first-paragraph last-paragraph">Your article summary will appear on the front page in the newswire as well as directly above your article body when viewed in full.</p>
+          <p class="first-paragraph last-paragraph">Your <%= @type %> summary will appear on the front page in the newswire as well as directly above your <%= @type %> body when viewed in full.</p>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
       </div>
       <div class="fourcol last">
         <div class="help">
-          <p class="first-paragraph">This is your main article text. You can see what it will look like in the live preview below, once you start typing.</p>
+          <p class="first-paragraph">This is your main <%= @type %> text. You can see what it will look like in the live preview below, once you start typing.</p>
           <p class="last-paragraph">You can use Markdown formatting. See <a href="#">Text formatting help.</a></p>
         </div>
       </div>
@@ -73,14 +73,14 @@
 
         <div class="field">
           <%= f.label :category %>
-          <%= f.select :category, [['- Select a category -', 0]] + Article::CATEGORIES.zip(Article::CATEGORIES) %>
+          <%= f.select :category, [['- Select a category -', 0]] + Content::CATEGORIES.zip(Content::CATEGORIES) %>
         </div>
 
       </div>
 
       <div class="fourcol last">
         <div class="help first-help">
-          <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your article.</p>
+          <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your <%= @type %>.</p>
         </div>
       </div>
     </div>

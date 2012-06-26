@@ -1,7 +1,9 @@
 Dispatch::Application.routes.draw do
   root :to => 'frontpage#show'
 
-  resources :articles, :except => :index
+  resources :articles, :controller => :contents, :type => "Article", :except => :index
+
+  resources :events, :controller => :contents, :type => "Event", :except => :index
 
   # Login, logout and account validation
   get 'login' => 'users#new', :as => :login

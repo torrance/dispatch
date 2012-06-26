@@ -1,6 +1,6 @@
 <div id="content">
   <div class="row">
-    <h1 class="twelvecol page-title"><%= @article.title %> <% if @article.editable?(current_user) %><%= link_to "(edit your article)", edit_article_path(@article), :class => 'edit-own-article' %><% end %></h1>
+    <h1 class="twelvecol page-title"><%= @content.title %> <% if @content.editable?(current_user) %><%= link_to "(edit your #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
   </div>
 
   <div class="row">
@@ -9,26 +9,26 @@
         <div class="editor-tools">
           <h3>Editor tools</h3>
           <ul class="no-indentation">
-            <li><%= link_to "Edit this article", edit_article_path %></li>
+            <li><%= link_to "Edit this article", [:edit, @content] %></li>
           </ul>
         </div>
       <% end %>
 
       <div class="attribution">
-        <p class="first-paragraph">by <%= link_to_author @article %> </p>
-        <p class="last-paragraph"><%= @article.created_at.strftime "%A, #{@article.created_at.day.ordinalize} %B %Y" %></p>
+        <p class="first-paragraph">by <%= link_to_author @content %> </p>
+        <p class="last-paragraph"><%= @content.created_at.strftime "%A, #{@content.created_at.day.ordinalize} %B %Y" %></p>
       </div>
 
       <div class="metadata">
-        <h3><%= @article.category %></h3>
+        <h3><%= @content.category %></h3>
       </div>
 
-      <% if @article.images.length > 1 %>
+      <% if @content.images.length > 1 %>
         <div class="image-gallery">
-          <% @article.images.each do |image| %>
+          <% @content.images.each do |image| %>
             <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image" %>
           <% end %>
-          <%= link_to "Show all #{@article.images.length} images", "#", :id => "show-all-images" %>
+          <%= link_to "Show all #{@content.images.length} images", "#", :id => "show-all-images" %>
         </div>
       <% end %>
 
@@ -40,17 +40,17 @@
     </div>
 
     <div class="eightcol first">
-      <% if image = @article.images.first %>
+      <% if image = @content.images.first %>
         <%= image_tag image.image.url(:article), :class => 'border', :id => 'image-feature' %>
       <% end %>
     </div>
 
     <div class="eightcol first">
-      <p class="summary"><%= @article.summary %></p>
+      <p class="summary"><%= @content.summary %></p>
     </div>
 
     <div class="body sevencol first">
-      <%= Dispatch::ContentFilter.instance.render @article.body %>
+      <%= Dispatch::ContentFilter.instance.render @content.body %>
     </div>
   </div>
 </div>
