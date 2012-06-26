@@ -67,28 +67,7 @@
 
   </fieldset>
 
-  <% if not current_user %>
-    <fieldset>
-      <div class="row">
-        <div class="eightcol first">
-
-          <div class="field">
-            <%= f.label :pseudonym, "Author name" %>
-            <%= f.text_field :pseudonym, :class => 'text' %>
-          </div>
-
-        </div>
-        <div class="fourcol last">
-          <div class="help first-help">
-            <p class="first-paragraph last-paragraph">The author name will default to “Anonymous” if none is provided.</p>
-          </div>
-        </div>
-      </div>
-    </fieldset>
-  <% end %>
-
   <fieldset>
-
     <div class="row">
       <div class="eightcol first">
 
@@ -105,7 +84,6 @@
         </div>
       </div>
     </div>
-
   </fieldset>
 
   <fieldset>
@@ -123,6 +101,41 @@
       </div>
     </div>
   </fieldset>
+
+
+  <% unless current_user %>
+    <fieldset>
+      <div class="row">
+        <div class="eightcol first">
+          <div class="field">
+            <%= f.label :pseudonym, "Author name" %>
+            <%= f.text_field :pseudonym, :class => 'text' %>
+          </div>
+        </div>
+
+        <div class="fourcol last">
+          <div class="help first-help">
+            <p class="first-paragraph last-paragraph">The author name will default to “Anonymous” if none is provided.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="eightcol first">
+          <div class="field">
+            <%= f.label :captcha, "Are you human?" %>
+            <%= show_simple_captcha %>
+          </div>
+        </div>
+
+        <div class="fourcol last">
+          <div class="help">
+            <p class="first-paragraph last-paragraph">To stop spam, we have to check whether you are human enough to read this text. Please copy the text in the image into the field.</p>
+          </div>
+      </div>
+    </fieldset>
+  <% end %>
+
 
   <fieldset>
     <div class="row">

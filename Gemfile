@@ -53,3 +53,4 @@ gem 'redcarpet', '~> 2.1'
 gem 'paperclip', '~> 3.1'
 # We use dynamic form to display custom form error messages.""
 gem 'dynamic_form'
+gem "galetahub-simple_captcha", :require => "simple_captcha"

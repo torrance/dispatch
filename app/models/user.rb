@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :biography, :display_name
+  attr_accessible :email, :password, :password_confirmation, :biography,
+    :display_name
 
   ROLES = %w(Normal Editor)
 

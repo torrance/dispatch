@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  include SimpleCaptcha::ControllerHelpers
+
   helper_method :current_user_session, :current_user
   
   private
@@ -33,5 +35,17 @@ class ApplicationController < ActionController::Base
       redirect_to :back
     rescue ActionController::RedirectBackError
       redirect_to default
+    end
+
+    def valid_captcha?(model)
+      if simple_captcha_valid?
+        true
+      else
+        # We also test for valid model, so that we can preset user with
+        # all validation errors in one lot.
+        model.valid?
+        model.errors.add(:captcha, "^The code you've entered does not match the text in the image.")
+        false
+      end
     end
 end

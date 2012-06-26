@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624074133) do
+ActiveRecord::Schema.define(:version => 20120625204712) do
 
   create_table "contents", :force => true do |t|
     t.string   "title",                         :null => false
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(:version => 20120624074133) do
     t.integer  "content_id"
     t.integer  "weight",             :default => 0, :null => false
   end
+
+  create_table "simple_captcha_data", :force => true do |t|
+    t.string   "key",        :limit => 40
+    t.string   "value",      :limit => 6
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "simple_captcha_data", ["key"], :name => "idx_key"
 
   create_table "users", :force => true do |t|
     t.string   "display_name",                          :null => false

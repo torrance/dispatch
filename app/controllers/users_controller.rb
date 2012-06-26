@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     #require_no_user
     @user = User.new(params[:user])
-    if @user.save_without_session_maintenance # Don't immediately login
+
+    if valid_captcha?(@user) && @user.save_without_session_maintenance # Don't immediately login
       AccountNotifications.activate_account(@user).deliver
       flash[:notice] = "You should receive an email shortly asking you to verify your email address."
       redirect_to :login
