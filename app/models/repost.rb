@@ -1,0 +1,2 @@
+class Repost < Content
+end
