@@ -38,4 +38,13 @@ $(function() {
     e.preventDefault();
   });
 });
+
+/**
+ * Add datepicker to all input fields with 'datepicker' class.
+ */
+$(function() {
+  $('input.datepicker').datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+});
  
