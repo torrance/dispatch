@@ -40,6 +40,10 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+group :development do
+  gem 'debugger'
+end
+
 group :test do
   gem 'faker'
   gem 'database_cleaner'
@@ -54,3 +58,5 @@ gem 'paperclip', '~> 3.1'
 # We use dynamic form to display custom form error messages.""
 gem 'dynamic_form'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
+# Aristo is a jQuery-ui theme
+gem "jquery-rails-aristo"
