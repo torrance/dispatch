@@ -14,9 +14,15 @@
         </div>
       <% end %>
 
+      <% if is_event?(@content) %>
+        <div class="event-details">
+          <p class="first-paragraph last-paragraph"><%= long_event_date(@content.start, @content.end) %></p>
+        </div>
+      <% end %>
+
       <div class="attribution">
         <p class="first-paragraph">by <%= link_to_author @content %> </p>
-        <p class="last-paragraph"><%= @content.created_at.strftime "%A, #{@content.created_at.day.ordinalize} %B %Y" %></p>
+        <p class="last-paragraph"><%= long_article_date @content.created_at %></p>
       </div>
 
       <div class="metadata">
