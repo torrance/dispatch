@@ -11,21 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625204712) do
+ActiveRecord::Schema.define(:version => 20120627074506) do
 
   create_table "contents", :force => true do |t|
     t.string   "title",                         :null => false
     t.text     "summary",                       :null => false
     t.text     "body",                          :null => false
-    t.string   "category",                      :null => false
+    t.string   "category"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
     t.string   "type",       :default => "nil", :null => false
     t.string   "pseudonym"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "location"
   end
 
   add_index "contents", ["type"], :name => "index_contents_on_type"
+
+  create_table "events", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "images", :force => true do |t|
     t.datetime "created_at",                        :null => false
@@ -36,6 +44,11 @@ ActiveRecord::Schema.define(:version => 20120625204712) do
     t.datetime "image_updated_at"
     t.integer  "content_id"
     t.integer  "weight",             :default => 0, :null => false
+  end
+
+  create_table "reposts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "simple_captcha_data", :force => true do |t|
