@@ -17,11 +17,9 @@ class Content < ActiveRecord::Base
     'War & Militarism'
   ]
 
-  validates :title, :summary, :body, :category, :presence => true
+  validates :title, :summary, :body, :presence => true
   validates :title, :length => { :maximum => 255 }
   validates :summary, :length => { :maximum => 305 }
-  validates :category, :inclusion => { :in => self::CATEGORIES,
-    :message => "%{value} is not a valid category" }
   validate :require_author
   validate :pseudonym,  :length => { :maximum => 40 }, :message => "^Author name is too long (maximum length 40 characters)."
 
