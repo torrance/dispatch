@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  */
+ //= require jqueryui-aristo/aristo
 
 /**
  * Mixins and global variables
@@ -22,6 +23,7 @@ $body-text-color: #222;
 $background-light: #F0F2ED;
 $link-color: #5EA120;
 $dark-brown: #353B2F;
+$light-green: #90bd66;
 
 @mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
   -moz-box-shadow:    $horizontal $vertical $blur $spread $color;
@@ -47,4 +49,5 @@ $dark-brown: #353B2F;
 @import "users";
 @import "markitup-simple";
 @import "markitup-buttons";
-@import "colorbox"
+@import "colorbox";
+@import "aristo-overrides";

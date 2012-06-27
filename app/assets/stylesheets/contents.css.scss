@@ -118,5 +118,14 @@ form.content {
   .first-help {
     margin-top: 0;
   }
+
+  .datetime {
+    float: left;
+    @include border-box;
+  }
+
+  .datetime {
+    width: 50%;
+  }
 }
 

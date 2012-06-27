@@ -67,24 +67,60 @@
 
   </fieldset>
 
-  <fieldset>
-    <div class="row">
-      <div class="eightcol first">
+  <% if is_event?(@content) %>
+    <fieldset>
+      <div class="row">
+        <div class="eightcol first">
+          <div class="field datetime">
+            <%= f.label :start, "Start date" %>
+            <%= f.date_select :start, :class => 'text datepicker' %><br />
+            <%= f.time_select :start, :ignore_date => true, :prompt => true %>
+          </div>
 
-        <div class="field">
-          <%= f.label :category %>
-          <%= f.select :category, [['- Select a category -', 0]] + Content::CATEGORIES.zip(Content::CATEGORIES) %>
+          <div class="field datetime">
+            <%= f.label :end, "End date (optional)" %>
+            <%= f.date_select :end, :class => 'text datepicker' %><br />
+            <%= f.time_select :end, :ignore_date => true, :prompt => true %>
+          </div>
         </div>
 
-      </div>
-
-      <div class="fourcol last">
-        <div class="help first-help">
-          <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your <%= @type %>.</p>
+        <div class="fourcol last">
+          <div class="help first-help">
+            <p class="first-paragraph last-paragraph">Soemthing helpful about a date.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </fieldset>
+
+      <div class="row">
+        <div class="eightcol first">
+          <div class="field location">
+            <%= f.label :location %>
+            <%= f.text_field :location, :class => 'text' %>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+
+  <% if not is_event?(@content) %>
+    <fieldset>
+      <div class="row">
+        <div class="eightcol first">
+
+          <div class="field">
+            <%= f.label :category %>
+            <%= f.select :category, [['- Select a category -', 0]] + Content::CATEGORIES.zip(Content::CATEGORIES) %>
+          </div>
+
+        </div>
+
+        <div class="fourcol last">
+          <div class="help first-help">
+            <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your <%= @type %>.</p>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
 
   <fieldset>
     <div class="row">
