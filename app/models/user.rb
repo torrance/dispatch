@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   ROLES = %w(Normal Editor)
 
   has_many :contents
+  has_many :comments
 
   acts_as_authentic do |c|
     # Drupal used plain md5 passwords with no salt, so we are able to
