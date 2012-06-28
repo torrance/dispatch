@@ -43,8 +43,36 @@ $(function() {
  * Add datepicker to all input fields with 'datepicker' class.
  */
 $(function() {
-  $('input.datepicker').datepicker({
-    dateFormat: 'yy-mm-dd'
+  var year = $('#event_start_1i');
+  var month = $('#event_start_2i');
+  var day = $('#event_start_3i');
+
+  var updateSelected = function(dates) {
+    console.log(dates);
+    var date = dates.split(' ');
+    console.log(date);
+    year.val(parseInt(date[0], 10));
+    month.val(parseInt(date[1], 10));
+    day.val(parseInt(date[2], 10));
+  }
+
+  var updateDatepicker = function() {
+    $('.datepicker').datepicker('setDate', new Date(year.val(), month.val() - 1, day.val()));
+  }
+
+  // Set up the datepicker
+  $('.datepicker').datepicker({
+    showOn: 'button',
+    buttonImage: '/assets/calendar.png',
+    buttonImageOnly: true,
+    onSelect: updateSelected,
+    dateFormat: "yy mm dd",
   });
+  updateDatepicker();
+
+  year.change(updateDatepicker);
+  month.change(updateDatepicker);
+  day.change(updateDatepicker);
+  
 });
  

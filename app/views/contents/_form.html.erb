@@ -73,8 +73,13 @@
         <div class="eightcol first">
           <div class="field datetime">
             <%= f.label :start, "Start date" %>
-            <%= f.date_select :start, :class => 'text datepicker' %><br />
+            <%= f.date_select :start, :class => "datepicker-set" %> <input type="text" class="datepicker"></input><br />
             <%= f.time_select :start, :ignore_date => true, :prompt => true %>
+          </div>
+
+          <div class="field location">
+            <%= f.label :location %>
+            <%= f.text_field :location, :class => 'text' %>
           </div>
         </div>
 
@@ -84,16 +89,8 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="eightcol first">
-          <div class="field location">
-            <%= f.label :location %>
-            <%= f.text_field :location, :class => 'text' %>
-          </div>
-        </div>
-      </fieldset>
-    <% end %>
+    </fieldset>
+  <% end %>
 
   <% if not is_event?(@content) %>
     <fieldset>

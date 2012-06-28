@@ -119,13 +119,22 @@ form.content {
     margin-top: 0;
   }
 
-  .datetime {
-    float: left;
-    @include border-box;
+  /* Event date fields */
+
+  .datepicker {
+    display: none;
   }
 
-  .datetime {
+  .ui-datepicker-trigger {
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .datetime, .location {
+    float: left;
+    @include border-box;
     width: 50%;
+    height: 130px;
   }
 }
 
