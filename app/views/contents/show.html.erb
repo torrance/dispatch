@@ -1,4 +1,4 @@
-<div id="content">
+<div id="content" class="<%= @type %>">
   <div class="row">
     <h1 class="twelvecol page-title"><%= @content.title %> <% if @content.editable?(current_user) %><%= link_to "(edit your #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
   </div>
@@ -16,18 +16,25 @@
 
       <% if is_event?(@content) %>
         <div class="event-details">
-          <p class="first-paragraph last-paragraph"><%= long_event_date(@content.start) %></p>
+          <p class="first-paragraph"><%= @content.location %></p>
+          <p class="last-paragraph"><%= long_event_date(@content.start) %></p>
+        </div>
+
+        <div>
+          <p class="first-paragraph last-paragraph">Posted by <%= link_to_author @content %></p>
         </div>
       <% end %>
 
-      <div class="attribution">
-        <p class="first-paragraph">by <%= link_to_author @content %> </p>
-        <p class="last-paragraph"><%= long_article_date @content.created_at %></p>
-      </div>
+      <% if not is_event?(@content) %>
+        <div class="attribution">
+          <p class="first-paragraph">by <%= link_to_author @content %> </p>
+          <p class="last-paragraph"><%= long_article_date @content.created_at %></p>
+        </div>
 
-      <div class="metadata">
-        <h3><%= @content.category %></h3>
-      </div>
+        <div class="metadata">
+          <h3><%= @content.category %></h3>
+        </div>
+      <% end %>
 
       <% if @content.images.length > 1 %>
         <div class="image-gallery">

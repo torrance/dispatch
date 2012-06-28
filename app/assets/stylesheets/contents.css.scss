@@ -36,6 +36,12 @@
     }
   }
 
+  .event-details {
+    p {
+      font-size: 18px;
+    }
+  }
+
   .creative-commons {
     background: image_url('creative-commons.png') no-repeat 0 3px;
     padding-left: 100px;
@@ -56,6 +62,13 @@
       width: 29%;
       margin: 0 5px 10px 5px;
     }
+  }
+}
+
+#content.event {
+  h1 {
+    background: image_url("calendar.png") no-repeat 0 7px;
+    padding-left: 35px;
   }
 }
 
