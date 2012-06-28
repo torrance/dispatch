@@ -25,7 +25,7 @@ class ContentsController < ApplicationController
 
   def update
     @content = content_type.find(params[:id])
-    if @content.update_attributes(params[:article])
+    if @content.update_attributes(params[content_type_key])
       redirect_to @content, notice: "Your #{@type} was sucessfully updated."
     else
       render action: "edit"
