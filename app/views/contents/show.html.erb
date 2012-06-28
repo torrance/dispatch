@@ -16,8 +16,8 @@
 
       <% if is_event?(@content) %>
         <div class="event-details">
-          <p class="first-paragraph"><%= @content.location %></p>
-          <p class="last-paragraph"><%= long_event_date(@content.start) %></p>
+          <p class="first-paragraph"><%= long_event_date(@content.start) %></p>
+          <p class="last-paragraph"><%= @content.location %></p>
         </div>
 
         <div>

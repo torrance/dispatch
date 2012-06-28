@@ -39,6 +39,15 @@
   .event-details {
     p {
       font-size: 18px;
+      padding-left: 25px;
+    }
+
+    p.first-paragraph {
+      background: image_url("clock.png") no-repeat 0 3px;
+    }
+
+    p.last-paragraph {
+      background: image_url("location.png") no-repeat 0 3px;
     }
   }
 
