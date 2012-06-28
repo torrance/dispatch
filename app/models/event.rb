@@ -1,3 +1,3 @@
 class Event < Content
-  attr_accessible :start, :end, :location
+  attr_accessible :start, :location
 end

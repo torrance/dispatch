@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627074506) do
+ActiveRecord::Schema.define(:version => 20120628070903) do
 
   create_table "contents", :force => true do |t|
     t.string   "title",                         :null => false
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20120627074506) do
     t.string   "type",       :default => "nil", :null => false
     t.string   "pseudonym"
     t.datetime "start"
-    t.datetime "end"
     t.string   "location"
   end
 
