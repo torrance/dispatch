@@ -6,7 +6,7 @@
   <div class="row">
     <div class="fourcol floatright last sidebar">
       <% if current_user && current_user.is_editor? %>
-        <div class="editor-tools">
+        <div class="editor-tools sidebar-block">
           <h3>Editor tools</h3>
           <ul class="no-indentation">
             <li><%= link_to "Edit this article", [:edit, @content] %></li>
@@ -15,7 +15,7 @@
       <% end %>
 
       <% if is_event?(@content) %>
-        <div class="event-details">
+        <div class="event-details sidebar-block">
           <p class="first-paragraph"><%= long_event_date(@content.start) %></p>
           <p class="last-paragraph"><%= @content.location %></p>
         </div>
@@ -26,21 +26,23 @@
       <% end %>
 
       <% if not is_event?(@content) %>
-        <div class="attribution">
+        <div class="attribution sidebar-block">
           <p class="first-paragraph">by <%= link_to_author @content %> </p>
           <p class="last-paragraph"><%= long_article_date @content.created_at %></p>
         </div>
 
-        <div class="metadata">
+        <div class="metadata sidebar-block">
           <h3><%= @content.category %></h3>
         </div>
       <% end %>
 
       <% if @content.images.length > 1 %>
-        <div class="image-gallery">
-          <% @content.images.each do |image| %>
-            <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image" %>
-          <% end %>
+        <div class="image-gallery sidebar-block">
+          <div class="float-overflow">
+            <% @content.images.each do |image| %>
+              <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image #{cycle('odd', 'even')}" %>
+            <% end %>
+          </div>
           <%= link_to "Show all #{@content.images.length} images", "#", :id => "show-all-images" %>
         </div>
       <% end %>

@@ -9,7 +9,7 @@ class Image < ActiveRecord::Base
   has_attached_file :image, :styles => {
     :article => ["700x467", :jpg],
     :tiny => ["60x60", :jpg],
-    :gallery_thumbnail => ["95x95#", :jpg],
+    :gallery_thumbnail => ["157x157#", :jpg],
     :gallery_full => ["900x700", :jpg]
   }
 end

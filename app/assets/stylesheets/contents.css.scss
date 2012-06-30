@@ -13,7 +13,7 @@
   }
 
   .sidebar {
-    div {
+    .sidebar-block {
       padding: 15px;
       background: $background-light;
       margin-bottom: 20px;
@@ -67,9 +67,18 @@
   }
 
   .image-gallery {
+    a.image {
+      margin-bottom: 10px;
+      float:left;
+      width: 47%;
+    }
+
     img {
-      width: 29%;
-      margin: 0 5px 10px 5px;
+      width: 100%;  
+    }
+
+    a.odd {
+      margin-right: 10px;
     }
   }
 
