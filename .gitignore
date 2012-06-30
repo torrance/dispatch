@@ -16,3 +16,6 @@
 
 # Ignore public/system folder
 /public/system
+
+# Ignore the sass-cache
+/.sass-cache
