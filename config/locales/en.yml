@@ -5,7 +5,18 @@ en:
   datetime:
     distance_in_words:
       less_than_x_minutes: "Just now"
-      x_minutes: "%{count} minutes ago"
-      about_x_minutes: "About %{count} minutes ago"
-      x_days: "%{count} days ago"
-      about_x_days: "About %{count} days ago"
+      x_minutes:
+        one: "%{count} minute ago"
+        other: "%{count} minutes ago"
+      about_x_minutes:
+        one: "About %{count} minute ago"
+        other: "About %{count} minutes ago"
+      about_x_hours:
+        one: "About %{count} hour ago"
+        other: "About %{count} hours ago"
+      x_days:
+        one: "%{count} day ago"
+        other: "%{count} days ago"
+      about_x_days: 
+        one: "About %{count} day ago"
+        other: "About %{count} days ago"
