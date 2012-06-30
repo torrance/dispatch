@@ -60,3 +60,4 @@ gem 'dynamic_form'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 # Aristo is a jQuery-ui theme
 gem "jquery-rails-aristo"
+gem "acts-as-taggable-on", "~> 2.3.1"

@@ -36,6 +36,14 @@
     }
   }
 
+  .metadata {
+    p {
+      background: image_url("tags.png") no-repeat 0 2px;
+      padding-left: 18px;
+      margin-top: 0.5em;
+    }
+  }
+
   .event-details {
     p {
       font-size: 18px;
@@ -150,8 +158,27 @@ form.content {
     margin-top: 0;
   }
 
-  /* Event date fields */
+  /* Tag and category fields */
 
+  .categorize .category {
+    float: left;
+    width: 40%;
+    @include border-box;
+    height: 150px;
+  }
+
+  .category select {
+    width: 100%;
+  }
+
+  .categorize .tags {
+    float: left;
+    width: 60%;
+    @include border-box;
+    height: 150px;
+  }
+
+  /* Event date fields */
   .datepicker {
     display: none;
   }

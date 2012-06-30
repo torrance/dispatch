@@ -1,6 +1,6 @@
 class Content < ActiveRecord::Base
   attr_accessible :title, :summary, :body, :category, :user,
-    :pseudonym, :images_attributes
+    :pseudonym, :images_attributes, :tag_list
 
   belongs_to :user
   has_many :images

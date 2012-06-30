@@ -95,11 +95,17 @@
   <% if not is_event?(@content) %>
     <fieldset>
       <div class="row">
-        <div class="eightcol first">
+        <div class="eightcol first categorize">
 
-          <div class="field">
+          <div class="field category">
             <%= f.label :category %>
             <%= f.select :category, [['- Select a category -', 0]] + Content::CATEGORIES.zip(Content::CATEGORIES) %>
+          </div>
+
+          <div class="field tags">
+            <%= f.label :tag_list, "Tags" %>
+            <%= f.text_field :tag_list, :class => 'text' %>
+            <p class="description">Required. Maximum 5 tags.</p>
           </div>
 
         </div>
