@@ -67,3 +67,27 @@
     </div>
   </div>
 </div>
+
+<div class="row"><div class="sevencol first"><h3 class="comment">Comments</h3></div></div>
+
+<% @content.comments.each do |comment| %>
+  <%= render 'comments/comment', :comment => comment %>
+<% end %>
+
+<% if current_user %>
+  <% if @content.comments.empty? %>
+    <div class="row"><div class="sevencol first"><p>There are no comments yet.</p></div></div>
+  <% end %>
+
+  <div class="row">
+    <div class="sevencol first">
+      <%= render 'comments/form', :comment => @comment, :content => @content %>
+    </div>
+  </div>
+<% else %>
+  <% if @content.comments.empty? %>
+    <div class="row"><div class="sevencol first"><p>There are no comments yet. You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
+  <% else %>
+    <div class="row"><div class="sevencol first"><p>You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
+  <% end %>
+<% end %>

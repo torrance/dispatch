@@ -2,4 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  datetime:
+    distance_in_words:
+      less_than_x_minutes: "Just now"
+      x_minutes: "%{count} minutes ago"
+      about_x_minutes: "About %{count} minutes ago"
+      x_days: "%{count} days ago"
+      about_x_days: "About %{count} days ago"

@@ -1,0 +1,23 @@
+<%= form_for comment, :url => content_comments_path(content, :anchor => 'comment-form'), :html => { :class => 'comment' } do |f| %>
+  <%= content_tag :a, '', :name => 'comment-form' %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h3>Oops, something was wrong with your comment.</h3>
+
+      <ul>
+      <% comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_area :body, :rows => 8 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Post comment", :class => 'submit' %>
+    <p>You're posting as<br /><strong><%= content.author_name %></strong></p>
+  </div>
+<% end %>

@@ -5,6 +5,10 @@ Dispatch::Application.routes.draw do
 
   resources :events, :controller => :contents, :type => "Event", :except => :index
 
+  resources :contents, :only => [] do
+    resources :comments, :only => ['create']
+  end
+
   # Login, logout and account validation
   get 'login' => 'users#new', :as => :login
   post 'login' => 'users#login', :as => :login

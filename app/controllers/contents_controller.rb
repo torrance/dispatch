@@ -34,6 +34,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = content_type.find(params[:id])
+    @comment = Comment.new
   end
 
   protected
