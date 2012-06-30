@@ -34,13 +34,13 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-group :development, :test do
+group :development, :development_with_caching, :test do
   # Use rspec instead of Test::Unit
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
-group :development do
+group :development, :development_with_caching do
   gem 'debugger'
 end
 
