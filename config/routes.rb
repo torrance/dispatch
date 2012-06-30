@@ -9,6 +9,8 @@ Dispatch::Application.routes.draw do
     resources :comments, :only => ['create']
   end
 
+  resources :tags, :only => ['index']
+
   # Login, logout and account validation
   get 'login' => 'users#new', :as => :login
   post 'login' => 'users#login', :as => :login

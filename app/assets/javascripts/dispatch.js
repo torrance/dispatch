@@ -75,4 +75,14 @@ $(function() {
   day.change(updateDatepicker);
   
 });
+
+/**
+ * Tagging autocomplete
+ */
+$(function() {
+  $('form.content .tags input').tokenInput('/tags.json', {
+    crossDomain: false,
+    prePopulate: $('form.content .tags input').data('tags')
+  });
+});
  

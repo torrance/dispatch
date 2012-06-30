@@ -15,5 +15,6 @@
 //= require jquery-ui
 //= require jquery.markitup
 //= require jquery.colorbox
+//= require jquery.tokeninput
 //= require markitup
 //= require dispatch
