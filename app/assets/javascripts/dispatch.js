@@ -82,7 +82,9 @@ $(function() {
 $(function() {
   $('form.content .tags input').tokenInput('/tags.json', {
     crossDomain: false,
-    prePopulate: $('form.content .tags input').data('tags')
+    prePopulate: $('form.content .tags input').data('tags'),
+    tokenLimit: 5,
+    preventDuplicates: true
   });
 });
  
