@@ -11,6 +11,8 @@ Dispatch::Application.routes.draw do
 
   resources :tags, :only => ['index']
 
+  match 'content-filter/markdown' => 'content_filters#markdown'
+
   # Login, logout and account validation
   get 'login' => 'users#new', :as => :login
   post 'login' => 'users#login', :as => :login

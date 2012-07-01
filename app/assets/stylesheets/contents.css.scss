@@ -158,6 +158,24 @@ form.content {
     margin-top: 0;
   }
 
+  /* Live preview */
+  #live-preview {
+    display: none;
+  }
+
+  #live-preview h5 {
+    background: image_url("eye.png") no-repeat 0 5px;
+    padding-left: 23px;
+  }
+
+  #live-preview .html {
+    padding: 8px;
+    background: #fff;
+    border: 1px #BBB solid;
+    max-height: 250px;
+    overflow: scroll;
+  }
+
   /* Tag and category fields */
 
   .categorize .category {
