@@ -28,6 +28,7 @@ class ContentsController < ApplicationController
     if @content.update_attributes(params[content_type_key])
       redirect_to @content, notice: "Your #{@type} was sucessfully updated."
     else
+      (998..999).each { |weight| @content.images.build(:weight => weight) }
       render action: "edit"
     end
   end
