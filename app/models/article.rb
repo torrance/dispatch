@@ -12,6 +12,7 @@ class Article < Content
   # Solr search configuration
   searchable do
     text :title, :summary, :body
+    text :tag_list, :boost => 2.0
     time :created_at, :trie => true
     string :category
     string :tag_list, :multiple => true
