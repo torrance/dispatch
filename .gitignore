@@ -12,6 +12,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.lck
 /tmp
 
 # Ignore public/system folder
@@ -19,3 +20,6 @@
 
 # Ignore the sass-cache
 /.sass-cache
+
+# Ignore dev solr instance
+/solr

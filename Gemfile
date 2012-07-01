@@ -38,6 +38,8 @@ group :development, :development_with_caching, :test do
   # Use rspec instead of Test::Unit
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  # Provides an instance of apache solr for dev purposes
+  gem 'sunspot_solr'
 end
 
 group :development, :development_with_caching do
@@ -57,7 +59,8 @@ gem 'redcarpet', '~> 2.1'
 gem 'paperclip', '~> 3.1'
 # We use dynamic form to display custom form error messages.""
 gem 'dynamic_form'
-gem "galetahub-simple_captcha", :require => "simple_captcha"
+gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 # Aristo is a jQuery-ui theme
-gem "jquery-rails-aristo"
-gem "acts-as-taggable-on", "~> 2.3.1"
+gem 'jquery-rails-aristo'
+gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'sunspot_rails'
