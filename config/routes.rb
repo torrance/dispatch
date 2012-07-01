@@ -13,6 +13,8 @@ Dispatch::Application.routes.draw do
 
   match 'content-filter/markdown' => 'content_filters#markdown'
 
+  match 'search' => 'search#index', :as => :search
+
   # Login, logout and account validation
   get 'login' => 'users#new', :as => :login
   post 'login' => 'users#login', :as => :login

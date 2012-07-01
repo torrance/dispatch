@@ -16,9 +16,10 @@
         </div>
 
         <div class="twocol">
-          <div class="search">
-            <input class="text" type="text" placeholder="Search"></input><input class="submit" type="submit" value="Search"></input>
-          </div>
+          <%= form_tag search_path, :method => 'get', :class => 'search dark-search' do %>
+            <%= text_field_tag :q, '', :class => 'text', :placeholder => 'Search' %>
+            <%= submit_tag "Search", :class => 'submit' %>
+          <% end %>
         </div>
 
         <div class="twocol last">
@@ -68,9 +69,10 @@
         <div class="threecol first">
           <img src="<%= asset_path 'logo-little.png' %>" />
           <h3>Aotearoa Independent <br />Media Centre</h3>
-          <div class="search">
-            <input class="text" type="text" placeholder="Search"></input><input class="submit" type="submit" value="Search"></input>
-          </div>
+          <%= form_tag search_path, :method => 'get', :class => 'search dark-search' do %>
+            <%= text_field_tag :q, '', :class => 'text', :placeholder => 'Search' %>
+            <%= submit_tag "Search", :class => 'submit' %>
+          <% end %>
         </div>
 
         <div class="threecol">

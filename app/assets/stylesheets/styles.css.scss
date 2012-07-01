@@ -279,20 +279,22 @@ img.handle {
 .search input.text {
   width: 100%;
   @include border-box;
-  @include box-shadow-none;
-  background: $dark-brown;
-  border: none;
-  color: #6C7466;
   border-radius: 3px;
   padding-right: 30px;
-  border: 1px solid #5D6457;
 }
 
-.search input.text::-webkit-input-placeholder {
+.dark-search input.text {
+  @include box-shadow-none;
+  background: $dark-brown;
+  border: 1px solid #5D6457;
   color: #6C7466;
 }
 
-.search input.text:-moz-input-placeholder {
+.dark-search input.text::-webkit-input-placeholder {
+  color: #6C7466;
+}
+
+.dark-search input.text:-moz-input-placeholder {
   color: #6C7466;
 }
 
@@ -300,12 +302,12 @@ img.handle {
   border: 0;
   text-indent: -999px;
   overflow: hidden;
-  background: transparent image_url("search.png") no-repeat;
   position: absolute;
   right: 3px;
   top: 10px;
   width: 20px;
   height: 20px;
+  background: transparent image_url("search.png") no-repeat;
 }
 
 /**

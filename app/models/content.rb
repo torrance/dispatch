@@ -2,6 +2,14 @@ class Content < ActiveRecord::Base
   attr_accessible :title, :summary, :body, :category, :user,
     :pseudonym, :images_attributes, :tag_list
 
+  CATEGORIES = [
+    'Protest & Revolution',
+    'Ecology & Environment',
+    'Workers & Economy',
+    'War & Militarism'
+  ]
+
+  # Set associations
   belongs_to :user
   has_many :images
   has_many :comments
@@ -11,19 +19,15 @@ class Content < ActiveRecord::Base
 
   default_scope :include => :user, :include => :images
 
-  CATEGORIES = [
-    'Protest & Revolution',
-    'Ecology & Environment',
-    'Workers & Economy',
-    'War & Militarism'
-  ]
-
+  # Validations
   validates :title, :summary, :body, :presence => true
   validates :title, :length => { :maximum => 255 }
   validates :summary, :length => { :maximum => 305 }
   validate :require_author
-  validate :pseudonym,  :length => { :maximum => 40 }, :message => "^Author name is too long (maximum length 40 characters)."
+  validate :pseudonym,  :length => { :maximum => 40 },
+    :message => "^Author name is too long (maximum length 40 characters)."
 
+  # Public model methods
   def require_author
     if user.blank? && pseudonym.blank?
       errors.add :pseudonym, "^Author name cannot be blank."
