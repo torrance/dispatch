@@ -8,8 +8,16 @@
       <% if current_user && current_user.is_editor? %>
         <div class="editor-tools sidebar-block">
           <h3>Editor tools</h3>
+
+          <p>Moderation state: <strong><%= @content.moderation_name %></strong></p>
+
           <ul class="no-indentation">
             <li><%= link_to "Edit this article", [:edit, @content] %></li>
+            <% Content::MODERATION.each_with_index do |state, i| %>
+              <% unless @content.moderation == i %>
+                <li><%= link_to "Mark as #{state.downcase}", moderate_content_path(:moderation => i), :method => :put %></li>
+              <% end %>
+            <% end %>
           </ul>
         </div>
       <% end %>

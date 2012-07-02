@@ -3,10 +3,15 @@ Dispatch::Application.routes.draw do
 
   resources :articles, :controller => :contents, :type => "Article", :except => :index
 
+
   resources :events, :controller => :contents, :type => "Event", :except => :index
 
   resources :contents, :only => [] do
     resources :comments, :only => ['create']
+
+    member do
+      put 'moderate'
+    end
   end
 
   resources :tags, :only => ['index']

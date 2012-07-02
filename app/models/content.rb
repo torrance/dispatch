@@ -2,12 +2,17 @@ class Content < ActiveRecord::Base
   attr_accessible :title, :summary, :body, :category, :user,
     :pseudonym, :images_attributes, :tag_list
 
+  # Categories are stored in the database by full name.
   CATEGORIES = [
     'Protest & Revolution',
     'Ecology & Environment',
     'Workers & Economy',
     'War & Militarism'
   ]
+
+  # Moderation states are stored in the database as an integer, based on the array
+  # indices in Content::MODERATION.
+  MODERATION = %w(Hidden Normal Featured)
 
   # Set associations
   belongs_to :user
@@ -24,6 +29,7 @@ class Content < ActiveRecord::Base
   validate :require_author
   validate :pseudonym,  :length => { :maximum => 40 },
     :message => "^Author name is too long (maximum length 40 characters)."
+  validates :moderation, :inclusion => { :in => 0...(self::MODERATION.length) }
 
   # Scopes
   default_scope :include => :user, :include => :images
@@ -62,30 +68,7 @@ class Content < ActiveRecord::Base
     user && (user.is_editor? || is_author?(user) && !locked?)
   end
 
-  def hidden
-    moderation = 0
-    self
-  end
-
-  def normal
-    moderation = 1
-    self
-  end
-
-  def featured
-    moderation = 2
-    self
-  end
-
-  def is_hidden?
-    moderation == 0
-  end
-
-  def is_normal?
-    moderation == 1
-  end
-
-  def is_featured?
-    moderation == 2
+  def moderation_name
+    Content::MODERATION[moderation]
   end
 end

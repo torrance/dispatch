@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = content_type.new(params[content_type_key])
+    @content = Content.new(params[content_type_key])
     @content.user = current_user
 
     if (current_user || valid_captcha?(@content)) && @content.save
@@ -19,12 +19,12 @@ class ContentsController < ApplicationController
   end
 
   def edit
-    @content = content_type.find(params[:id])
+    @content = Content.find(params[:id])
     (998..999).each { |weight| @content.images.build(:weight => weight) }
   end
 
   def update
-    @content = content_type.find(params[:id])
+    @content = Content.find(params[:id])
     if @content.update_attributes(params[content_type_key])
       redirect_to @content, notice: "Your #{@type} was sucessfully updated."
     else
@@ -34,21 +34,28 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = content_type.find(params[:id])
+    @content = Content.find(params[:id])
     @comment = Comment.new
   end
 
-  protected
-
-  def content_type
-    params[:type].constantize
+  def moderate
+    @content = Content.find(params[:id])
+    @content.moderation = params[:moderation]
+    if @content.save
+      redirect_to :back
+    else
+      redirect_to :back, :notice => "An error occurred moderating this content."
+    end
   end
 
+  protected
   def content_type_key
     params[:type].downcase
   end
 
   def initialize_content_names
-    @type = params[:type].downcase
+    if params[:type].present?
+      @type = params[:type].downcase
+    end
   end
 end
