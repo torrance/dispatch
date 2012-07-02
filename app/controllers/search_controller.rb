@@ -3,17 +3,20 @@ class SearchController < ApplicationController
     # By default, search for empoty string.
     search_string = params[:q] || ''
 
-    @search = search(search_string)
+    begin
+      @search = search(search_string)
+      # For our convenience in the view, pull out the models.
+      @contents = @search.hits.map(&:result)
 
-    @facet_types = [
-      { name: 'type', attribute: 'type' },
-      { name: 'category', attribute: 'category' },
-      { name: 'tag', attribute: 'tag_list' },
-      { name: 'date', attribute: 'created_at' }
-    ]
-
-    # For our convenience in the view, pull out the models.
-    @contents = @search.hits.map(&:result)
+      @facet_types = [
+        { name: 'type', attribute: 'type' },
+        { name: 'category', attribute: 'category' },
+        { name: 'tag', attribute: 'tag_list' },
+        { name: 'date', attribute: 'created_at' }
+      ]
+    rescue Errno::ECONNREFUSED
+      render 'error'
+    end
   end
 
   protected
