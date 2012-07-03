@@ -2,12 +2,12 @@ class ContentsController < ApplicationController
   before_filter :initialize_content_names
 
   def new
-    @content = content_type.new
+    @content = params[:type].constantize.new
     2.times { |weight| @content.images.build(:weight => weight) }
   end
 
   def create
-    @content = Content.new(params[content_type_key])
+    @content = params[:type].constantize.new(params[content_type_key])
     @content.user = current_user
 
     if (current_user || valid_captcha?(@content)) && @content.save
