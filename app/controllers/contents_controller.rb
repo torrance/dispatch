@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
   before_filter :initialize_content_names
 
   def new
-    @content = params[:type].constantize.new
+    @content = params[:type].constantize.new { |c| c.user = current_user }
     2.times { |weight| @content.images.build(:weight => weight) }
   end
 
@@ -53,7 +53,7 @@ class ContentsController < ApplicationController
     if @content.save
       redirect_to :back
     else
-      redirect_to :back, :notice => "An error occurred moderating this content."
+      redirect_to :back, :notice => "An error occurred moderating this content #{@content.errors.full_messages}"
     end
   end
 

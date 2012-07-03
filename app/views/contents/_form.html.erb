@@ -140,7 +140,7 @@
   </fieldset>
 
 
-  <% unless current_user %>
+  <% unless @content.user %>
     <fieldset>
       <div class="row">
         <div class="eightcol first">
@@ -157,19 +157,21 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="eightcol first">
-          <div class="field">
-            <%= f.label :captcha, "Are you human?" %>
-            <%= show_simple_captcha %>
+      <% if @content.new_record? %>
+        <div class="row">
+          <div class="eightcol first">
+            <div class="field">
+              <%= f.label :captcha, "Are you human?" %>
+              <%= show_simple_captcha %>
+            </div>
           </div>
-        </div>
 
-        <div class="fourcol last">
-          <div class="help">
-            <p class="first-paragraph last-paragraph">To stop spam, we have to check whether you are human enough to read this text. Please copy the text in the image into the field.</p>
-          </div>
-      </div>
+          <div class="fourcol last">
+            <div class="help">
+              <p class="first-paragraph last-paragraph">To stop spam, we have to check whether you are human enough to read this text. Please copy the text in the image into the field.</p>
+            </div>
+        </div>
+      <% end %>
     </fieldset>
   <% end %>
 
