@@ -12,7 +12,8 @@
           <p>Moderation state: <strong><%= @content.moderation_name %></strong></p>
 
           <ul class="no-indentation">
-            <li><%= link_to "Edit this article", [:edit, @content] %></li>
+            <li><%= link_to "Edit this #{@type}", [:edit, @content] %></li>
+            <li><%= link_to "Delete this #{@type}", @content, :method => :delete, :data => { :confirm => "Are you sure you want to delete this #{@type}?" } %></li>
             <% Content::MODERATION.each_with_index do |state, i| %>
               <% unless @content.moderation == i %>
                 <li><%= link_to "Mark as #{state.downcase}", moderate_content_path(:moderation => i), :method => :put %></li>

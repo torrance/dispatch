@@ -38,6 +38,15 @@ class ContentsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @content = Content.find(params[:id])
+    if @content.destroy
+      redirect_to :root, :notice => "Your #{@type} has been deleted."
+    else
+      redirect_to :back, :notice => "An error occurred trying to delete your #{@type}"
+    end
+  end
+
   def moderate
     @content = Content.find(params[:id])
     @content.moderation = params[:moderation]
