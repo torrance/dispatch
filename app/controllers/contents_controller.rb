@@ -49,7 +49,7 @@ class ContentsController < ApplicationController
 
   def moderate
     @content = Content.find(params[:id])
-    @content.moderation = params[:moderation]
+    @content.status = params[:status]
     if @content.save
       redirect_to :back
     else

@@ -12,7 +12,7 @@ class Content < ActiveRecord::Base
 
   # Moderation states are stored in the database as an integer, based on the array
   # indices in Content::MODERATION.
-  MODERATION = %w(Hidden Normal Featured)
+  STATES = %w(Hidden Normal Featured)
 
   # Set associations
   belongs_to :user
@@ -29,14 +29,14 @@ class Content < ActiveRecord::Base
   validate :require_author
   validate :pseudonym,  :length => { :maximum => 40 },
     :message => "^Author name is too long (maximum length 40 characters)."
-  validates :moderation, :inclusion => { :in => 0...(self::MODERATION.length) }
+  validates :status, :inclusion => { :in => 0...(self::STATES.length) }
 
   # Scopes
   default_scope :include => :user, :include => :images
 
-  scope :hidden, where(:moderation => 0)
-  scope :normal, where(:moderation => 1)
-  scope :featured, where(:moderation => 2)
+  scope :hidden, where(:status => 0)
+  scope :normal, where(:status => 1)
+  scope :featured, where(:status => 2)
 
 
   # Public model methods
@@ -68,7 +68,7 @@ class Content < ActiveRecord::Base
     user && (user.is_editor? || is_author?(user) && !locked?)
   end
 
-  def moderation_name
-    Content::MODERATION[moderation]
+  def status_name
+    Content::STATES[status]
   end
 end

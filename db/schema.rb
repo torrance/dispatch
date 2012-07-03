@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702081105) do
+ActiveRecord::Schema.define(:version => 20120703093125) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(:version => 20120702081105) do
     t.string   "pseudonym"
     t.datetime "start"
     t.string   "location"
-    t.integer  "moderation", :default => 1,     :null => false
+    t.integer  "status",     :default => 1,     :null => false
   end
 
-  add_index "contents", ["moderation"], :name => "index_contents_on_moderation"
+  add_index "contents", ["status"], :name => "index_contents_on_moderation"
   add_index "contents", ["type"], :name => "index_contents_on_type"
 
   create_table "events", :force => true do |t|
