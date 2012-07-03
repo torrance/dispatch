@@ -12,7 +12,7 @@ class Content < ActiveRecord::Base
 
   # Moderation states are stored in the database as an integer, based on the array
   # indices in Content::MODERATION.
-  STATES = %w(Hidden Normal Featured)
+  STATES = ['Hidden', 'Normal', 'Promoted to newswire', 'Featured']
 
   # Set associations
   belongs_to :user
@@ -36,7 +36,8 @@ class Content < ActiveRecord::Base
 
   scope :hidden, where(:status => 0)
   scope :normal, where(:status => 1)
-  scope :featured, where(:status => 2)
+  scope :promoted, where(:status => 2)
+  scope :featured, where(:status => 3)
 
 
   # Public model methods
