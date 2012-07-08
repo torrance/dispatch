@@ -1,12 +1,85 @@
-<div class="row">
-  <div class="twelvecol">
+<div id="frontpage">
+  <div class="row">
+    <%# Primary feature %>
+    <div class="sevencol first primary-feature">
+      <% if @primary_feature.images.any? %>
+        <%= image_tag @primary_feature.images.first.image.url(:primary_feature), :class => 'border' %>
+      <% end %>
+      <h1 class="page-title"><%= link_to @primary_feature.title, @primary_feature, :class => 'plain-link' %></h1>
+      <p class="metadata"><%= feature_date(@primary_feature.created_at) %> &nbsp;|&nbsp; <%= @primary_feature.category %></p>
+      <p class="summary"><%= @primary_feature.summary %></p>
+    </div>
 
-    <h1>This is the front page</h1>
+    <%# The rest of the the features... %>
+    <div class="fivecol last">
+      <% @features.take(2).each do |feature| %>
+        <div class="feature">
+          <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
 
-    <% @articles.each do |article| %>
-      <h2><%= link_to article.title, article %></h2>
-      <p><%= article.summary %></p>
+          <% if feature.images.any? %>
+            <%= image_tag feature.images.first.image.url(:feature_square) %>
+          <% end %>
+          
+          <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= @primary_feature.category %></p>
+
+          <p class="summary"><%= feature.summary %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row categories">
+    <% @features[2, 4].each do |category_feature| %>
+      <div class="threecol <%= cycle "first", "second", "third", "last" %>">
+        <div class="category"><%= category_feature.category %></div>
+        <% if category_feature.images.any? %>
+          <%= image_tag category_feature.images.first.image.url(:category_feature) %>
+        <% end %>
+        <h3><%= link_to category_feature.title, category_feature, :class => 'plain-link' %></h3>
+        <p><%= category_feature.summary %></p>
+    </div>
     <% end %>
+  </div>
 
+  <div class="row feature-links">
+    <div class="fourcol first">
+      <a class="learn" href="#"><strong>Learn how to publish</strong> <br />to Indymedia</a>
+    </div>
+
+    <div class="fourcol">
+      <a class="faq" href="#"><strong>Got a question?</strong> <br />Take a look at the FAQ</a>
+    </div>
+
+    <div class="fourcol last">
+      <a class="donate" href="#"><strong>Support Indymedia</strong> <br/>We need to raise $2,000 this year</a>
+    </div>
+  </div>
+
+  <div class="row newswire">
+    <div class="ninecol first">
+      <h3>Newswire</h3>
+
+      <% @newswire.each do |content| %>
+        <div class="date"><%= print_newswire_date(content) %></div>
+        <div class="newswire-item">
+          <div <%= "class=collapsed" unless content.is_feature? %>>
+            <% if content.images.any? %>
+              <%= image_tag content.images.first.image.url(:gallery_thumbnail), :class => 'border' %>
+            <% end %>
+            <h4><%= link_to content.title, content %></h4>
+            <p class="summary"><%= content.summary %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="threecol last events">
+      <h3>Upcoming Events</h3>
+
+      <% @events.each do |event| %>
+        <div class="event-details"><%= "#{event.location}, #{long_event_date(event.start)}" %></div>
+        <h4><%= link_to event.title, event, :class => 'plain-link' %></h4>
+      <% end %>
+    </div>
   </div>
 </div>

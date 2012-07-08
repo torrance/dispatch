@@ -21,20 +21,17 @@ module ContentsHelper
       date.strftime "#{time}, #{date.day.ordinalize} %B %Y"
     # Event is today!
     elsif date.today?
-      date.strftime "Today, #{time}"
+      date.strftime "#{time}, today"
     # Event is tomorrow
     elsif today.tomorrow === date.to_date
       date.strftime "Tomorrow, #{time}"
     # Event is happening this week
-    elsif date < today.end_of_week
-      date.strftime "#{time}, %A"
-    # Event is happening this month, but not this week.
-    elsif date < today.end_of_month
-      date.strftime "#{time}, #{date.day.ordinalize} %A"
-    # Event  is less than 3 months away, but not happening this month.
+    elsif date < today + 1.week - 1.day
+      date.strftime "#{time}, this %A"
+    # Event  is less than 3 months away, but not this week.
     elsif date < today.months_since(3)
       date.strftime "#{time}, %A #{date.day.ordinalize} %B"
-    # Event has been or is more than 3 months away
+    # Event is more than 3 months away
     else
       date.strftime "#{time}, #{date.day.ordinalize} %B %Y"
     end

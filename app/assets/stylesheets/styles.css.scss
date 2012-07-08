@@ -129,6 +129,11 @@ img {
   @include border-box;
 }
 
+img.border {
+  padding: 1px;
+  border: 1px solid #ccc;
+}
+
 .float-overflow {
   overflow: hidden;
   clear: both;
@@ -316,7 +321,7 @@ img.handle {
 
 #header {
   background: image_url("header-bg.png") repeat-x;
-  height: 53px;
+  height: 70px;
   margin: 0 -40px; /* Cancel the padding of the container */
   padding: 0 40px; /* ...but re-add it for the internal elements */
 }

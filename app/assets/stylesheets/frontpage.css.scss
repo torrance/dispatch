@@ -1,3 +1,180 @@
-// Place all the styles related to the frontpage controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#frontpage {
+  p {
+    margin: 0.4em 0;
+  }
+
+  .primary-feature {
+    border-right: 1px dashed #ccc;
+    margin-right: -1px;
+
+    h1 {
+      margin-bottom: 0;
+    }
+
+    .metadata {
+      background: $background-light;
+      padding-left: 5px;
+    }
+
+    .summary {
+      font-size: 18px;
+      line-height: 1.5em;
+    }
+  }
+
+  .feature {
+    margin-bottom: 2em;
+    overflow: hidden;
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+
+    img {
+      float: right;
+      margin-top: 0.4em; /* this is the same as the p tag */
+      background: #fff;
+      width: 25%;
+      padding-left: 1em;
+      padding-bottom: 0.5em;
+    }
+
+    .metadata {
+      background: $background-light;
+      padding-left: 5px;
+    }
+
+    .summary {
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+  }
+
+  .categories {
+    margin-top: 3em;
+
+    .category {
+      border-top: 4px solid $link-color;
+      background: $background-light;
+      padding: 1px 5px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    img {
+      margin: 0 0 5px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .feature-links {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    font-size: 15px;
+    line-height: 1.5em;
+
+    a {
+      display: block;
+      color: $body-text-color;
+      background: $background-light url("") no-repeat 15px 10px;
+      padding: 5px 10px 5px 40px;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a.donate {
+      background-image: image_url("heart.png");
+    }
+
+    a.faq {
+      background-image: image_url("info.png");
+    }
+
+    a.learn {
+      background-image: image_url("speechmarks.png");
+    }
+  }
+
+  .newswire {
+    h3 {
+      background: $background-light;
+      border-left: 4px solid $link-color;
+      padding: 0px 10px;
+      margin-bottom: 1.5em;
+      margin-top: 0;
+    }
+
+    .ninecol {
+      position: relative;
+    }
+
+    .date {
+      position: absolute;
+      left: 0;
+      color: $link-color;
+      font-family: $heading-fontstack;
+      width: 18.16%; /* twocol width within a ninecol column */
+      text-align: right;
+    }
+
+    .newswire-item {
+      margin-bottom: 1em;
+      margin-left: 18.16 + 5.13%; /* twocol width + gutter width within a ninecol column */
+      overflow: hidden;
+
+      h4 {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      h4 a {
+        color: $body-text-color;
+      }
+
+      img {
+        float: left;
+        margin-right: 1em;
+        width: 18.16%;
+      }
+
+      .collapsed {
+        height: 1.5em;
+
+        h4 {
+          display: inline;
+        }
+
+        img {
+          display: none;
+        }
+
+        .summary {
+          display: inline;
+          font-size: 14px;
+          color: #d3d9db;
+          -webkit-transition: color 0.8s;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .newswire-item:hover {
+      .summary {
+        color: $body-text-color;
+      }
+    }
+  }
+
+  .events {
+    h4 {
+      margin: 0 0 1em;
+    }
+  }
+}

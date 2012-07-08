@@ -38,6 +38,14 @@ class Content < ActiveRecord::Base
   scope :normal, where(:status => 1)
   scope :promoted, where(:status => 2)
   scope :featured, where(:status => 3)
+  scope :recent, order('created_at DESC')
+  scope :has_image, joins("INNER JOIN images AS image_flag ON image_flag.content_id = contents.id")
+
+  def self.category_features
+    contents = Content.arel_table
+    ids = Content.select("DISTINCT ON(category) id").featured.reorder(:category).order('created_at DESC').limit(4).offset(3).to_sql
+    self.where("id IN (#{ids})")
+  end
 
 
   # Public model methods
@@ -71,5 +79,9 @@ class Content < ActiveRecord::Base
 
   def status_name
     Content::STATES[status]
+  end
+
+  def is_feature?
+    status >= 3
   end
 end

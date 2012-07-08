@@ -14,9 +14,10 @@ padding-right: 40px;
 
 .row {
 width: 100%;
-/*max-width: 1140px;*/
+max-width: 1140px;
 max-width: 1060px;
 min-width: 755px;
+min-width: 880px;
 margin: 0 auto;
 overflow: hidden;
 }
