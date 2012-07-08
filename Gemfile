@@ -59,8 +59,12 @@ gem 'redcarpet', '~> 2.1'
 gem 'paperclip', '~> 3.1'
 # We use dynamic form to display custom form error messages.""
 gem 'dynamic_form'
-gem 'galetahub-simple_captcha', :require => 'simple_captcha'
+gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 # Aristo is a jQuery-ui theme
 gem 'jquery-rails-aristo'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'sunspot_rails'
+# Active admin and its dependencies
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'meta_search', '>= 1.1'
+

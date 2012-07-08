@@ -1,4 +1,6 @@
 Dispatch::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
   root :to => 'frontpage#show'
 
   resources :articles, :controller => :contents, :type => "Article", :except => :index

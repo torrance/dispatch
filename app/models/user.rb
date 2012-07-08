@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :contents
   has_many :comments
 
+  scope :recent, order("created_at DESC")
+
   acts_as_authentic do |c|
     # Drupal used plain md5 passwords with no salt, so we are able to
     # seamlessly transition to using SHA512 by setting md5 as the fallback

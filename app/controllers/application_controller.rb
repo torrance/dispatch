@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.record
     end
+
+    def authenticate_admin_user!
+      if !current_user
+        redirect_to login_path, :notice => "You are trying to access a restricted area. Please login first."
+      elsif !current_user.is_editor?
+        redirect_to :root, :notice => "You do not have permission to access the administration area."
+      end
+    end
     
     def require_user
       unless current_user
