@@ -36,6 +36,8 @@ Dispatch::Application.routes.draw do
 
   resources :users
 
+  get ':path' => 'pages#show', :as => :page
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703093125) do
+ActiveRecord::Schema.define(:version => 20120711085136) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(:version => 20120703093125) do
     t.datetime "image_updated_at"
     t.integer  "content_id"
     t.integer  "weight",             :default => 0, :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "path"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "reposts", :force => true do |t|
