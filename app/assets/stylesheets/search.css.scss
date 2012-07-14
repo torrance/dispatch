@@ -2,11 +2,53 @@
   .page-title {
     /* Set title to same height as search box in RHS. */
     line-height: 1;
+    margin-bottom: 1.5em;
   }
 
-  .eightcol {
-    border-right: 1px dashed #aaa;
-    margin-right: -1px;
+  .search-result {
+    overflow: hidden;
+    margin-bottom: 2em;
+
+    .meta {
+      background: $background-light;
+      border-left: 2px solid $link-color;
+      text-align: right;
+      padding: 4px;
+      width: 20.56%; /* two col width within an eight col column */
+      float: left;
+      font-size: 13px;
+      line-height: 1.4em;
+    }
+
+    .content {
+      margin-left: 20.56% + 5.8%; /* two col plus gutter width in an eight col column */
+
+      img {
+        width: 20%;
+        float: left;
+      }
+
+      h2 {
+        margin-top: 0;
+        line-height: 1;
+        font-size: 16px;
+      }
+
+      .summary {
+        margin: 0.2em 0;
+      }
+    }
+
+    .with-image {
+      h2, .summary {
+        margin-left: 23%;
+      }
+    }
+  }
+
+  .fourcol {
+    border-left: 1px dashed #aaa;
+    margin-left: -1px;
   }
 }
 
