@@ -14,3 +14,84 @@
 #reset-password h1 {
   border-bottom: 1px dashed #aaa;
 }
+
+#user {
+  .fourcol {
+    border-left: 1px dashed #aaa;
+    margin-left: -1px;
+  }
+
+  /* User display name */
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .no-content {
+    padding: 5px 15px;
+    font-size: 17px;
+    margin: 0;
+    background: $background-light;
+  }
+
+  /* Most recent article title */
+  .feature {
+    img {
+      float: left;
+      width: 20.56%; /* two col width within an eight col column */
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      line-height: 1;
+      font-size: 28px;
+    }
+
+    .meta {
+      background: $background-light;
+      padding: 2px 5px;
+      font-size: 15px;
+    }
+
+    .summary {
+      font-size: 18px;
+      line-height: 1.5em;
+      margin-top: 0.4em
+    }
+
+    .with-image {
+      h2, .meta, .summary {
+        margin-left: 20.56% + 5.8%;
+      }
+    }
+  }
+
+  #content-listing {
+    margin-top: 3em;
+  }
+
+  /* Comments title */
+  h4 {
+    background: $background-light image_url("comments.png") no-repeat 5px 4px;
+    padding: 2px 5px 2px 30px;
+    margin-top: 4em;
+  }
+
+  .comment {
+    p.body {
+      background: $background-light image_url("user-speechmark.png") no-repeat 0 bottom;
+      padding: 10px;
+      padding-bottom: 26px;
+      margin-bottom: 0;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.4em;
+      margin-top: 0;
+    }
+  }
+}

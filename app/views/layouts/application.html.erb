@@ -32,7 +32,7 @@
 
         <div class="twocol last floatright">
           <% if current_user %>
-            <%= link_to "Hi, #{current_user.display_name}", '#', :class => 'plain-link' %> | <%= link_to 'Logout', logout_path, :class => 'plain-link' %>
+            <%= link_to "Hi, #{current_user.display_name}", current_user, :class => 'plain-link' %> | <%= link_to 'Logout', logout_path, :class => 'plain-link' %>
           <% else %>
             <%= link_to 'Login | Register', login_path, :class => 'plain-link' %>
           <% end %>

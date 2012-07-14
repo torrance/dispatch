@@ -17,7 +17,7 @@ class Content < ActiveRecord::Base
   # Set associations
   belongs_to :user
   has_many :images
-  has_many :comments
+  has_many :comments, :dependent => :destroy 
 
   accepts_nested_attributes_for :images, :allow_destroy => true,
     :reject_if => proc { |image_attributes| image_attributes[:id].blank? && image_attributes[:image].blank? }

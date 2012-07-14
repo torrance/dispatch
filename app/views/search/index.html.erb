@@ -7,7 +7,7 @@
     <% end %>
 
     <% @contents.each do |content| %>
-      <div class="search-result">
+      <div class="content-listing">
         <div class="meta">
           <%= search_date(content.created_at) %><br />
           <strong><%= content.type == 'Event' ? 'Event' : content.category %></strong>

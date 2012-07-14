@@ -4,7 +4,9 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :content
 
-  default_scope :include => :user
+  default_scope :include => :user, :include => :content
+
+  scope :recent, order('created_at DESC')
 
   validates :user, :content, :presence => true
   validates :body, :length => { 

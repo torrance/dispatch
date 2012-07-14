@@ -22,6 +22,12 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    @user = User.find(params[:id])
+    @contents = Content.recent.where(:user_id => @user)
+    @comments = Comment.recent.where(:user_id => @user).limit(3)
+  end
+
   def login
     #require_no_user
     @user_session = UserSession.new(params[:user_session])
