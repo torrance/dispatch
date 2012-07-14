@@ -1,4 +1,6 @@
 ActiveAdmin.register Content do
+  actions :all, :except => [:new]
+
   filter :type, :as => :select, :collection => [['Article', 'Article'], ['Event', 'Event'], ['Repost', 'Repost']]
   filter :title
   filter :category, :as => :select, :collection => Content::CATEGORIES
