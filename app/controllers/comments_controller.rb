@@ -14,4 +14,38 @@ class CommentsController < ApplicationController
       render 'contents/show'
     end
   end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update_attributes(params[:comment], :as => :editor)
+    @comment.save
+
+    respond_to do |format|
+      format.html do
+        redirect_to polymorphic_path(@comment.content, :anchor => "comment-#{@comment.id}")
+        flash[:notice] = "An error occurred trying to update comment #{comment.id}" if @comment.errors.any?
+      end
+      format.js do
+        # We don't have to filter for status here, since only editors can access this action.
+        @comments = Comment.oldest.where(:content_id => @comment.content)
+      end
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.html do
+        redirect_to polymorphic_path(@comment.content)
+        flash[:notice] = "An error occurred trying to delete comment #{comment.id}" if @comment.errors.any?
+      end
+      format.js do
+        # We don't have to filter for status here, since only editors can access this action.
+        @comments = Comment.oldest.where(:content_id => @comment.content)
+        render :update
+      end
+    end
+  end
 end

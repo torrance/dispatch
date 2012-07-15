@@ -36,6 +36,9 @@ class ContentsController < ApplicationController
   def show
     @content = Content.find(params[:id])
     @comment = Comment.new
+    # Load all visible comments, except for editors who see all by default.
+    @comments = @content.comments.oldest
+    @comments.visible unless current_user && current_user.is_editor?
   end
 
   def destroy

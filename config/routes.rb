@@ -9,7 +9,7 @@ Dispatch::Application.routes.draw do
   resources :events, :controller => :contents, :type => "Event", :except => :index
 
   resources :contents, :only => [] do
-    resources :comments, :only => ['create']
+    resources :comments, :only => [:create, :update, :destroy]
 
     member do
       put 'moderate'

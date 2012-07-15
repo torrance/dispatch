@@ -37,8 +37,16 @@ div.comment {
       color: $body-text-color;
     }
 
-    .date {
+    .date, .editor-tools {
       font-size: 12px;
     }
+  }
+}
+
+div.hidden-comment {
+  .comment-metadata {
+    background: #fadede;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
   }
 }
