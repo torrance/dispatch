@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
   attr_accessible :body, :as => [:default, :editor]
   attr_accessible :status, :as => :editor
 
+  STATES = %w(Hidden Visible)
+
   belongs_to :user
   belongs_to :content
 

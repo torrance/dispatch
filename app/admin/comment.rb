@@ -4,6 +4,7 @@ ActiveAdmin.register Comment do
   filter :user_display_name, :as => :string
   filter :content_title, :as => :string
   filter :body
+  filter :status, :as => :select, :collection => Comment::STATES.each_with_index.map{ |status, i| [status, i] }
   filter :created_at
   filter :updated_at
 
@@ -15,6 +16,9 @@ ActiveAdmin.register Comment do
     end
     column 'User' do |comment|
       link_to comment.user.display_name, admin_user_path(comment.user)
+    end
+    column 'Status' do |comment|
+      Comment::STATES[comment.status]
     end
     column :body do |comment|
       truncate comment.body, :length => 100, :separator => ' '
@@ -32,6 +36,7 @@ ActiveAdmin.register Comment do
   form do |f|
     f.inputs "Edit comment" do
       f.input :body
+      f.input :status, :as => :radio, :collection => Comment::STATES.each_with_index.map{ |status, i| [status, i] }
     end
     f.buttons
   end

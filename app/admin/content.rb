@@ -4,7 +4,7 @@ ActiveAdmin.register Content do
   filter :type, :as => :select, :collection => [['Article', 'Article'], ['Event', 'Event'], ['Repost', 'Repost']]
   filter :title
   filter :category, :as => :select, :collection => Content::CATEGORIES
-  filter :status, :as => :select, :collection => Content::STATES.each_with_index.map{ |state, i| [state, i]}
+  filter :status, :as => :select, :collection => Content::STATES.each_with_index.map{ |state, i| [state, i] }
   filter :user_display_name, :as => :string
   filter :pseudonym
   filter :start, :label => "Start date (events only)"
