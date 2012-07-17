@@ -1,34 +1,9 @@
 <div id="user" class="row">
   <div class="eightcol first">
-    <% if @contents.any? %>
-      <div class="feature">
-        <% feature = @contents.first %>
-        <%= image_tag feature.images.first.image.url(:gallery_thumbnail), :class => 'border' if feature.images.any? %>
-        <div class="content <%= "with-image" if feature.images.any? %>">
-          <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
-          <div class="meta"><%= feature_date(feature.created_at) %> | <%= feature.type == 'Event' ? 'Event' : feature.category %></div>
-          <p class="summary"><%= feature.summary %></p>
-        </div>
+    <% if @contents %>
+      <div id="content-listing">
+        <%= render 'contents', :contents => @contents %>
       </div>
-
-      <% if @contents.length > 1 %>
-        <div id="content-listing">
-          <% @contents[1..@contents.length].each do |content| %>
-            <div class="content-listing">
-              <div class="meta">
-                <%= search_date(content.created_at) %><br />
-                <strong><%= content.type == 'Event' ? 'Event' : content.category %></strong>
-              </div>
-
-              <div class="content <%= "with-image" if content.images.any? %>">
-                <%= image_tag content.images.first.image.url(:gallery_thumbnail), :class => 'border' if content.images.any? %>
-                <h2><%= link_to content.title, content, :class => 'plain-link' %></h2>
-                <p class="summary"><%= content.summary %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
     <% else %>
       <p class="no-content"><%= @user.display_name %> has not yet published any items.</p>
     <% end %>

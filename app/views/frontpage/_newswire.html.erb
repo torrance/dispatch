@@ -1,0 +1,14 @@
+<% newswire.each do |newswire| %>
+  <div class="date"><%= print_newswire_date(newswire) %></div>
+  <div class="newswire-item">
+    <div <%= "class=collapsed" unless newswire.is_feature? %>>
+      <% if newswire.images.any? %>
+        <%= image_tag newswire.images.first.image.url(:gallery_thumbnail), :class => 'border' %>
+      <% end %>
+      <h4><%= link_to newswire.title, newswire %></h4>
+      <p class="summary"><%= newswire.summary %></p>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to_next_page @newswire, '<span>Show more</span>'.html_safe, :id => 'pager',  :remote => true, :params => { :anchor => 'newswire' } %>

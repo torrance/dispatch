@@ -24,8 +24,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @contents = Content.recent.where(:user_id => @user)
+    @contents = Content.recent.where(:user_id => @user).page(params[:page]).per(5)
     @comments = Comment.recent.where(:user_id => @user).limit(3)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def login

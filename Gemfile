@@ -64,6 +64,7 @@ gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://git
 gem 'jquery-rails-aristo'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'sunspot_rails'
+gem 'kaminari'
 # Active admin and its dependencies
 gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
 gem 'meta_search', '>= 1.1'

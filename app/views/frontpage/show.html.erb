@@ -57,20 +57,11 @@
 
   <div class="row newswire">
     <div class="ninecol first">
-      <h3>Newswire</h3>
+      <h3><%= content_tag :a, 'Newswire', :name => "newswire", :class => 'anchor' %></h3>
 
-      <% @newswire.each do |content| %>
-        <div class="date"><%= print_newswire_date(content) %></div>
-        <div class="newswire-item">
-          <div <%= "class=collapsed" unless content.is_feature? %>>
-            <% if content.images.any? %>
-              <%= image_tag content.images.first.image.url(:gallery_thumbnail), :class => 'border' %>
-            <% end %>
-            <h4><%= link_to content.title, content %></h4>
-            <p class="summary"><%= content.summary %></p>
-          </div>
-        </div>
-      <% end %>
+      <div id="newswire-items">
+        <%= render 'newswire', :newswire => @newswire %>
+      </div>
     </div>
 
     <div class="threecol last events">
