@@ -13,7 +13,7 @@
     <h1><%= @user.display_name %></h1>
 
     <% if @user.biography.present? %>
-      <%= simple_format(@user.biography) %>
+      <%= simple_filter @user.biography %>
     <% end %>
 
     <p><%= user_stats(@user) %></p>

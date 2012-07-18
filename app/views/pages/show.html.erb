@@ -2,6 +2,6 @@
   <div class="twelvecol">
     <h1 class="page-title"><%= @page.title %> <span class="edit-own-content"><%= link_to "(edit page)", edit_admin_page_path(@page) %></span></h1>
 
-    <%= Dispatch::ContentFilter.instance.render_privileged @page.body %>
+    <%= privileged_filter @page.body %>
   </div>
 </div>

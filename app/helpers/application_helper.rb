@@ -8,4 +8,16 @@ module ApplicationHelper
     end
     link_to_function(name, "DISPATCH.add_fields(\"#{association}\", \"#{escape_javascript(fields)}\")", :class => "add-field")
   end
+
+  def content_filter(text)
+    Dispatch::ContentFilter.instance.render text
+  end
+
+  def privileged_filter(text)
+    Dispatch::ContentFilter.instance.render_privileged text
+  end
+
+  def simple_filter(text)
+    auto_link simple_format(text), :html => { :rel => 'nofollow'}
+  end
 end
