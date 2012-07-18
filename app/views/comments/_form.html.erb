@@ -18,6 +18,6 @@
 
   <div class="actions">
     <%= f.submit "Post comment", :class => 'submit' %>
-    <p>You're posting as<br /><strong><%= content.author_name %></strong></p>
+    <p>You're posting as<br /><strong><%= current_user.display_name %></strong></p>
   </div>
 <% end %>
