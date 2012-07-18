@@ -29,16 +29,12 @@
     h2 {
       margin-top: 0;
       margin-bottom: 0;
-      font-size: 20px;
     }
 
     img {
       float: right;
-      margin-top: 0.4em; /* this is the same as the p tag */
-      background: #fff;
-      width: 25%;
-      padding-left: 1em;
-      padding-bottom: 0.5em;
+      width: 20.56%;
+      margin-bottom: 0.25em;
     }
 
     .metadata {
@@ -47,8 +43,14 @@
     }
 
     .summary {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.5em;
+    }
+  }
+
+  .feature-with-image {
+    h2, .metadata, .summary {
+      margin-right: 23%;
     }
   }
 

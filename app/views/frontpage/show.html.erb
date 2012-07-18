@@ -1,7 +1,7 @@
 <div id="frontpage">
   <div class="row">
     <%# Primary feature %>
-    <div class="sevencol first primary-feature">
+    <div class="sixcol first primary-feature">
       <% if @primary_feature.images.any? %>
         <%= image_tag @primary_feature.images.first.image.url(:primary_feature), :class => 'border' %>
       <% end %>
@@ -11,14 +11,14 @@
     </div>
 
     <%# The rest of the the features... %>
-    <div class="fivecol last">
-      <% @features.take(2).each do |feature| %>
-        <div class="feature">
-          <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
-
+    <div class="sixcol last">
+      <% @features.take(3).each do |feature| %>
+        <div class="feature <%= "feature-with-image" if feature.images.any? %>">
           <% if feature.images.any? %>
-            <%= image_tag feature.images.first.image.url(:feature_square) %>
+            <%= image_tag feature.images.first.image.url(:feature_square), :class => 'border' %>
           <% end %>
+
+          <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
           
           <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= @primary_feature.category %></p>
 
@@ -29,7 +29,7 @@
   </div>
 
   <div class="row categories">
-    <% @features[2, 4].each do |category_feature| %>
+    <% @features[3, 4].each do |category_feature| %>
       <div class="threecol <%= cycle "first", "second", "third", "last" %>">
         <div class="category"><%= category_feature.category %></div>
         <% if category_feature.images.any? %>
