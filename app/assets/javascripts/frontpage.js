@@ -1,5 +1,5 @@
 $(function() {
-  $('.newswire-item .collapsed .summary').click(function() {
+  $('.newswire-item .collapsed .summary').live('click', function() {
     $(this).parent().removeClass('collapsed');
   });
 
