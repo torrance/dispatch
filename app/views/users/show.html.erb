@@ -1,11 +1,11 @@
 <div id="user" class="row">
   <div class="eightcol first">
-    <% if @contents %>
+    <% if @contents.any? %>
       <div id="content-listing">
         <%= render 'contents', :contents => @contents %>
       </div>
     <% else %>
-      <p class="no-content"><%= @user.display_name %> has not yet published any items.</p>
+      <p class="no-content"><%= current_user == @user ? 'You have' : @user.display_name + ' has' %> not yet published any items.</p>
     <% end %>
   </div>
 
