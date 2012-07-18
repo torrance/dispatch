@@ -56,6 +56,8 @@ class SearchController < ApplicationController
       year_ranges.each do |y|
         s.with(:created_at).between(y[:range]) if params[:created_at] == y[:name]
       end
+
+      s.paginate :page => params[:page], :per_page => 15
     end
   end
 end
