@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 500.times{ FactoryGirl.create(:active_user) }
+
+2000.times{ FactoryGirl.create(:with_existing_user) }
