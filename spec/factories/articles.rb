@@ -5,7 +5,7 @@ FactoryGirl.define do
     #include ActionDispatch::TestProcess
 
     title { Faker::Lorem.sentence.gsub(/\.$/, '') }
-    summary { Faker::Lorem.sentences(rand 2..4).join(' ') }
+    summary { Faker::Lorem.sentences(rand 3..6).join(' ') }
     body { Faker::Lorem.paragraphs(rand 1..10).join("\n\n") }
     category { Article::CATEGORIES.sample }
     tag_list { Faker::Lorem.words(rand 1..5).split.join(', ') }
