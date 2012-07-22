@@ -18,4 +18,4 @@
 //= require jquery.tokeninput
 //= require markitup
 //= require dispatch
-//= require frontpage
+//= require site

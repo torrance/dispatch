@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="no-js">
   <div class="container page-wrapper">
     <div id="header">
       <div class="row first-row">
@@ -22,8 +22,22 @@
           <% end %>
         </div>
 
-        <div class="twocol last">
-          <a class="button button-large" href="/">Publish</a>
+        <div id="publish" class="twocol last">
+          <a class="button button-large" href="#">Publish</a>
+          <ul class="undecorated-list">
+            <li>
+              <a href="<%= new_article_path %>">
+                <h5>Article</h5>
+                <p>Write a news story or upload images</p>
+              </a>
+            </li>
+            <li>
+              <a href="<%= new_event_path %>">
+                <h5>Event</h5>
+                <p>Publicise an upcoming event</p>
+              </a>
+            </li>
+          </ul>
         </div>
 
       </div>

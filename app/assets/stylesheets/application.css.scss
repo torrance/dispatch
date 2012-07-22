@@ -24,6 +24,7 @@ $background-light: #F0F2ED;
 $link-color: #73AD3F;
 $dark-brown: #353B2F;
 $light-green: #90bd66;
+$dark-green: #66943B;
 
 @mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
   -moz-box-shadow:    $horizontal $vertical $blur $spread $color;

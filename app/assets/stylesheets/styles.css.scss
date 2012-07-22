@@ -353,37 +353,87 @@ img.handle {
   height: 70px;
   margin: 0 -40px; /* Cancel the padding of the container */
   padding: 0 40px; /* ...but re-add it for the internal elements */
-}
 
-#header .search {
-  margin-top: 7px;
-}
+  .first-row {
+    padding-bottom: 300px;
+    margin-bottom: -320px;
+  }
 
-#header .button {
-  margin-top: 8px;
-  display: block;
-}
+  #logo {
+    margin-left: -7px; /* Compensate for background shadow */
+  }
 
-#logo {
-  margin-left: -7px; /* Compensate for background shadow */
+  .search {
+    margin-top: 7px;
+  }
+
+  #publish {
+    position: relative;
+
+    a {
+      margin-top: 8px;
+      display: block;
+    }
+
+    ul {
+      position: absolute;
+      background: image_url("publish-triangle.png") no-repeat 180px 5px;
+      width: 300px;
+      right: 0;
+      z-index: 100;
+      padding-top: 25px;
+      display: none;
+
+      li a {
+        background: $link-color;
+        color: #fff;
+        padding: 20px;
+        margin: 0;
+        font-size: 15px;
+        display: block;
+        text-decoration: none;
+        border-right: 10px solid #fff;
+        margin-right: -10px;
+        -webkit-transition: background 0.3s;
+
+        h5 {
+          margin-top: 0;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      li a:hover {
+        background: $dark-green;
+      }
+    }
+  }
+
+  .no-js #publish:hover {
+    ul {
+      display: block;
+    }
+  }
+
+  .second-row {
+    text-align: right;
+    margin-top: -20px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .second-row .last {
+    min-width: 13.45%; /* twocol width */
+    width: auto;
+  }
 }
 
 #main {
   margin-top: 40px;
   min-height: 85%;
-}
-
-#header .second-row {
-  text-align: right;
-  margin-top: -20px;
-  height: 30px;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-#header .second-row .last {
-  min-width: 13.45%; /* twocol width */
-  width: auto;
 }
 
 /**
