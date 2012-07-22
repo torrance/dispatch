@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   check_authorization # Ensure cancan validation on every controller method
-  before_filter :require_user
 
   def create
     @comment = Comment.new(params[:comment]) do |c|
