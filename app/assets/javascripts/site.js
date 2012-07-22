@@ -12,11 +12,8 @@ $(function() {
   );
   publishButton.mouseleave(function() {
     $(this).fadeOut('slow');
-  })
-  publishButton.mouseenter(function() {
-    $(this).fadeIn('fast');
-  })
-
+  });
+  
   /**
    * Allow users to expand newswire items to view full summary and image.
    */
