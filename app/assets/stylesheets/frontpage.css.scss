@@ -162,6 +162,9 @@
           font-size: 14px;
           color: #d3d9db;
           -webkit-transition: color 0.8s;
+          -moz-transition: color 0.8s;
+          -o-transition: color 0.8s;
+          transition: color 0.8s;
           cursor: pointer;
         }
       }
