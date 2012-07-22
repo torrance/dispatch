@@ -18,7 +18,7 @@ $(function() {
    * Allow users to expand newswire items to view full summary and image.
    */
   $('.newswire-item .collapsed .summary').live('click', function() {
-    $(this).parent().removeClass('collapsed');
+    $(this).parent().addClass('expanded').removeClass('collapsed');
   });
 
   /**

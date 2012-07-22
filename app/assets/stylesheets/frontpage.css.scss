@@ -108,7 +108,7 @@
     h3 {
       background: $background-light;
       border-left: 4px solid $link-color;
-      padding: 0px 10px;
+      padding: 3px 10px;
       margin-bottom: 1.5em;
       margin-top: 0;
     }
@@ -122,6 +122,7 @@
       left: 0;
       color: $link-color;
       font-family: $heading-fontstack;
+      font-size: 14px;
       width: 18.16%; /* twocol width within a ninecol column */
       text-align: right;
     }
@@ -133,11 +134,7 @@
 
       h4 {
         font-size: 14px;
-        margin: 0;
-      }
-
-      h4 a {
-        color: $body-text-color;
+        margin: 0.2em 0 0 0;
       }
 
       img {
@@ -151,6 +148,7 @@
 
         h4 {
           display: inline;
+          margin: 0;
         }
 
         img {
@@ -159,13 +157,13 @@
 
         .summary {
           display: inline;
-          font-size: 14px;
           color: #d3d9db;
           -webkit-transition: color 0.8s;
           -moz-transition: color 0.8s;
           -o-transition: color 0.8s;
           transition: color 0.8s;
           cursor: pointer;
+          line-height: 1.2em;
         }
       }
     }

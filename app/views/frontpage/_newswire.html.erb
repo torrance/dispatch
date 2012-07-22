@@ -1,11 +1,11 @@
 <% newswire.each do |newswire| %>
   <div class="date"><%= short_newswire_date(newswire.created_at) %></div>
   <div class="newswire-item">
-    <div <%= "class=collapsed" unless newswire.feature? %>>
+    <div class="<%= newswire.feature? ? "expanded" : "collapsed" %>">
       <% if newswire.images.any? %>
         <%= image_tag newswire.images.first.image.url(:gallery_thumbnail), :class => 'border' %>
       <% end %>
-      <h4><%= link_to newswire.title, newswire %></h4>
+      <h4><%= link_to newswire.title, newswire, :class => 'plain-link' %></h4>
       <p class="summary"><%= newswire.summary %></p>
     </div>
   </div>
