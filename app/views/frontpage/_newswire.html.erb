@@ -1,5 +1,5 @@
 <% newswire.each do |newswire| %>
-  <div class="date"><%= print_newswire_date(newswire) %></div>
+  <div class="date"><%= short_newswire_date(newswire.created_at) %></div>
   <div class="newswire-item">
     <div <%= "class=collapsed" unless newswire.feature? %>>
       <% if newswire.images.any? %>

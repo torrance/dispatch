@@ -7,8 +7,23 @@ module ContentsHelper
     end
   end
 
-  def long_article_date(date)
+  def long_content_date(date)
     date.strftime "%A, #{date.day.ordinalize} %B %Y"
+  end
+
+  def short_content_date(date)
+    today = Date.today
+
+    # Event is today
+    if date.today?
+      "Today"
+    # Event is yesterday
+    elsif today.yesterday === date.to_date
+      "Yesterday"
+    # All other dates
+    else
+      date.strftime "%e %B %Y"
+    end
   end
 
   def long_event_date(date)

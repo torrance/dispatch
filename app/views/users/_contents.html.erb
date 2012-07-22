@@ -1,7 +1,7 @@
 <% contents.each do |content| %>
   <div class="content-listing">
     <div class="meta">
-      <%= search_date(content.created_at) %><br />
+      <%= short_content_date(content.created_at) %><br />
       <strong><%= content.type == 'Event' ? 'Event' : content.category %></strong>
     </div>
 

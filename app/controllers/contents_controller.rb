@@ -43,10 +43,21 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     authorize! :read, @content
 
+    # Load empty comment for comment form
     @comment = Comment.new
+
     # Load all visible comments, except for editors who see all by default.
     @comments = @content.comments.oldest
     @comments.visible unless current_user && current_user.editor?
+
+    # Find related articles
+    @related_content = Sunspot.more_like_this(@content) do
+      fields :title, :summary, :body
+      minimum_term_frequency 1
+      paginate :page => 1, :per_page => 4
+    end
+    logger = Logger.new(STDOUT)
+    logger.debug @related_content.hits
   end
 
   def destroy

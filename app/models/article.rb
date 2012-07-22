@@ -11,7 +11,9 @@ class Article < Content
 
   # Solr search configuration
   searchable do
-    text :title, :summary, :body
+    text :title, :more_like_this => true
+    text :summary, :more_like_this => true
+    text :body, :more_like_this => true
     text :tag_list, :boost => 2.0
     time :created_at, :trie => true
     string :category

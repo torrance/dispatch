@@ -3,7 +3,9 @@ class Event < Content
 
   # Solr search configuration
   searchable do
-    text :title, :summary, :body
+    text :title, :more_like_this => true
+    text :summary, :more_like_this => true
+    text :body, :more_like_this => true
     time :created_at, :trie => true
     string :category
     string :type   
