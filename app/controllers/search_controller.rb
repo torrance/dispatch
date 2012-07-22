@@ -21,7 +21,7 @@ class SearchController < ApplicationController
 
   protected
   def search(search_string)
-    Sunspot.search(Article) do |s|
+    Sunspot.search(Article, Event) do |s|
       s.fulltext search_string
 
       # Configure facets.
