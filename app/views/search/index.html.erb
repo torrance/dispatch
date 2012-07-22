@@ -1,3 +1,5 @@
+<%= content_for(:title) { 'Search' } %>
+
 <div id="search" class="row">
   <div class="eightcol first">
     <h1 class="page-title">Search<%= " for “#{params[:q]}”" if params[:q].present? %></h1>

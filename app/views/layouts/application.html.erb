@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dispatch</title>
+  <title><%= content_for?(:title) ? "#{ yield(:title) } | Aotearoa Indymedia" : 'Aotearoa Indymedia' %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
