@@ -269,7 +269,7 @@ input.submit, .button {
   display: inline-block;
   text-align: center;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px;
   border-style: solid;
   border-color: $link-color;
@@ -313,7 +313,7 @@ img.handle {
 .search input.text {
   width: 100%;
   @include border-box;
-  border-radius: 3px;
+  border-radius: 2px;
   padding-right: 30px;
 }
 
