@@ -163,17 +163,6 @@
 }
 
 form.content {
-  .field, .actions {
-    background: $background-light;
-    padding: 20px 20px;
-    margin: 0;
-  }
-
-  label {
-    font-size: 16px;
-    margin-bottom: 0.7em;
-  }
-
   div.file {
     padding: 1em 0;
     border-bottom: 1px dashed $link-color;
@@ -191,14 +180,6 @@ form.content {
   .add-field {
     background: image_url("plus.png") no-repeat 0 2px;
     padding-left: 16px;
-  }
-
-  .help {
-    margin-top: 20px;
-  }
-
-  .first-help {
-    margin-top: 0;
   }
 
   /* Live preview */

@@ -211,6 +211,14 @@ fieldset {
   margin-bottom: 40px;
 }
 
+form .help {
+  margin-top: 20px;
+}
+
+form .first-help {
+  margin-top: 0;
+}
+
 .simple_captcha {
   input {
     width: 150px;
@@ -219,6 +227,19 @@ fieldset {
     vertical-align: middle;
     margin-right: 1em;
     margin-top: -2px;
+  }
+}
+
+form.content, form.user {
+  .field, .actions {
+    background: $background-light;
+    padding: 20px 20px;
+    margin: 0;
+  }
+
+  label {
+    font-size: 16px;
+    margin-bottom: 0.7em;
   }
 }
 
@@ -375,6 +396,7 @@ img.handle {
   padding-left: 40px;
   border: 1px solid $link-color;
   font-size: 16px;
+  margin: 0 0 2em 0;
 }
 
 /**

@@ -18,6 +18,8 @@
 
     <p><%= user_stats(@user) %></p>
 
+    <p><%= link_to 'Edit my user settings', edit_user_path(@user), :class => 'edit-own-user' %></p>
+
     <h4>Recent comments</h4>
 
     <%= "<p>#{@user.display_name} has not yet made any comments.</p>".html_safe if @comments.empty? %>

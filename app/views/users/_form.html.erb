@@ -1,0 +1,92 @@
+<%= form_for user, :html => { :class => 'user' } do |f| %>
+  <div class="row">
+    <div class="twelvecol">
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h3>Oops, something went wrong trying to update your user details.</h3>
+
+          <ul>
+          <% user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <fieldset>
+    <div class="row">
+      <div class="eightcol first">
+        <div class="field">
+          <%= f.label :display_name %>
+          <%= f.text_field :display_name, :class => 'text' %>
+        </div>
+      </div>
+
+      <div class="fourcol last">
+        <div class="help first-help">
+          <p class="first-paragraph last-paragraph">Your display name will appear beside any articles you publish or comments you make. It's how others see you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eightcol first">
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.text_field :email, :class => 'text' %>
+        </div>
+      </div>
+
+      <div class="fourcol last">
+        <div class="help">
+          <p class="first-paragraph last-paragraph">You use your email address as your login. It must be correct if you want to be able to recover a forgotten password.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eightcol first">
+        <div class="field">
+          <%= f.label :password, 'Change your password' %>
+          <%= f.password_field :password, :class => 'text' %>
+          <p class="description">
+            Leave this blank unless you want to change your password. Minimum 6 characters.
+          </p>
+        </div>
+      </div>
+
+      <div class="fourcol last">
+        <div class="help">
+          <p class="first-paragraph last-paragraph">Optionally update your password. Leave this field blank if you want to continue using your current password. Minimum 6 characters.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eightcol first">
+        <div class="field">
+          <%= f.label :biography, 'About me' %>
+          <%= f.text_area :biography, :rows => 4 %>
+        </div>
+      </div>
+
+      <div class="fourcol last">
+        <div class="help">
+          <p class="first-paragraph last-paragraph">Optionally provide a brief description of yourself. Your bio will be visible on your user page.</p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="row">
+      <div class="eightcol first">
+        <div class="actions">
+          <%= f.submit 'Save changes', :class => 'submit' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
