@@ -51,7 +51,7 @@
       <% if @content.images.length > 1 %>
         <div class="image-gallery sidebar-block">
           <div class="float-overflow">
-            <% @content.images.each do |image| %>
+            <% @content.images.take(2).each do |image| %>
               <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image #{cycle('odd', 'even')}" %>
             <% end %>
           </div>

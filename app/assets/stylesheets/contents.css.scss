@@ -123,17 +123,16 @@
   margin-top: 3em;
   
   h3 {
-    background: image_url("related.png") no-repeat 0px 9px;
-    padding: 3px 3px 3px 30px;
+    background: image_url("related.png") no-repeat 0px 6px;
+    padding-left: 30px;
     line-height: 1.5em;
     margin-bottom: 10px;
     font-size: 20px;
   }
 
   h4 {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.3em;
-    margin: 0;
   }
 
   .meta {
@@ -141,6 +140,7 @@
     padding: 1px 5px;
     font-size: 13px;
     border-top: 4px solid $link-color;
+    margin-bottom: 15px;
   }
 
   img {
