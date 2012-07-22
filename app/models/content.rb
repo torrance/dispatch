@@ -69,19 +69,11 @@ class Content < ActiveRecord::Base
     Time.now - created_at > 1.week
   end
 
-  def is_author?(user)
-    user && self.user == user
-  end
-
-  def editable?(user)
-    user && (user.is_editor? || is_author?(user) && !locked?)
-  end
-
   def status_name
     Content::STATES[status]
   end
 
-  def is_feature?
+  def feature?
     status >= 3
   end
 end

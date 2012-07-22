@@ -1,14 +1,17 @@
 class ContentsController < ApplicationController
+  check_authorization # Ensure cancan validation on every controller method
   before_filter :initialize_content_names
 
   def new
     @content = params[:type].constantize.new { |c| c.user = current_user }
     2.times { |weight| @content.images.build(:weight => weight) }
+    authorize! :create, @content
   end
 
   def create
     @content = params[:type].constantize.new(params[content_type_key])
     @content.user = current_user
+    authorize! :create, @content
 
     if (current_user || valid_captcha?(@content)) && @content.save
       redirect_to @content, notice: "Your #{@type} was successfully created."
@@ -21,10 +24,13 @@ class ContentsController < ApplicationController
   def edit
     @content = Content.find(params[:id])
     (998..999).each { |weight| @content.images.build(:weight => weight) }
+    authorize! :update, @content
   end
 
   def update
     @content = Content.find(params[:id])
+    authorize! :update, @content
+
     if @content.update_attributes(params[content_type_key])
       redirect_to @content, notice: "Your #{@type} was sucessfully updated."
     else
@@ -35,14 +41,18 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
+    authorize! :read, @content
+
     @comment = Comment.new
     # Load all visible comments, except for editors who see all by default.
     @comments = @content.comments.oldest
-    @comments.visible unless current_user && current_user.is_editor?
+    @comments.visible unless current_user && current_user.editor?
   end
 
   def destroy
     @content = Content.find(params[:id])
+    authorize! :destroy, @content
+
     if @content.destroy
       redirect_to :root, :notice => "Your #{@type} has been deleted."
     else
@@ -52,6 +62,8 @@ class ContentsController < ApplicationController
 
   def moderate
     @content = Content.find(params[:id])
+    authorize! :moderate, @content
+
     @content.status = params[:status]
     if @content.save
       redirect_to :back

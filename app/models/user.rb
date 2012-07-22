@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     "#{display_name} <#{email}>"
   end
 
-  def is_editor?
+  def editor?
     role == 1
   end
 end

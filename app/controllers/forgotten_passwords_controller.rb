@@ -1,10 +1,18 @@
 class ForgottenPasswordsController < ApplicationController
+  check_authorization # Ensure cancan validation on every controller method
+  skip_authorization_check :only => [:reset]
+
   def new
     @user = User.new
+    @user_session = current_user_session || UserSession.new
+    authorize! :create, @user_session
   end
 
   def create
     @user = User.can_reset_password?(params[:user][:email])
+    @user_session = current_user_session || UserSession.new
+    authorize! :create, @user_session
+
     if @user
       @user.reset_perishable_token!
       AccountNotifications.reset_password(@user).deliver
@@ -24,11 +32,9 @@ class ForgottenPasswordsController < ApplicationController
       # test the success of failure of this method in rspec. This should probably
       # be fixed.
       @user_session = UserSession.create(user)
-      flash[:notice] = "Please update your password."
-      redirect_to edit_user_path(user)
+      redirect_to edit_user_path(user), :notice => "Please update your password."
     else
-      flash[:notice] = "Your reset token has expired or is invalid. Try resetting your password again."
-      redirect_to :login
+      redirect_to :login, :notice => "Your reset token has expired or is invalid. Try resetting your password again."
     end
   end
 end

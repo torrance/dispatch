@@ -4,7 +4,9 @@
     <div class="comment-metadata">
       <div class="author"><strong><%= link_to comment.user.display_name, comment.user %></strong></div>
       <div class="date"><%= comment_date(comment.created_at) %></div>
-      <div class="editor-tools"><%= hide_comment_toggle comment %> | <%= link_to 'Delete', content_comment_path(comment.content, comment), :method => :delete, :remote => true, :data => { :confirm => "Are you sure you want to delete this comment?" } %></div>
+      <% if can? :moderate, @comment %>
+        <div class="editor-tools"><%= hide_comment_toggle comment %> | <%= link_to 'Delete', content_comment_path(comment.content, comment), :method => :delete, :remote => true, :data => { :confirm => "Are you sure you want to delete this comment?" } %></div>
+      <% end %>
     </div>
   </div>
 

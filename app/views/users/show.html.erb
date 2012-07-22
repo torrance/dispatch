@@ -18,7 +18,9 @@
 
     <p><%= user_stats(@user) %></p>
 
-    <p><%= link_to 'Edit my user settings', edit_user_path(@user), :class => 'edit-own-user' %></p>
+    <% if can? :update, @user %>
+      <p><%= link_to 'Edit my user settings', edit_user_path(@user), :class => 'edit-own-user' %></p>
+    <% end %>
 
     <h4>Recent comments</h4>
 

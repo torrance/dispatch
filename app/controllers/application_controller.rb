@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
 
   helper_method :current_user_session, :current_user
+
+  rescue_from CanCan::AccessDenied do |e|
+    render 'application/403', :status => 403
+  end
   
   private
     def current_user_session
@@ -17,24 +21,8 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_admin_user!
-      if !current_user
-        redirect_to login_path, :notice => "You are trying to access a restricted area. Please login first."
-      elsif !current_user.is_editor?
-        redirect_to :root, :notice => "You do not have permission to access the administration area."
-      end
-    end
-    
-    def require_user
-      unless current_user
-        flash[:notice] = "You must be logged in to access this page"
-        redirect_to login_path
-      end
-    end
-
-    def require_no_user
-      if current_user
-        flash[:notice] = "You must be logged out to access this page"
-        redirect_back_or_default :root
+      unless current_user && current_user.editor?
+        raise CanCan::AccessDenied
       end
     end
     

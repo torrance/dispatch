@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  check_authorization # Ensure cancan validation on every controller method
   before_filter :require_user
 
   def create
@@ -6,6 +7,8 @@ class CommentsController < ApplicationController
       c.content = Content.find(params[:content_id])
       c.user = current_user
     end
+    authorize! :create, @comment
+
     if @comment.save
       redirect_to polymorphic_path(@comment.content, :anchor => "comment-#{@comment.id}"),
         :notice => 'Your comment has been successfully created.'
@@ -17,8 +20,9 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    authorize! :update, @comment
+
     @comment.update_attributes(params[:comment], :as => :editor)
-    @comment.save
 
     respond_to do |format|
       format.html do
@@ -34,6 +38,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    authorize! :destroy, @comment
+
     @comment.destroy
 
     respond_to do |format|

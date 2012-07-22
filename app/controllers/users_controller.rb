@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
+  check_authorization # Ensure cancan validation on every controller method
+  skip_authorization_check :only => [:logout, :validate, :send_validation]
+
   def new
-    #require_no_user
     @user = User.new
+    authorize! :create, @user
     @user_session = UserSession.new
   end
 
   def create
-    #require_no_user
     @user = User.new(params[:user])
+    authorize! :create, @user
 
     if valid_captcha?(@user) && @user.save_without_session_maintenance # Don't immediately login
       AccountNotifications.activate_account(@user).deliver
@@ -21,13 +24,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    authorize! :update, @user
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
+    authorize! :update, @user
 
-    if @user.save
+    if @user.update_attributes(params[:user])
       redirect_to @user, :notice => 'Your user settings have been successfully updated.'
     else
       render :edit
@@ -36,6 +40,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    authorize! :read, @user
+
     @contents = Content.recent.where(:user_id => @user).page(params[:page]).per(5)
     @comments = Comment.recent.where(:user_id => @user).limit(3)
 
@@ -46,8 +52,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    #require_no_user
     @user_session = UserSession.new(params[:user_session])
+    authorize! :create, @user_session
+
     if @user_session.save
       redirect_to :root
     else
@@ -57,7 +64,6 @@ class UsersController < ApplicationController
   end
 
   def logout
-    #require_user
     current_user_session.destroy
     redirect_back_or_default :root
   end
@@ -67,22 +73,19 @@ class UsersController < ApplicationController
     if @user
       @user.update_attribute(:active, true)
       @user_session = UserSession.create(@user)
-      flash[:notice] = "Success! Your account has been validated."
-      redirect_to :root
+      redirect_to edit_user_path, :notice => "Success! Your account has been validated."
     else
-      flash[:notice] = "Your token has expired or is invalid."
-      redirect_to :root
+      redirect_to :root, :notice => "Your token has expired or is invalid."
     end
   end
 
   def send_validation
     user = User.find(params[:id])
     if user.active?
-      flash[:notice] = "This account is already active."
+      redirect_to :login, :notice => "This account is already active."
     else
       AccountNotifications.activate_account(user).deliver
-      flash[:notice] = "Your validation email has been resent."
+      redirect_to :login, :notice => "Your validation email has been resent."
     end
-    redirect_to :login
   end
 end

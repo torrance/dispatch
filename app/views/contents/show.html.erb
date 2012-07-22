@@ -1,11 +1,11 @@
 <div id="content" class="<%= @type %>">
   <div class="row">
-    <h1 class="twelvecol page-title"><%= @content.title %> <% if @content.editable?(current_user) %><%= link_to "(edit your #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
+    <h1 class="twelvecol page-title"><%= @content.title %> <% if can? :update, @content %><%= link_to "(edit #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
   </div>
 
   <div class="row">
     <div class="fourcol floatright last sidebar">
-      <% if current_user && current_user.is_editor? %>
+      <% if current_user && current_user.editor? %>
         <div class="editor-tools sidebar-block">
           <h3>Editor tools</h3>
 
@@ -86,7 +86,7 @@
   <%= render 'comments/comments', :comments => @comments %>
 </div>
 
-<% if current_user %>
+<% if can? :create, @comment %>
   <% if @content.comments.empty? %>
     <div class="row"><div class="sevencol first"><p>There are no comments yet.</p></div></div>
   <% end %>

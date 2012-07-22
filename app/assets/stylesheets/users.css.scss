@@ -1,18 +1,18 @@
-#login-register form,
-#reset-password form {
-  background: $background-light;
-  @include border-box;
-  padding: 1px 15px;
-}
+#login-register, #reset-password {
+  form {
+    background: $background-light;
+    @include border-box;
+    padding: 1px 15px;
+  }
 
-#login-register input.text,
-#reset-password input.text {
-  max-width: 320px;
-}
+  input.text {
+    max-width: 320px;
+  }
 
-#login-register h2,
-#reset-password h1 {
-  border-bottom: 1px dashed #aaa;
+  h1, h2 {
+    font-size: 22px;
+    border-bottom: 1px dashed #aaa;
+  }
 }
 
 #user {
