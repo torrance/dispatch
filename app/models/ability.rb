@@ -7,6 +7,7 @@ class Ability
     if user.editor?
       can :manage, Article
       can :manage, Comment
+      can :manage, Event
       can [:read, :update, :moderate], User # Can't create a user (except via activeadmin)
       can :manage, Page
     elsif user.active?
