@@ -5,10 +5,10 @@ FactoryGirl.define do
     #include ActionDispatch::TestProcess
 
     title { Faker::Lorem.sentence.gsub(/\.$/, '') }
-    summary { Faker::Lorem.sentences(3 + rand 3).join(' ')[0..300] }
-    body { Faker::Lorem.paragraphs(1 + rand 10).join("\n\n") }
+    summary { Faker::Lorem.sentences(3 + rand(3)).join(' ')[0..300] }
+    body { Faker::Lorem.paragraphs(1 + rand(10)).join("\n\n") }
     category { Article::CATEGORIES.sample }
-    tag_list { Faker::Lorem.words(1 + rand 5).split.join(', ') }
+    tag_list { Faker::Lorem.words(1 + rand(5)).split.join(', ') }
     pseudonym { Faker::Name.name }
     status { [2, 2, 2, 3].sample }
     created_at { DateTime.now - rand(100).days }
