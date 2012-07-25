@@ -1,27 +1,30 @@
-common: &common
+development:
   adapter: postgresql
-  username: dispatch
+  username: indymedia
   encoding: unicode
   pool: 5
-
-development:
-  <<: *common
-  database: dispatch_dev
+  database: indymedia_dev
   host: /tmp
 
 development_with_caching:
   <<: *common
-  database: dispatch_dev
+  database: indymedia_dev
   host: /tmp
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *common
-  database: dispatch_test
+  adapter: postgresql
+  username: indymedia
+  encoding: unicode
+  pool: 5
+  database: indymedia_test
   host: /tmp
 
 production:
-  <<: *common
-  database: dispatch
+  adapter: postgresql
+  username: indymedia
+  encoding: unicode
+  pool: 5
+  database: indymedia
