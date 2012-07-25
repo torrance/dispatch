@@ -49,8 +49,6 @@ end
 
 # Factory girl to be moved to dev/testing group once we go live
 gem 'factory_girl_rails'
-# Same with sunspot_solr
-gem 'sunspot_solr'
 
 gem 'authlogic'
 gem 'dalli'
