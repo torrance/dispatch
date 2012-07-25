@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice => 'Your user settings have been successfully updated.'
     else
-      render :edit
+      render :action => :edit
     end
   end
 
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
   def logout
     current_user_session.destroy
-    redirect_back_or_default :root
+    redirect_to :root
   end
 
   def validate
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     if @user
       @user.update_attribute(:active, true)
       @user_session = UserSession.create(@user)
-      redirect_to edit_user_path, :notice => "Success! Your account has been validated."
+      redirect_to edit_user_path(@user), :notice => "Success! Your account has been validated."
     else
       redirect_to :root, :notice => "Your token has expired or is invalid."
     end
