@@ -14,8 +14,4 @@ module UsersHelper
       "#{date_joined} Hasn't yet published any items or comments.".html_safe
     end
   end
-
-  def comment_date(date)
-    date.strftime "%e %B %Y"
-  end
 end
