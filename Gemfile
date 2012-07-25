@@ -12,7 +12,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -37,13 +37,8 @@ gem 'jquery-rails'
 group :development, :development_with_caching, :test do
   # Use rspec instead of Test::Unit
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
   # Provides an instance of apache solr for dev purposes
   gem 'sunspot_solr'
-end
-
-group :development, :development_with_caching do
-  gem 'debugger'
 end
 
 group :test do
@@ -51,6 +46,9 @@ group :test do
   gem 'database_cleaner'
   gem 'email_spec'
 end
+
+# Factory girl to be moved to dev/testing group once we go live
+gem 'factory_girl_rails'
 
 gem 'authlogic'
 gem 'dalli'
