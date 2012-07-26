@@ -93,7 +93,7 @@
 </div>
 
 <% if can? :create, @comment %>
-  <% if @content.comments.empty? %>
+  <% if @comments.empty? %>
     <div class="row"><div class="sevencol first"><p>There are no comments yet.</p></div></div>
   <% end %>
 
@@ -103,7 +103,7 @@
     </div>
   </div>
 <% else %>
-  <% if @content.comments.empty? %>
+  <% if @comments.empty? %>
     <div class="row"><div class="sevencol first"><p>There are no comments yet. You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
   <% else %>
     <div class="row"><div class="sevencol first"><p>You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
