@@ -147,6 +147,12 @@ img.border {
   clear: both;
 }
 
+blockquote {
+  background: $background-light;
+  padding: 0em 1.5em;
+  overflow: hidden;
+}
+
 /**
  * General form elements
  */
