@@ -110,7 +110,7 @@
   <% end %>
 <% end %>
 
-<% if @related_content.hits.any? %>
+<% if @related_content.any? %>
   <div id="related-content">
 
     <div class="row">
@@ -118,7 +118,7 @@
     </div>
 
     <div class="row">
-    <% @related_content.hits.map(&:result).each do |related_content| %>
+    <% @related_content.each do |related_content| %>
       <div class="threecol <%= cycle "first", "second", "third", "last" %>">
         <p class="meta"><%= short_content_date related_content.created_at %></p>
         <% if related_content.images.any? %>

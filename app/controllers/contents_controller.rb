@@ -51,13 +51,17 @@ class ContentsController < ApplicationController
     @comments.visible unless current_user && current_user.editor?
 
     # Find related articles
-    @related_content = Sunspot.more_like_this(@content) do
-      fields :title, :summary, :body
-      minimum_term_frequency 1
-      paginate :page => 1, :per_page => 4
+    begin
+      search = Sunspot.more_like_this(@content) do
+        fields :title, :summary, :body
+        minimum_term_frequency 1
+        paginate :page => 1, :per_page => 4
+      end
+      @related_content =  search.hits.map(&:result)
+    rescue Errno::ECONNREFUSED
+      logger.error "Solr connection refused."
+      @related_content = []
     end
-    logger = Logger.new(STDOUT)
-    logger.debug @related_content.hits
   end
 
   def destroy
