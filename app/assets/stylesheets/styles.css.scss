@@ -265,7 +265,7 @@ form.content, form.user {
  * Buttons
  */
 input.submit, .button {
-  background: image_url("button-bg.png") repeat-x;
+  background: image_url("button-bg-sprite.png") repeat-x;
   display: inline-block;
   text-align: center;
   color: #fff;
@@ -281,7 +281,7 @@ input.submit, .button {
 }
 
 input.submit:hover, .button:hover {
-  background: image_url("button-bg-hover.png") repeat-x;
+  background-position: 0 -60px;
   text-decoration: none;
 }
 
