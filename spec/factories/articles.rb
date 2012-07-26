@@ -11,7 +11,7 @@ FactoryGirl.define do
     tag_list { Faker::Lorem.words(1 + rand(5)).split.join(', ') }
     pseudonym { Faker::Name.name }
     status { [2, 2, 2, 3].sample }
-    created_at { DateTime.now - rand(100).days }
+    created_at { DateTime.now - rand(730).days }
     images do
       random_images = Dir.new('spec/factories/images').each.to_a.delete_if{ |f| f == '.' || f == '..' }.sample([0, 0, 0, 0, 1, 3, 5].sample)
       random_images.map do |image|
