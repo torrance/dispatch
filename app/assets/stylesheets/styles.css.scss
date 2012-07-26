@@ -411,12 +411,6 @@ img.handle {
     }
   }
 
-  .no-js #publish:hover {
-    ul {
-      display: block;
-    }
-  }
-
   .second-row {
     text-align: right;
     margin-top: -20px;
@@ -429,6 +423,10 @@ img.handle {
     min-width: 13.45%; /* twocol width */
     width: auto;
   }
+}
+
+.no-js #header #publish:hover ul {
+  display: block;
 }
 
 #main {
