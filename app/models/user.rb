@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :contents
   has_many :comments
 
+  # Validations
+  validates :display_name, :uniqueness => true
+
   scope :recent, order("created_at DESC")
 
   acts_as_authentic do |c|
