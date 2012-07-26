@@ -57,9 +57,9 @@ class ContentsController < ApplicationController
         minimum_term_frequency 1
         paginate :page => 1, :per_page => 4
       end
-      @related_content =  search.hits.map(&:result)
+      @related_content =  search.results
     rescue Errno::ECONNREFUSED
-      logger.error "Solr connection refused."
+      logger.error "Solr connection refused: unable to find related content."
       @related_content = []
     end
   end

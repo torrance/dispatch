@@ -14,6 +14,9 @@ class Content < ActiveRecord::Base
   # indices in Content::MODERATION.
   STATES = ['Hidden', 'Normal', 'Promoted to newswire', 'Featured']
 
+  # Callbacks
+  after_save :search_index
+
   # Set associations
   belongs_to :user
   has_many :images
@@ -75,5 +78,13 @@ class Content < ActiveRecord::Base
 
   def feature?
     status >= 3
+  end
+
+  # We manually index to solr so that we can handle any exceptions
+  # that might be thrown if, eg., solr is down.
+  def search_index
+    index!
+  rescue Errno::ECONNREFUSED
+    logger.error "Solr connection refused: unable to index new content (id: #{id})."
   end
 end

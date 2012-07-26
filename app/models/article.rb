@@ -10,7 +10,7 @@ class Article < Content
   validate :tags_limit
 
   # Solr search configuration
-  searchable do
+  searchable :auto_index => false do
     text :title, :more_like_this => true
     text :summary, :more_like_this => true
     text :body, :more_like_this => true
@@ -18,7 +18,7 @@ class Article < Content
     time :created_at, :trie => true
     string :category
     string :tag_list, :multiple => true
-    string :type   
+    string :type
   end
 
   # Public model methods
