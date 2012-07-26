@@ -6,7 +6,7 @@ class SearchController < ApplicationController
     begin
       @search = search(search_string)
       # For our convenience in the view, pull out the models.
-      @contents = @search.hits.map(&:result)
+      @contents = @search.results
 
       @facet_types = [
         { name: 'type', attribute: 'type' },
