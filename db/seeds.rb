@@ -9,3 +9,9 @@
 500.times{ FactoryGirl.create(:active_user) }
 
 600.times{ FactoryGirl.create(:with_existing_user) }
+
+Content.all.each do |content|
+  [0, 1, rand(15)].sample.times do
+    FactoryGirl.create(:comment_with_existing_user, :content => content)
+  end
+end
