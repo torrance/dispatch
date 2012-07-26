@@ -12,7 +12,7 @@
 
     <%# The rest of the the features... %>
     <div class="sixcol last">
-      <% @features.take(3).each do |feature| %>
+      <% @features.each do |feature| %>
         <div class="feature <%= "feature-with-image" if feature.images.any? %>">
           <% if feature.images.any? %>
             <%= image_tag feature.images.first.image.url(:feature_square), :class => 'border' %>
@@ -29,14 +29,14 @@
   </div>
 
   <div class="row categories">
-    <% @features[3, 4].each do |category_feature| %>
+    <% @subfeatures.each do |subfeature| %>
       <div class="threecol <%= cycle "first", "second", "third", "last" %>">
-        <div class="category"><%= category_feature.category %></div>
-        <% if category_feature.images.any? %>
-          <%= image_tag category_feature.images.first.image.url(:category_feature) %>
+        <div class="category"><%= subfeature.category %></div>
+        <% if subfeature.images.any? %>
+          <%= image_tag subfeature.images.first.image.url(:category_feature) %>
         <% end %>
-        <h3><%= link_to category_feature.title, category_feature, :class => 'plain-link' %></h3>
-        <p><%= category_feature.summary %></p>
+        <h3><%= link_to subfeature.title, subfeature, :class => 'plain-link' %></h3>
+        <p><%= subfeature.summary %></p>
     </div>
     <% end %>
   </div>

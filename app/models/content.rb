@@ -12,7 +12,7 @@ class Content < ActiveRecord::Base
 
   # Moderation states are stored in the database as an integer, based on the array
   # indices in Content::MODERATION.
-  STATES = ['Hidden', 'Normal', 'Promoted to newswire', 'Featured']
+  STATES = ['Hidden', 'Normal', 'Sub-feature', 'Feature']
 
   # Callbacks
   after_save :search_index
@@ -39,8 +39,9 @@ class Content < ActiveRecord::Base
 
   scope :hidden, where(:status => 0)
   scope :normal, where(:status => 1)
-  scope :promoted, where(:status => 2)
+  scope :subfeatured, where(:status => 2)
   scope :featured, where(:status => 3)
+  scope :featurish, where('status >= 2')
   scope :recent, order('created_at DESC')
   scope :has_image, joins("INNER JOIN images AS image_flag ON image_flag.content_id = contents.id")
 
@@ -77,7 +78,7 @@ class Content < ActiveRecord::Base
   end
 
   def feature?
-    status >= 3
+    status >= 2
   end
 
   # We manually index to solr so that we can handle any exceptions
