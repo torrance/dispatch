@@ -15,7 +15,7 @@ $(function() {
         return markItUp.line+'. ';
       }},
       {separator:'---------------' },
-      {name:'Link', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!] "[![Title]!]")', placeHolder:'Your text to link here...' },
+      {name:'Link', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!])', placeHolder:'Your text to link here...' },
       {separator:'---------------'},  
       {name:'Blockquote', openWith:'> '},
     ]
