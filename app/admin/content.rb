@@ -1,5 +1,5 @@
 ActiveAdmin.register Content do
-  actions :all, :except => [:new]
+  actions :all, :except => :new
 
   filter :type, :as => :select, :collection => [['Article', 'Article'], ['Event', 'Event'], ['Repost', 'Repost']]
   filter :title
@@ -31,11 +31,24 @@ ActiveAdmin.register Content do
     end
     column :created_at
     column :updated_at
-    column 'Actions' do |content|
-      view = link_to 'View', content
-      edit = link_to 'Edit', [:edit, content]
-      delete = link_to 'Delete', admin_content_path(content), :method => :delete, :data => { :confirm => 'Are you sure you want to delete this content?' }
-      "#{view} #{edit} #{delete}".html_safe
+    default_actions
+  end
+
+  form do |f|
+    f.inputs "Edit content" do
+      f.input :title
+      f.input :summary
+      f.input :body
+      f.input :category, :as => :select, :collection => Content::CATEGORIES
+      f.input :tag_list
+      if f.object.type == 'Event'
+        f.input :start
+        f.input :location
+      end
+      f.input :status, :as => :select, :collection => Content::STATES.each_with_index.map{ |state, i| [state, i] }
+      f.input :pseudonym
+      f.input :user
+      f.input :created_at
     end
   end
 end
