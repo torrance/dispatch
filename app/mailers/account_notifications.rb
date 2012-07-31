@@ -1,5 +1,5 @@
 class AccountNotifications < ActionMailer::Base
-  default from: 'Aotearoa Indymedia <do.not.reply@indymedia.org.nz>'
+  default from: 'Aotearoa Indymedia <noreply@indymedia.org.nz>'
 
   def activate_account(user)
     @user = user
