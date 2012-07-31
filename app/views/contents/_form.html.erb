@@ -82,14 +82,14 @@
           </div>
 
           <div class="field location">
-            <%= f.label :location, :class => 'required' %>
+            <%= f.label :location, 'Town/City', :class => 'required' %>
             <%= f.text_field :location, :class => 'text' %>
           </div>
         </div>
 
         <div class="fourcol last">
           <div class="help first-help">
-            <p class="first-paragraph last-paragraph">Soemthing helpful about a date.</p>
+            <p class="first-paragraph last-paragraph">You can click on the calendar icon to use the date picker when entering the start date. Keep the location short &mdash; you can be more specific in your description of the event.</p>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@
 
         <div class="fourcol last">
           <div class="help first-help">
-            <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your <%= @type %>.</p>
+            <p class="first-paragraph last-paragraph">Select the category that <em>best fits</em> your <%= @type %>. You can enter any tags that you feel apply to your <%= @type %>. Tags are used to help others search for your article.</p>
           </div>
         </div>
       </div>
@@ -134,6 +134,14 @@
             <% end %>
           </div>
           <p><%= link_to_add_fields "Add another image", f, :images %></p>
+        </div>
+      </div>
+
+      <div class="fourcol last">
+        <div class="help first-help">
+          <p class="first-paragraph">Reorder the images by dragging the arrows icon. The topmost image will become the primary image for your <%= @type %>.</p>
+
+          <p class="last-paragraph">You can add as many images as you like. Upload the best quality images you have &mdash; we'll resize them for you.</p>
         </div>
       </div>
     </div>
