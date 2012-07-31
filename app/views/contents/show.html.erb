@@ -122,7 +122,7 @@
       <div class="threecol <%= cycle "first", "second", "third", "last" %>">
         <p class="meta"><%= short_content_date related_content.created_at %></p>
         <% if related_content.images.any? %>
-          <%= image_tag related_content.images.first.image.url(:category_feature) %>
+          <%= image_tag related_content.images.first.image.url(:sub_feature) %>
         <% end %>
         <h4><%= link_to related_content.title, related_content, :class => 'plain-link' %></h4>
         <p class="summary"><%= related_content.summary %></p>

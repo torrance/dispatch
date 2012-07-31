@@ -6,7 +6,7 @@
     </div>
 
     <div class="content <%= "with-image" if content.images.any? %>">
-      <%= image_tag content.images.first.image.url(:gallery_thumbnail), :class => 'border' if content.images.any? %>
+      <%= image_tag content.images.first.image.url(:feature_square), :class => 'border' if content.images.any? %>
       <h2><%= link_to content.title, content, :class => 'plain-link' %></h2>
       <p class="summary"><%= content.summary %>
     </div>

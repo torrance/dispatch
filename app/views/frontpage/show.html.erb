@@ -33,7 +33,7 @@
       <div class="threecol <%= cycle "first", "second", "third", "last" %>">
         <div class="category"><%= subfeature.category %></div>
         <% if subfeature.images.any? %>
-          <%= image_tag subfeature.images.first.image.url(:category_feature) %>
+          <%= image_tag subfeature.images.first.image.url(:sub_feature) %>
         <% end %>
         <h3><%= link_to subfeature.title, subfeature, :class => 'plain-link' %></h3>
         <p><%= subfeature.summary %></p>
