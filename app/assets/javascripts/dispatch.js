@@ -31,7 +31,12 @@ $(function() {
  * Colorbox
  */
 $(function() {
-  $('.image-gallery a.image').colorbox({rel: 'image', transition: 'none'});
+  $('.image-gallery a.image').colorbox({
+    rel: 'image',
+    transition: 'none',
+    maxHeight: '90%',
+    maxWidth: '90%'
+  });
 
   $('#show-all-images').click(function(e) {
     $('.image-gallery a.image').first().click();
