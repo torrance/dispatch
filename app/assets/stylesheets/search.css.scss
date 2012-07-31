@@ -9,23 +9,6 @@
     border-left: 1px dashed #aaa;
     margin-left: -1px;
   }
-
-  .pagination {
-    display: block;
-    margin: 2em 0;
-    padding: 3px 10px;
-    font-size: 15px;
-    background: $background-light;
-    text-align: center;
-
-    span {
-      padding: 0 0.1em;
-    }
-
-    .first, .prev, .next, .last {
-      padding: 0 .5em;
-    }
-  }
 }
 
 ul.facet {

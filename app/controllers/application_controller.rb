@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   include SimpleCaptcha::ControllerHelpers
 
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :content_path
 
   rescue_from CanCan::AccessDenied do |e|
     render 'application/403', :status => 403
@@ -41,6 +41,14 @@ class ApplicationController < ActionController::Base
         model.valid?
         model.errors.add(:captcha, "^The code you've entered does not match the text in the image.")
         false
+      end
+    end
+
+    def content_path(content, args={})
+      if content.hidden?
+        submission_path content, args
+      else
+        polymorphic_path content, args
       end
     end
 end

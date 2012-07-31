@@ -7,7 +7,7 @@ class FrontpageController < ApplicationController
     @newswire = Content.recent.where("id <> ?", @primary_feature).
       where("id NOT IN (?)", @subfeatures.map(&:id)).
       where("id NOT IN (?)", @features.map(&:id)).
-      page(params[:page]).per(25)
+      visible.page(params[:page]).per(25)
     @events = Event.upcoming
 
     respond_to do |format|

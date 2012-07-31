@@ -5,16 +5,17 @@ Dispatch::Application.routes.draw do
 
   resources :articles, :controller => :contents, :type => "Article", :except => :index
 
-
   resources :events, :controller => :contents, :type => "Event", :except => :index
 
   resources :contents, :only => [] do
     resources :comments, :only => [:create, :update, :destroy]
-
     member do
       put 'moderate'
     end
   end
+
+  get 'submissions' => 'contents#index', :as => :submissions
+  get 'submissions/:id' => 'contents#show', :hidden => 'true', :as => :submission
 
   resources :tags, :only => ['index']
 

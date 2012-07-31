@@ -86,7 +86,10 @@
   </div>
 </div>
 
-<div class="row"><div class="sevencol first"><h3 class="comment">Comments</h3></div></div>
+<%# Don't show title on hidden content with no comments %>
+<% if @comments.any? || !@content.hidden? %>
+  <div class="row"><div class="sevencol first"><h3 class="comment">Comments</h3></div></div>'
+<% end %>
 
 <div id="comments">
   <%= render 'comments/comments', :comments => @comments %>
@@ -102,7 +105,7 @@
       <%= render 'comments/form', :comment => @comment, :content => @content %>
     </div>
   </div>
-<% else %>
+<% elsif !@content.hidden? %>
   <% if @comments.empty? %>
     <div class="row"><div class="sevencol first"><p>There are no comments yet. You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
   <% else %>
@@ -124,7 +127,7 @@
         <% if related_content.images.any? %>
           <%= image_tag related_content.images.first.image.url(:sub_feature) %>
         <% end %>
-        <h4><%= link_to related_content.title, related_content, :class => 'plain-link' %></h4>
+        <h4><%= link_to related_content.title, content_path(related_content), :class => 'plain-link' %></h4>
         <p class="summary"><%= related_content.summary %></p>
       </div>
     <% end %>

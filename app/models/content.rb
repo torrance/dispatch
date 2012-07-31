@@ -38,6 +38,7 @@ class Content < ActiveRecord::Base
   default_scope :include => :user, :include => :images
 
   scope :hidden, where(:status => 0)
+  scope :visible, where('status > 0')
   scope :normal, where(:status => 1)
   scope :subfeatured, where(:status => 2)
   scope :featured, where(:status => 3)
@@ -68,6 +69,10 @@ class Content < ActiveRecord::Base
 
   def status_name
     Content::STATES[status]
+  end
+
+  def hidden?
+    status == 0
   end
 
   def feature?

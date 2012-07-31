@@ -470,6 +470,23 @@ img.handle {
   }
 }
 
+.pagination {
+  display: block;
+  margin: 2em 0;
+  padding: 3px 10px;
+  font-size: 15px;
+  background: $background-light;
+  text-align: center;
+
+  span {
+    padding: 0 0.1em;
+  }
+
+  .first, .prev, .next, .last {
+    padding: 0 .5em;
+  }
+}
+
 /**
  * Sticky footer
  */
@@ -483,7 +500,7 @@ img.handle {
 }
 
 #footer {
-  height: 150px;
+  height: 170px;
 }
 
 /**
@@ -514,7 +531,7 @@ img.handle {
 
 #footer .threecol {
   border-right: 1px solid #353C2E;
-  min-height: 150px;
+  min-height: 170px;
 }
 
 #footer .last {

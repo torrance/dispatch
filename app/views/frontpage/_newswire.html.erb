@@ -5,7 +5,7 @@
       <% if newswire.images.any? %>
         <%= image_tag newswire.images.first.image.url(:gallery_thumbnail), :class => 'border' %>
       <% end %>
-      <h4><%= link_to newswire.title, newswire, :class => 'plain-link' %></h4>
+      <h4><%= link_to newswire.title, content_path(newswire), :class => 'plain-link' %></h4>
       <p class="summary"><%= newswire.summary %></p>
     </div>
   </div>

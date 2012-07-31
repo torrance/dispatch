@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     authorize! :create, @comment
 
     if @comment.save
-      redirect_to polymorphic_path(@comment.content, :anchor => "comment-#{@comment.id}"),
+      redirect_to content_path(@comment.content, :anchor => "comment-#{@comment.id}"),
         :notice => 'Your comment has been successfully created.'
     else
       @content = @comment.content
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to polymorphic_path(@comment.content, :anchor => "comment-#{@comment.id}")
+        redirect_to content_path(@comment.content, :anchor => "comment-#{@comment.id}")
         flash[:notice] = "An error occurred trying to update comment #{comment.id}" if @comment.errors.any?
       end
       format.js do
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to polymorphic_path(@comment.content)
+        redirect_to content_path(@comment.content)
         flash[:notice] = "An error occurred trying to delete comment #{comment.id}" if @comment.errors.any?
       end
       format.js do

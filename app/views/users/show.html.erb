@@ -4,7 +4,8 @@
   <div class="eightcol first">
     <% if @contents.any? %>
       <div id="content-listing">
-        <%= render 'contents', :contents => @contents %>
+        <%= render 'contents/contents', :contents => @contents %>
+        <%= link_to_next_page @contents, '<span>Show more</span>'.html_safe, :id => 'pager', :remote => true %>
       </div>
     <% else %>
       <p class="no-content"><%= current_user == @user ? 'You have' : @user.display_name + ' has' %> not yet published any items.</p>

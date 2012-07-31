@@ -15,7 +15,9 @@ ActiveAdmin.register Comment do
       link_to comment.content.title, comment.content
     end
     column 'User' do |comment|
-      link_to comment.user.display_name, admin_user_path(comment.user)
+      if comment.user
+        link_to comment.user.display_name, admin_user_path(comment.user)
+      end
     end
     column 'Status' do |comment|
       Comment::STATES[comment.status]

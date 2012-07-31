@@ -7,9 +7,8 @@
 
     <div class="content <%= "with-image" if content.images.any? %>">
       <%= image_tag content.images.first.image.url(:feature_square), :class => 'border' if content.images.any? %>
-      <h2><%= link_to content.title, content, :class => 'plain-link' %></h2>
+      <h2><%= link_to content.title, content_path(content), :class => 'plain-link' %></h2>
       <p class="summary"><%= content.summary %>
     </div>
   </div>
 <% end %>
-<%= link_to_next_page contents, '<span>Show more</span>'.html_safe, :id => 'pager', :remote => true %>

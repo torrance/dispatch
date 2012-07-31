@@ -28,4 +28,12 @@ class Comment < ActiveRecord::Base
   def hidden?
     status == 0
   end
+
+  def content_hidden?
+    if content
+      content.hidden?
+    else
+      true
+    end
+  end
 end
