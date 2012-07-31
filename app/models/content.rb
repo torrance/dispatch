@@ -45,13 +45,6 @@ class Content < ActiveRecord::Base
   scope :recent, order('created_at DESC')
   scope :has_image, joins("INNER JOIN images AS image_flag ON image_flag.content_id = contents.id")
 
-  def self.category_features
-    contents = Content.arel_table
-    ids = Content.select("DISTINCT ON(category) id").featured.reorder(:category).order('created_at DESC').limit(4).offset(3).to_sql
-    self.where("id IN (#{ids})")
-  end
-
-
   # Public model methods
   def require_author
     if user.blank? && pseudonym.blank?
