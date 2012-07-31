@@ -180,6 +180,11 @@ label.inline {
   font-weight: normal;
 }
 
+label.required:after {
+  content: ' *';
+  color: red;
+}
+
 input.text, input.submit, textarea, .simple_captcha input {
   font-family: $body-fontstack;
   font-size: 15px;

@@ -20,7 +20,7 @@
       <div class="eightcol first">
 
         <div class="field">
-          <%= f.label :title %>
+          <%= f.label :title, :class => 'required' %>
           <%= f.text_field :title, :class => 'text' %>
         </div>
 
@@ -36,7 +36,7 @@
       <div class="eightcol first">
 
         <div class="field">
-          <%= f.label :summary %>
+          <%= f.label :summary, :class => 'required' %>
           <%= f.text_area :summary, :rows => 5 %>
         </div>
 
@@ -52,7 +52,7 @@
       <div class="eightcol first">
 
         <div class="field">
-          <%= f.label :body %>
+          <%= f.label :body, :class => 'required' %>
           <%= f.text_area :body, :class=> "markitup" %>
           <div id="live-preview">
             <h5>Live Preview</h5>
@@ -76,13 +76,13 @@
       <div class="row">
         <div class="eightcol first">
           <div class="field datetime">
-            <%= f.label :start, "Start date" %>
+            <%= f.label :start, "Start date", :class => 'required' %>
             <%= f.date_select :start, :class => "datepicker-set" %> <input type="text" class="datepicker"></input><br />
             <%= f.time_select :start, :ignore_date => true, :prompt => true %>
           </div>
 
           <div class="field location">
-            <%= f.label :location %>
+            <%= f.label :location, :class => 'required' %>
             <%= f.text_field :location, :class => 'text' %>
           </div>
         </div>
@@ -102,12 +102,12 @@
         <div class="eightcol first categorize">
 
           <div class="field category">
-            <%= f.label :category %>
+            <%= f.label :category, :class => 'required' %>
             <%= f.select :category, [['- Select a category -', 0]] + Content::CATEGORIES.zip(Content::CATEGORIES) %>
           </div>
 
           <div class="field tags">
-            <%= f.label :tag_list, "Tags" %>
+            <%= f.label :tag_list, "Tags", :class => 'required' %>
             <%= f.text_field :tag_list, :class => 'text', 'data-tags' => @content.tag_list.map{ |t| {id: t, name: t} }.to_json %>
             <p class="description">Required. Maximum 5 tags.</p>
           </div>
@@ -161,7 +161,7 @@
         <div class="row">
           <div class="eightcol first">
             <div class="field">
-              <%= f.label :captcha, "Are you human?" %>
+              <%= f.label :captcha, "Are you human?", :class => 'required' %>
               <%= show_simple_captcha %>
               <div class="description">Captcha is case insensitive.</div>
             </div>
