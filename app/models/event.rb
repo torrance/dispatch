@@ -7,6 +7,7 @@ class Event < Content
     text :summary, :more_like_this => true
     text :body, :more_like_this => true
     time :created_at, :trie => true
+    integer :status
     string :category
     string :type   
   end

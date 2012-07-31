@@ -24,6 +24,9 @@ class SearchController < ApplicationController
     Sunspot.search(Article, Event) do |s|
       s.fulltext search_string
 
+      # Don't search hidden content
+      s.with(:status).greater_than(0)
+
       # Configure facets.
       s.facet :category
       s.with(:category).equal_to(params[:category]) if params[:category].present?

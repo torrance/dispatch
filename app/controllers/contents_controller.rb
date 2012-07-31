@@ -69,6 +69,8 @@ class ContentsController < ApplicationController
         fields :title, :summary, :body
         minimum_term_frequency 1
         paginate :page => 1, :per_page => 4
+        # Don't search hidden content
+        with(:status).greater_than(0)
       end
       @related_content =  search.results
     rescue Errno::ECONNREFUSED
