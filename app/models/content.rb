@@ -29,7 +29,6 @@ class Content < ActiveRecord::Base
   validates :title, :summary, :body, :presence => true
   validates :title, :length => { :maximum => 255 }
   validates :summary, :length => { :maximum => 305 }
-  validate :require_author
   validate :pseudonym,  :length => { :maximum => 40 },
     :message => "^Author name is too long (maximum length 40 characters)."
   validates :status, :inclusion => { :in => 0...(self::STATES.length) }
@@ -47,12 +46,6 @@ class Content < ActiveRecord::Base
   scope :has_image, joins("INNER JOIN images AS image_flag ON image_flag.content_id = contents.id")
 
   # Public model methods
-  def require_author
-    if user.blank? && pseudonym.blank?
-      errors.add :pseudonym, "^Author name cannot be blank."
-    end
-  end
-  
   def author_name
     if user
       user.display_name
