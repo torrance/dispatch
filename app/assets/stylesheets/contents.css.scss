@@ -13,6 +13,11 @@
   }
 
   .sidebar {
+    p.error {
+      background: image_url('error-small.png') no-repeat 0 4px;
+      padding-left: 25px;
+    }
+    
     .sidebar-block {
       padding: 15px;
       background: $background-light;
