@@ -128,6 +128,7 @@
       <div class="eightcol first">
         <div class="field">
           <%= f.label :images %>
+          <div class="description">Maximum file size 15Mb each.</div>
           <div id="add-images-field-to" class="sortable">
             <%= f.fields_for :images do |image| %>
               <%= render 'image_fields', :f => image  %>

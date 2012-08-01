@@ -3,6 +3,14 @@ class Image < ActiveRecord::Base
   belongs_to :content
 
   validates :image_file_name, :presence => true
+  validates :image, :attachment_size => { 
+    :in => 0..15.megabytes,
+    :message => "^Images must be under 15Mb each."
+  }
+  validates :image, :attachment_content_type => { 
+    :content_type => /image/ ,
+    :message => "^You have attempted to upload something that isn't a valid image."
+  }
 
   default_scope order('weight ASC')
 
@@ -12,6 +20,7 @@ class Image < ActiveRecord::Base
     :gallery_full => ["900x900", :jpg],
     :primary_feature => ["510x300#", :jpg],
     :feature_square => ["110x110#", :jpg],
-    :sub_feature => ["235x150#", :jpg]
+    :sub_feature => ["235x150#", :jpg],
+    :tiny => ["80x80#", :jpg]
   }
 end
