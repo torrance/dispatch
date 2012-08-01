@@ -17,7 +17,7 @@
       background: image_url('error-small.png') no-repeat 0 4px;
       padding-left: 25px;
     }
-    
+
     .sidebar-block {
       padding: 15px;
       background: $background-light;
@@ -69,9 +69,6 @@
     padding-left: 100px;
     font-size: 11px;
     line-height: 1.1em;
-    opacity: 0.5;
-    -moz-transition: opacity 0.5s;
-    -webkit-transition: opacity 0.5s;
     margin-bottom: 20px;
   }
 
@@ -92,6 +89,26 @@
 
     a.odd {
       margin-right: 10px;
+    }
+  }
+
+  div.social-media-buttons {
+    div.fb-like, #___plusone_0, iframe.twitter-share-button {
+      float: left;
+      margin-right: 20px;
+    }
+
+    div.fb-like {
+      margin-right: 13px;
+    }
+
+    #social-media-tooltip {
+      display: none;
+      width: 150px;
+      padding: 10px;
+      background: $background-light;
+      position: absolute;
+      @include box-shadow(0, 0, 5px, 0px, #ddd)
     }
   }
 

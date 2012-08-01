@@ -20,4 +20,8 @@ module ApplicationHelper
   def simple_filter(text)
     auto_link simple_format(text), :html => { :rel => 'nofollow'}
   end
+
+  def current_url
+    "http://#{request.host}:#{request.port.to_s + request.fullpath}"
+  end
 end

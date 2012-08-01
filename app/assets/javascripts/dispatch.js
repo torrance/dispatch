@@ -53,4 +53,55 @@ $(function() {
     $('.image-gallery a.image').first().click();
     e.preventDefault();
   });
+
+  /**
+   * 'Social' media buttons
+   */
+  var facebookInit = function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  };
+
+  window.___gcfg = {lang: 'en-GB'};
+  var googleInit = function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  };
+
+  var twitterInit = function(d,s,id) {
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js=d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  };
+
+  $('img.social-media-buttons').click(function() {
+    $(this).fadeOut();
+    $('#social-media-tooltip').fadeOut().remove();
+    facebookInit(document, 'script', 'facebook-jssdk');
+    googleInit();
+    twitterInit(document, "script", "twitter-wjs");
+  });
+
+  $('img.social-media-buttons').hover(function() {
+    $('#social-media-tooltip').fadeIn(200);
+  });
+
+  $('img.social-media-buttons').mouseleave(function() {
+     $('#social-media-tooltip').fadeOut(200);
+  });
+
+  $(document).bind('mousemove', function(e) {
+    $('#social-media-tooltip').css({
+      left: e.pageX + 20,
+      top: e.pageY
+    });
+  });
 });
