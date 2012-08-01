@@ -3,11 +3,11 @@ class Image < ActiveRecord::Base
   belongs_to :content
 
   validates :image_file_name, :presence => true
-  validates :image, :attachment_size => { 
+  validates :image, :attachment_size => {
     :in => 0..15.megabytes,
     :message => "^Images must be under 15Mb each."
   }
-  validates :image, :attachment_content_type => { 
+  validates :image, :attachment_content_type => {
     :content_type => /image/ ,
     :message => "^You have attempted to upload something that isn't a valid image."
   }
