@@ -1,36 +1,47 @@
-window.DISPATCH = window.DISPATCH || {};
-
-/**
- * Content edit forms
- */
-DISPATCH.reweight = function() {
-  $('.sortable').children().each(function(index, element) {
-    $('.image-weight', element).val(index);
-  });
-};
-
-DISPATCH.add_fields = function(association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g");
-  var content = content.replace(regexp, new_id);
-  $('#add-' + association + '-field-to').append(content);
-
-  DISPATCH.reweight();
-}
-
 $(function() {
-  // Allow images to be ordered. When they are dragged, we reassign values to
-  // a hidden weight field.
-  $('.sortable').sortable({
-    handle: '.handle',
-    update: DISPATCH.reweight
-  });
-});
+  /**
+   * Allow us to target users with and without javascript using CSS.
+   */
+  $('body').removeClass('no-js').addClass('has-js');
 
-/**
- * Colorbox
- */
-$(function() {
+  /**
+   * Control visibility of publish panel
+   */
+  var publishButton = $('#publish ul');
+  $('#publish a.button').click(
+    function() {
+      publishButton.fadeIn('fast');
+    }
+  );
+  publishButton.mouseleave(function() {
+    $(this).fadeOut('slow');
+  });
+  
+  /**
+   * Allow users to expand newswire items to view full summary and image.
+   */
+  $('.newswire-item .collapsed .summary').live('click', function() {
+    $(this).parent().addClass('expanded').removeClass('collapsed');
+  });
+
+  /**
+   * Hide the pager once it has been clicked
+   *
+   * We use 'live' to ensure subsequent pagers loaded via ajax also receive the
+   * the same treatment.
+   */
+  $('#pager').live('click', function() {
+    $(this).animate({ opacity: 0 }, {
+      duration: 'fast',
+      complete: function() {
+        $(this).css('visibility', 'hidden');
+      }
+    });
+  });
+
+  /**
+   * Colorbox
+   */
   $('.image-gallery a.image').colorbox({
     rel: 'image',
     transition: 'none',
@@ -43,99 +54,3 @@ $(function() {
     e.preventDefault();
   });
 });
-
-/**
- * Add datepicker to all input fields with 'datepicker' class.
- */
-$(function() {
-  var year = $('#event_start_1i');
-  var month = $('#event_start_2i');
-  var day = $('#event_start_3i');
-
-  var updateSelected = function(dates) {
-    console.log(dates);
-    var date = dates.split(' ');
-    console.log(date);
-    year.val(parseInt(date[0], 10));
-    month.val(parseInt(date[1], 10));
-    day.val(parseInt(date[2], 10));
-  }
-
-  var updateDatepicker = function() {
-    $('.datepicker').datepicker('setDate', new Date(year.val(), month.val() - 1, day.val()));
-  }
-
-  // Set up the datepicker
-  $('.datepicker').datepicker({
-    showOn: 'button',
-    buttonImage: '/assets/calendar.png',
-    buttonImageOnly: true,
-    onSelect: updateSelected,
-    dateFormat: "yy mm dd",
-  });
-  updateDatepicker();
-
-  year.change(updateDatepicker);
-  month.change(updateDatepicker);
-  day.change(updateDatepicker);
-  
-});
-
-/**
- * Tagging autocomplete
- */
-$(function() {
-  $('form.content .tags input').tokenInput('/tags.json', {
-    crossDomain: false,
-    prePopulate: $('form.content .tags input').data('tags'),
-    tokenLimit: 5,
-    preventDuplicates: true
-  });
-});
-
-
-/**
- * Live preview
- */
-$(function() {
-  var textarea = $('form.content textarea.markitup');
-  var preview = $('form.content #live-preview .html');
-  var initialized = false;
-
-  var getHtml = function(text, callback) {
-    $.post('/content-filter/markdown.json', { 'text': text }, function(data) {
-      callback(data.html);
-    });
-  };
-
-  var setHtml = function(html) {
-    preview.html(html);
-    preview.scrollTop(preview[0].scrollHeight);
-  };
-
-  // Stolen from http://stackoverflow.com/questions/2219924/
-  var typewatch = (function(){
-    var timer = 0;
-    return function(callback, ms){
-      clearTimeout (timer);
-      timer = setTimeout(callback, ms);
-    }  
-  })();
-
-  textarea.keyup(function() {
-    typewatch(function() {
-      if (!initialized) {
-        $('form.content #live-preview').slideDown('fast');
-        initialized = true;
-      }
-
-      text = textarea.val();
-      if (text == '') {
-        $('form.content #live-preview').slideUp('fast');
-        initialized = false;
-      }
-      
-      getHtml(text, setHtml);
-    }, 400);
-  });
-})
