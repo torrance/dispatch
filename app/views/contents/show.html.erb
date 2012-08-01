@@ -1,6 +1,8 @@
 <%= content_for(:title) { @content.title } %>
 <% if @content.images.any? %>
   <%= content_for(:head) { "<meta property=\"og:image\" content=\"http://#{request.host + @content.images.first.image.url}\" />".html_safe } %>
+<% else %>
+  <%= content_for(:head) { "<meta property=\"og:image\" content=\"\" />".html_safe } %>
 <% end %>
 <%= content_for(:head) { "<meta property=\"og:description\" content=\"#{@content.summary}\" />".html_safe } %>
 
