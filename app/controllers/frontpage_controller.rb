@@ -8,7 +8,7 @@ class FrontpageController < ApplicationController
       where("id NOT IN (?)", @subfeatures.map(&:id)).
       where("id NOT IN (?)", @features.map(&:id)).
       visible.page(params[:page]).per(25)
-    @events = Event.upcoming
+    @events = Event.upcoming.visible
 
     respond_to do |format|
       format.html
