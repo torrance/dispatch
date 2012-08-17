@@ -93,12 +93,12 @@
   }
 
   div.social-media-buttons {
-    div.fb-like, #___plusone_0, iframe.twitter-share-button {
+    .fb_iframe_widget, #___plusone_0, iframe.twitter-share-button {
       float: left;
       margin-right: 20px;
     }
 
-    div.fb-like {
+    .fb_iframe_widget  {
       margin-right: 13px;
     }
 

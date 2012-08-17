@@ -83,8 +83,7 @@
         <%= image_tag "socialmediaicons.png", :class => 'social-media-buttons' %>
         <p id="social-media-tooltip"><strong>Click to enable</strong><br />
         Why? Facebook, Twitter and Google track people via their social media buttons which is against Indymedia policy.</p>
-        <div class="fb-like" data-href="<%= current_url %>" data-send="false" data-layout="box_count" data-width="47" data-show-faces="false" data-font="arial"></div>
-        <div id="fb-root"></div>
+        <fb:like href="<%= current_url %>" send="false" layout="box_count" width="47" show_faces="false"></fb:like>
         <g:plusone href="<%= current_url %>" size="tall"></g:plusone>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= current_url %>" data-count="vertical"></a>
       </div>
