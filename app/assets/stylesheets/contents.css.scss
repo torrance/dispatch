@@ -1,4 +1,6 @@
 #content {
+  margin-top: -10px;
+
   .page-title {
     padding-bottom: 0.3em;
     border-bottom: 1px dashed $dark-brown;
@@ -149,6 +151,7 @@
     padding-left: 30px;
     line-height: 1.5em;
     margin-bottom: 10px;
+    margin-top: 0;
     font-size: 20px;
   }
 
