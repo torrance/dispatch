@@ -1,8 +1,7 @@
 <%= content_for(:title) { @content.title } %>
+<%# Specify metadata for facebook %>
 <% if @content.images.any? %>
-  <%= content_for(:head) { "<meta property=\"og:image\" content=\"http://#{request.host + @content.images.first.image.url}\" />".html_safe } %>
-<% else %>
-  <%= content_for(:head) { "<meta property=\"og:image\" content=\"\" />".html_safe } %>
+  <%= content_for(:head) { "<meta property=\"og:image\" content=\"#{ActionController::Base.asset_host + @content.images.first.image.url}\" />".html_safe } %>
 <% end %>
 <%= content_for(:head) { "<meta property=\"og:description\" content=\"#{@content.summary}\" />".html_safe } %>
 

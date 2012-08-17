@@ -6,6 +6,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
+  <!-- Default image for facebook -->
+  <meta property="og:image" content="<%= image_path("logo-large.png") %>" />
 </head>
 <body class="no-js">
   <div class="container page-wrapper">
