@@ -47,9 +47,9 @@ class Content < ActiveRecord::Base
 
   # Public model methods
   def author_name
-    if user
+    if user.present?
       user.display_name
-    elsif pseudonym
+    elsif pseudonym.present?
       pseudonym
     else
       "Anonymous"
