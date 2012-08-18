@@ -20,7 +20,7 @@
 
           <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
           
-          <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= @primary_feature.category %></p>
+          <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= feature.category %></p>
 
           <p class="summary"><%= feature.summary %></p>
         </div>
