@@ -12,6 +12,7 @@ class SearchController < ApplicationController
         { name: 'type', attribute: 'type' },
         { name: 'category', attribute: 'category' },
         { name: 'tag', attribute: 'tag_list' },
+        { name: 'status', attribute: 'status' },
         { name: 'date', attribute: 'created_at' }
       ]
     rescue Errno::ECONNREFUSED
@@ -36,6 +37,17 @@ class SearchController < ApplicationController
 
       s.facet :type
       s.with(:type).equal_to(params[:type]) if params[:type].present?
+
+      s.facet :status do
+        Content::STATES.each_with_index do |state, i|
+          row state do
+            with :status, i
+          end
+        end
+      end
+      Content::STATES.each_with_index do |state, i|
+        s.with(:status).equal_to(i) if params[:status] == state
+      end
 
       # The year facet requires a bit more work.
       # First set up the appropriate ranges.
