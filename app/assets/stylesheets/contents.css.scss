@@ -95,9 +95,14 @@
   }
 
   div.social-media-buttons {
+    height: 75px;
+    overflow: hidden;
+
     .fb_iframe_widget, #___plusone_0, iframe.twitter-share-button {
       float: left;
       margin-right: 20px;
+      height: 61px;
+      overflow: hidden;
     }
 
     .fb_iframe_widget  {
