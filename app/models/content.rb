@@ -4,10 +4,23 @@ class Content < ActiveRecord::Base
 
   # Categories are stored in the database by full name.
   CATEGORIES = [
-    'Protest & Revolution',
     'Ecology & Environment',
-    'Workers & Economy',
-    'War & Militarism'
+    'Education',
+    'Government & Law',
+    'History',
+    'Immigration & Borders',
+    'Maori & Tino Rangitiratanga',
+    'Media & Reviews',
+    'Opinion & Blogs',
+    'People',
+    'Police & Prisons',
+    'Protest & Revolution',
+    'Race & Racism',
+    'Science & Technology',
+    'Sex & Sexuality',
+    'State Repression',
+    'War & Militarism',
+    'Workers & Economy'
   ]
 
   # Moderation states are stored in the database as an integer, based on the array
