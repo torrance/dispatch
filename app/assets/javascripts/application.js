@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.colorbox
+//= require jquery.fancybox
 //= require dispatch

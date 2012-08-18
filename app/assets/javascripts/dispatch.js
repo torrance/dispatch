@@ -42,11 +42,16 @@ $(function() {
   /**
    * Colorbox
    */
-  $('.image-gallery a.image').colorbox({
+  /*$('.image-gallery a.image').colorbox({
     rel: 'image',
     transition: 'none',
     maxHeight: '90%',
     maxWidth: '90%'
+  });*/
+
+  $('.image-gallery a.image').fancybox({
+    openEffect  : 'none',
+    closeEffect : 'none'
   });
 
   $('#show-all-images').click(function(e) {
