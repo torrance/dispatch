@@ -4,12 +4,7 @@ class TagsController < ApplicationController
 
     # Find 5 matching tags, and structure into array in preparation for json.
     @tags = Article.search_tags(search)
-    @tags = @tags.map { |t| {id: t.name, name: t.name} }
-
-    # Add option to include new tag if exact match doesn't exist.
-    if !@tags.include?({id: search, name: search})
-      @tags << {id: search, name: search}
-    end
+    @tags = @tags.map { |t| t.name }
 
     respond_to do |format|
       format.json { render :json => @tags }

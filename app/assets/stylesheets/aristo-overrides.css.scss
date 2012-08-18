@@ -13,3 +13,9 @@
   border-color: $light-green;
   text-shadow: 0 1px 1px $link-color;
 }
+
+.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+  background: $light-green;
+  text-shadow: 0 1px 1px $link-color;
+  border-color: $link-color;
+}

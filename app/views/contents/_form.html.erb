@@ -109,7 +109,7 @@
           <div class="field tags">
             <%= f.label :tag_list, "Tags", :class => 'required' %>
             <%= f.text_field :tag_list, :class => 'text', 'data-tags' => @content.tag_list.map{ |t| {id: t, name: t} }.to_json %>
-            <p class="description">Required. Maximum 5 tags.</p>
+            <p class="description">Enter a comma separated list of tags. Maximum 5 tags.</p>
           </div>
 
         </div>

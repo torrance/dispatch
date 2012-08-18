@@ -1,6 +1,5 @@
 //= require jquery-ui
 //= require jquery.markitup
-//= require jquery.tokeninput
 //= require markitup
 
 window.DISPATCH = window.DISPATCH || {};
@@ -73,11 +72,50 @@ $(function() {
  * Tagging autocomplete
  */
 $(function() {
-  $('form.content .tags input').tokenInput('/tags.json', {
-    crossDomain: false,
-    prePopulate: $('form.content .tags input').data('tags'),
-    tokenLimit: 5,
-    preventDuplicates: true
+  function split( val ) {
+    return val.split( /,\s*/ );
+  }
+
+  function extractLast( term ) {
+    return split( term ).pop();
+  }
+
+  $('form.content .tags input')
+  // don't navigate away from the field on tab when selecting an item
+  .bind( "keydown", function( event ) {
+    if ( event.keyCode === $.ui.keyCode.TAB &&
+        $( this ).data( "autocomplete" ).menu.active ) {
+      event.preventDefault();
+    }
+  })
+  .autocomplete({
+    source: function( request, response ) {
+      $.getJSON( "/tags", {
+        q: extractLast( request.term )
+      }, response );
+    },
+    search: function() {
+      // custom minLength
+      var term = extractLast( this.value );
+      if ( term.length < 2 ) {
+        return false;
+      }
+    },
+    focus: function() {
+      // prevent value inserted on focus
+      return false;
+    },
+    select: function( event, ui ) {
+      var terms = split( this.value );
+      // remove the current input
+      terms.pop();
+      // add the selected item
+      terms.push( ui.item.value );
+      // add placeholder to get the comma-and-space at the end
+      terms.push( "" );
+      this.value = terms.join( ", " );
+      return false;
+    }
   });
 });
 
