@@ -71,7 +71,33 @@
 
   </fieldset>
 
-  <% if is_event?(@content) %>
+  <% if @content.repost? %>
+    <fieldset>
+      <div class="row">
+        <div class="eightcol first">
+          <div class="field url-name">
+            <%= f.label :url_name, "Original site name", :class => 'required' %>
+            <%= f.text_field :url_name, :class => "text" %>
+            <p class="description">eg. “Scoop Independent News”</p>
+          </div>
+
+          <div class="field url">
+            <%= f.label :url, "Original url", :class => 'required' %>
+            <%= f.text_field :url, :class => "text", :placeholder => "http://" %>
+            <p class="description">eg. “http://scoop.co.nz/news?id=12345”</p>
+          </div>
+        </div>
+
+        <div class="fourcol last">
+          <div class="help first-help">
+            <p class="first-paragraph last-paragraph">Provide a reference to the original site that this content was posted on so that we can provide proper attribution.</p>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <% if @content.event? %>
     <fieldset>
       <div class="row">
         <div class="eightcol first">
@@ -96,7 +122,7 @@
     </fieldset>
   <% end %>
 
-  <% if not is_event?(@content) %>
+  <% if not @content.event? %>
     <fieldset>
       <div class="row">
         <div class="eightcol first categorize">

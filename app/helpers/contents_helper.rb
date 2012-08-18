@@ -59,8 +59,4 @@ module ContentsHelper
       datetime.strftime "%l:%M%P"
     end
   end
-
-  def is_event?(model)
-    model.class == Event
-  end
 end

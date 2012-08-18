@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715033812) do
+ActiveRecord::Schema.define(:version => 20120818042844) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20120715033812) do
     t.datetime "start"
     t.string   "location"
     t.integer  "status",     :default => 1,     :null => false
+    t.string   "url"
+    t.string   "url_name"
   end
 
   add_index "contents", ["status"], :name => "index_contents_on_moderation"

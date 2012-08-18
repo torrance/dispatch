@@ -27,6 +27,9 @@ class Content < ActiveRecord::Base
   # indices in Content::MODERATION.
   STATES = ['Hidden', 'Normal', 'Sub-feature', 'Feature']
 
+  # Enable tags for all content
+  acts_as_taggable
+
   # Callbacks
   after_save :search_index
 
@@ -40,14 +43,18 @@ class Content < ActiveRecord::Base
 
   # Validations
   validates :title, :summary, :body, :presence => true
+  validates :category, :tag_list, :presence => true, :unless => :event?
   validates :title, :length => { :maximum => 255 }
   validates :summary, :length => { :maximum => 305 }
   validate :pseudonym,  :length => { :maximum => 40 },
     :message => "^Author name is too long (maximum length 40 characters)."
   validates :status, :inclusion => { :in => 0...(self::STATES.length) }
+  validates :category, :inclusion => { :in => self::CATEGORIES,
+    :message => "^You need to select a valid category." }, :unless => :event?
+  validate :tags_limit
 
   # Scopes
-  default_scope :include => :user, :include => :images
+  default_scope :include => :user, :include => :images, :include => :tags
 
   scope :hidden, where(:status => 0)
   scope :visible, where('status > 0')
@@ -83,6 +90,26 @@ class Content < ActiveRecord::Base
 
   def feature?
     status >= 2
+  end
+
+  def tags_limit
+    errors.add(:tag_list, "^There are too many tags (maximum 5).") unless tag_list.length <= 5
+  end
+
+  def self.search_tags(search)
+    tag_counts_on('tags').limit(5).where('tags.name LIKE ?', "%#{search}%")
+  end
+
+  def event?
+    type == "Event"
+  end
+
+  def repost?
+    type == "Repost"
+  end
+
+  def article?
+    type == "Article"
   end
 
   # We manually index to solr so that we can handle any exceptions

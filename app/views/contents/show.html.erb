@@ -36,26 +36,37 @@
         </div>
       <% end %>
 
-      <% if is_event?(@content) %>
+      <% if @content.event? %>
         <div class="event-details sidebar-block">
           <p class="first-paragraph"><%= long_event_date(@content.start) %></p>
           <p class="last-paragraph"><%= @content.location %></p>
         </div>
-
-        <div class="sidebar-block">
-          <p class="first-paragraph last-paragraph">Posted by <%= link_to_author @content %></p>
-        </div>
       <% end %>
 
-      <% if not is_event?(@content) %>
+      <% if @content.article? %>
         <div class="attribution sidebar-block">
           <p class="first-paragraph">by <%= link_to_author @content %> </p>
           <p class="last-paragraph"><%= long_content_date @content.created_at %></p>
         </div>
+      <% end %>
 
+      <% if @content.repost? %>
+        <div class="attribution sidebar-block">
+          <p class="first-paragraph"><%= link_to @content.url_name, @content.url, :class => "repost" %></p>
+          <p class="last-paragraph"><%= long_content_date @content.created_at %></p>
+        </div>
+      <% end %>
+
+      <% if @content.article? || @content.repost? %>
         <div class="metadata sidebar-block">
           <h3><%= @content.category %></h3>
           <p class="tags last-paragraph"><%= @content.tag_list %></p>
+        </div>
+      <% end %>
+
+      <% if @content.event? || @content.repost? %>
+        <div class="sidebar-block">
+          <p class="first-paragraph last-paragraph">Posted by <%= link_to_author @content %></p>
         </div>
       <% end %>
 

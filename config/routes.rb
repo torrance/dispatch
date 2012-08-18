@@ -4,8 +4,8 @@ Dispatch::Application.routes.draw do
   root :to => 'frontpage#show'
 
   resources :articles, :controller => :contents, :type => "Article", :except => :index
-
   resources :events, :controller => :contents, :type => "Event", :except => :index
+  resources :reposts, :controller => :contents, :type => "Repost", :except => :index
 
   resources :contents, :only => [] do
     resources :comments, :only => [:create, :update, :destroy]

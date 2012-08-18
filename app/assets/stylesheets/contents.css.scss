@@ -41,6 +41,11 @@
       margin-top: 10px;
       font-size: 16px;
     }
+
+    .repost {
+      background: image_url('link.png') no-repeat 0 4px;
+      padding-left: 20px;
+    }
   }
 
   .metadata {
@@ -143,8 +148,8 @@
 
 #content.event {
   h1 {
-    background: image_url("calendar.png") no-repeat 0 2px;
-    padding-left: 35px;
+    background: image_url("calendar-event.png") no-repeat 0 8px;
+    padding-left: 75px;
   }
 }
 
@@ -264,8 +269,20 @@ form.content {
     overflow-y: scroll;
   }
 
-  /* Tag and category fields */
+  /* Repost fields */
+  .url {
+    float: left;
+    width: 60%;
+    @include border-box;
+  }
 
+  .url-name {
+    float: left;
+    width: 40%;
+    @include border-box;
+  }
+
+  /* Tag and category fields */
   .categorize .category {
     float: left;
     width: 40%;
