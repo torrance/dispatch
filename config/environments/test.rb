@@ -37,4 +37,9 @@ Dispatch::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_controller.asset_host = "http://localhost:3000"
+
+  config.piwik = {
+    id: 3,
+    url: "piwik.indymedia.org.nz"
+  }
 end
