@@ -1,7 +1,7 @@
 <%= content_for(:title) { 'Access denied' } %>
 
 <div id="access-denied" class="row">
-  <div class="eightcol">
+  <div class="eightco firstl">
     <h1 class="page-title">Access denied</h1>
 
     <p>This is a restricted area and I’m afraid you’re not allowed to be here. <%= link_to "Have you tried logging in?", login_path unless current_user %></p>
