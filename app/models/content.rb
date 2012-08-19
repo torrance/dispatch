@@ -78,6 +78,10 @@ class Content < ActiveRecord::Base
     end
   end
   
+  def author?(user)
+    user && user == self.user
+  end
+
   def locked?
     Time.now - created_at > 2.weeks
   end
