@@ -1,6 +1,7 @@
 class Content < ActiveRecord::Base
   attr_accessible :title, :summary, :body, :category, :user,
-    :pseudonym, :images_attributes, :tag_list
+    :pseudonym, :images_attributes, :tag_list, :as => [:default, :editor]
+  attr_accessible :created_at, :user_id, :status, :as => :editor
 
   # Categories are stored in the database by full name.
   CATEGORIES = [

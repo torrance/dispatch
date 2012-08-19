@@ -34,6 +34,10 @@ ActiveAdmin.register Content do
     default_actions
   end
 
+  controller do
+    with_role :editor
+  end
+
   form do |f|
     f.inputs "Edit content" do
       f.input :title
@@ -50,5 +54,6 @@ ActiveAdmin.register Content do
       f.input :user
       f.input :created_at
     end
+    f.buttons
   end
 end

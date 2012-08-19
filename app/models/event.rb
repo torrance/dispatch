@@ -1,5 +1,5 @@
 class Event < Content
-  attr_accessible :start, :location
+  attr_accessible :start, :location, :as => [:default, :editor]
 
   validate :start_cannot_be_in_past
   validates :start, :location, :presence => true

@@ -1,5 +1,5 @@
 class Repost < Content
-  attr_accessible :url, :url_name
+  attr_accessible :url, :url_name, :as => [:default, :editor]
 
   # Custom setters
   # Prepend url values with http:// if necessary
