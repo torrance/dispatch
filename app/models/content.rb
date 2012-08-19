@@ -53,6 +53,7 @@ class Content < ActiveRecord::Base
   validates :category, :inclusion => { :in => self::CATEGORIES,
     :message => "^You need to select a valid category." }, :unless => :event?
   validate :tags_limit
+  validate :all_caps
 
   # Scopes
   default_scope :include => :user, :include => :images, :include => :tags
@@ -112,6 +113,11 @@ class Content < ActiveRecord::Base
   def article?
     type == "Article"
   end
+
+  def all_caps
+    errors.add(:title, "^It looks as though your title is in ALL CAPS. There's no need to scream: try using normal case.") if title == title.upcase
+  end
+
 
   # We manually index to solr so that we can handle any exceptions
   # that might be thrown if, eg., solr is down.
