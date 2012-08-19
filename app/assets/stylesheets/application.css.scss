@@ -42,6 +42,7 @@ $dark-green: #66943B;
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
+  *behavior: stylesheet_url("boxsizing.htc");
 }
 
 @import "grid";
@@ -56,3 +57,4 @@ $dark-green: #66943B;
 @import "aristo-overrides";
 @import "search";
 @import "frontpage";
+@import "placeholder_polyfill";
