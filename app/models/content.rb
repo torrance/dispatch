@@ -77,7 +77,7 @@ class Content < ActiveRecord::Base
   end
   
   def locked?
-    Time.now - created_at > 1.week
+    Time.now - created_at > 2.weeks
   end
 
   def status_name

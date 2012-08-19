@@ -16,6 +16,10 @@
         <div class="sidebar-block">
           <p class="error first-paragraph last-paragraph">This item has been hidden.</p>
         </div>
+      <% elsif current_user == @content.user && @content.locked? %>
+        <div class="sidebar-block">
+          <p class="error first-paragraph last-paragraph">Your <%= @type %> is now locked for editing.</p>
+        </div>
       <% end %>
 
       <% if current_user && current_user.editor? %>

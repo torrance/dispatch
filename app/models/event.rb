@@ -22,4 +22,9 @@ class Event < Content
       errors.add(:start, "^Your event cannot start in the past.")
     end
   end
+
+  # Override locked method to lock event once it has been
+  def locked?
+    Time.now - start > 1.week
+  end
 end
