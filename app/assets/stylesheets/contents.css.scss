@@ -144,6 +144,10 @@
     font-size: 17px;
     line-height: 1.5em;
   }
+
+  .body p:last-child:after {
+    content: image_url("square.png");
+  }
 }
 
 #content.event {
