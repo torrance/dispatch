@@ -59,4 +59,8 @@ module ContentsHelper
       datetime.strftime "%l:%M%P"
     end
   end
+
+  def category(content)
+    content.type == 'Event' ? 'Event' : content.category
+  end
 end

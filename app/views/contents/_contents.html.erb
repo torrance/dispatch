@@ -2,7 +2,7 @@
   <div class="content-listing">
     <div class="meta">
       <%= short_content_date(content.created_at) %><br />
-      <strong><%= content.type == 'Event' ? 'Event' : content.category %></strong>
+      <strong><%= category(content) %></strong>
     </div>
 
     <div class="content <%= "with-image" if content.images.any? %>">

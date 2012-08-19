@@ -6,7 +6,7 @@
         <%= image_tag @primary_feature.images.first.image.url(:primary_feature), :class => 'border' %>
       <% end %>
       <h1 class="page-title"><%= link_to @primary_feature.title, @primary_feature, :class => 'plain-link' %></h1>
-      <p class="metadata"><%= feature_date(@primary_feature.created_at) %> &nbsp;|&nbsp; <%= @primary_feature.category %></p>
+      <p class="metadata"><%= feature_date(@primary_feature.created_at) %> &nbsp;|&nbsp; <%= category(@primary_feature) %></p>
       <p class="summary"><%= @primary_feature.summary %></p>
     </div>
 
@@ -20,7 +20,7 @@
 
           <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
           
-          <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= feature.category %></p>
+          <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= category(feature) %></p>
 
           <p class="summary"><%= feature.summary %></p>
         </div>
@@ -31,7 +31,7 @@
   <div class="row categories">
     <% @subfeatures.each do |subfeature| %>
       <div class="threecol <%= cycle "first", "second", "third", "last" %>">
-        <div class="category"><%= subfeature.category %></div>
+        <div class="category"><%= category(subfeature) %></div>
         <% if subfeature.images.any? %>
           <%= image_tag subfeature.images.first.image.url(:sub_feature) %>
         <% end %>
