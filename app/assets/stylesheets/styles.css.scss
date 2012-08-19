@@ -368,7 +368,10 @@ img.handle {
   .first-row {
     padding-bottom: 300px;
     margin-bottom: -320px;
-    position: relative;
+
+    .eightcol {
+      position: relative;
+    }
   }
 
   #logo {
