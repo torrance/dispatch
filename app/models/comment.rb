@@ -36,4 +36,12 @@ class Comment < ActiveRecord::Base
       true
     end
   end
+
+  def content_locked?
+    if content
+      content.locked?
+    else
+      true
+    end
+  end
 end

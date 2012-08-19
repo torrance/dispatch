@@ -11,7 +11,7 @@ class Ability
       can :manage, Repost
       can :manage, Page
       can [:read, :update, :moderate, :destroy], Comment
-      can :create, Comment, :content_hidden? => false
+      can :create, Comment, :content_hidden? => false, :content_locked? => false
       can [:read, :update, :moderate], User # Can't create a user (except via activeadmin)
     elsif user.active?
       can :read, :all
@@ -21,7 +21,7 @@ class Ability
       can :update, Event, :user_id => user.id, :locked? => false, :hidden? => false
       can :create, Repost
       can :update, Repost, :user_id => user.id, :locked? => false, :hidden? => false
-      can :create, Comment, :content_hidden? => false
+      can :create, Comment, :content_hidden? => false, :content_locked? => false
       can :update, User, :id => user.id, :active? => true
     else
       can :read, :all
