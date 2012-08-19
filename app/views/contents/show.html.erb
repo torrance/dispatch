@@ -119,30 +119,24 @@
   </div>
 </div>
 
-<div class="row"><div class="sevencol first"><h3 class="comment">Comments</h3></div></div>
+<div class="row">
+  <div class="sevencol first">
+    <h3 class="comment">Comments</h3>
+    <div><%= comment_text(@comments, @content, @show_hidden_comments) %></div>
+  </div>
+</div>
 
 <div id="comments">
-  <%= render 'comments/comments', :comments => @comments %>
+  <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment, 
+    :locals => { :show_hidden_comments => @show_hidden_comments } %>
 </div>
 
 <% if can? :create, @comment %>
-  <% if @comments.empty? %>
-    <div class="row"><div class="sevencol first"><p>There are no comments yet.</p></div></div>
-  <% end %>
-
   <div class="row">
     <div class="sevencol first">
       <%= render 'comments/form', :comment => @comment, :content => @content %>
     </div>
   </div>
-<% elsif @content.hidden? || @content.locked? %>
-  <div class="row"><div class="sevencol first"><p>Commenting has now closed on this <%= @type %>.</p></div></div>
-<% else %>
-  <% if @comments.empty? %>
-    <div class="row"><div class="sevencol first"><p>There are no comments yet. You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
-  <% else %>
-    <div class="row"><div class="sevencol first"><p>You need to be <%= link_to "logged in", login_path %> to comment.</p></div></div>
-  <% end %>
 <% end %>
 
 <% if @related_content.any? %>

@@ -46,8 +46,6 @@ div.comment {
 
 div.hidden-comment {
   .comment-metadata {
-    background: #fadede;
-    padding-bottom: 5px;
-    margin-bottom: 12px;
+    background: #fadede image_url("speechmark-hidden.png") repeat-x right bottom;
   }
 }

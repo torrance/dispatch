@@ -48,7 +48,7 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     authorize! :read, @content
 
-    # If we've accessed this content using the wrong path, edirect to canonical
+    # If we've accessed this content using the wrong path, redirect to canonical
     # url and exit early. We assume this redirection is permanent. All paths
     # beginning with /submission are are blocked to search robots.
     if (@content.hidden? && !params[:hidden]) || (params[:hidden] && !@content.hidden?)
@@ -61,7 +61,11 @@ class ContentsController < ApplicationController
 
     # Load all visible comments, except for editors who see all by default.
     @comments = @content.comments.oldest
-    @comments.visible unless current_user && current_user.editor?
+    if current_user && (current_user.editor? || params[:show_hidden_comments])
+      @show_hidden_comments = true
+    else
+      @show_hidden_comments = false
+    end
 
     # Find related articles
     begin
