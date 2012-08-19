@@ -43,16 +43,22 @@ ActiveAdmin.register Content do
       f.input :title
       f.input :summary
       f.input :body
-      f.input :category, :as => :select, :collection => Content::CATEGORIES
-      f.input :tag_list
+      if f.object.type != 'Event'
+        f.input :category, :as => :select, :collection => Content::CATEGORIES
+        f.input :tag_list
+      end
       if f.object.type == 'Event'
         f.input :start
         f.input :location
       end
-      f.input :status, :as => :select, :collection => Content::STATES.each_with_index.map{ |state, i| [state, i] }
+      if f.object.type == 'Repost'
+        f.input :url_name, :label => "Original site name"
+        f.input :url, :label => "Original URL"
+      end
       f.input :pseudonym
       f.input :user
       f.input :created_at
+      f.input :status, :as => :select, :collection => Content::STATES.each_with_index.map{ |state, i| [state, i] }
     end
     f.buttons
   end
