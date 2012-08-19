@@ -18,9 +18,9 @@ class Ability
       can :create, Article
       can :update, Article, :user_id => user.id, :locked? => false, :hidden? => false
       can :create, Event
-      can :update, Event, :user_id => user.id, :locked? => false
+      can :update, Event, :user_id => user.id, :locked? => false, :hidden? => false
       can :create, Repost
-      can :update, Repost, :user_id => user.id, :locked? => false
+      can :update, Repost, :user_id => user.id, :locked? => false, :hidden? => false
       can :create, Comment, :content_hidden? => false
       can :update, User, :id => user.id, :active? => true
     else
