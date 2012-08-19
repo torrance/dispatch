@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |e|
     render 'application/403', :status => 403
   end
+
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render 'application/404', :status => 404
+  end
   
   private
     def current_user_session
