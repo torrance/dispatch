@@ -145,7 +145,7 @@
     line-height: 1.5em;
   }
 
-  .body p:last-child:after {
+  .body > p:last-child:after {
     content: image_url("square.png");
   }
 }
