@@ -24,7 +24,7 @@
         <h3>Filter by <%= f[:name] %></h3>
         <ul class="facet no-indentation">
           <% facet_rows.take(8).each do |row| %>
-            <li><%= link_to row.value, url_for(params.merge f[:attribute] => row.value) %> (<%= row.count %>)</li>
+            <li><%= link_to row.value, url_for(params.merge f[:attribute] => row.value, 'page' => 1) %> (<%= row.count %>)</li>
           <% end %>
         </ul>
       <% end %>
