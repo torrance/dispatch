@@ -5,6 +5,28 @@
 window.DISPATCH = window.DISPATCH || {};
 
 /**
+ * Summary character counter
+ */
+$(function() {
+  var textarea = $('form.content .summary-field textarea');
+  var text = $('form.content .summary-field p.description');
+
+  textarea.keyup(function() {
+    var length = textarea.val().length;
+    console.log(length);
+    var remaining = 300 - length;
+    if (remaining > 0) {
+      text.html("" + remaining + " characters remaining");
+    }
+    else {
+      var overflow = length - 300;
+      text.html("<span class='overflow'>" + overflow + " characters too long</span> (300 character maximum)");
+    }
+  });
+  textarea.trigger('keyup'); // Handle existing text.
+});
+
+/**
  * Content edit forms
  */
 DISPATCH.reweight = function() {

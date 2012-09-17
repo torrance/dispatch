@@ -235,7 +235,21 @@
   }
 }
 
+.has-js form.content .summary-field p.description {
+  display: block;
+}
+
 form.content {
+  .summary-field p.description {
+    text-align: right;
+    display: none; /* Hide if js if not enabled */
+  }
+
+  .overflow {
+    color: red;
+    font-weight: bold;
+  }
+
   div.file {
     padding: 1em 0;
     border-bottom: 1px dashed $link-color;
