@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   # Validations
-  validates :display_name, :uniqueness => true
+  validates :display_name, :uniqueness => { :case_sensitive => false }
 
   scope :recent, order("created_at DESC")
 
