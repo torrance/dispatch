@@ -122,6 +122,14 @@ class Content < ActiveRecord::Base
     errors.add(:title, "^It looks as though your title is in ALL CAPS. There's no need to scream: try using normal case.") if title == title.upcase
   end
 
+  def first_paragraph
+    body.partition(/\r\n\r\n|\n\n|\r\r|$/)[0]
+  end
+
+  # The body minus the first paragraph
+  def rest_of_body
+    body.partition(/\r\n\r\n|\n\n|\r\r|$/)[2]
+  end
 
   # We manually index to solr so that we can handle any exceptions
   # that might be thrown if, eg., solr is down.

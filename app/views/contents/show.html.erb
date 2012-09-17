@@ -109,12 +109,12 @@
       <% end %>
     </div>
 
-    <div class="eightcol first">
-      <p class="summary"><%= @content.summary %></p>
+    <div class="eightcol first summary">
+      <%= content_filter @content.first_paragraph %>
     </div>
 
     <div class="body sevencol first">
-      <%= content_filter @content.body %>
+      <%= content_filter @content.rest_of_body %>
     </div>
   </div>
 </div>
