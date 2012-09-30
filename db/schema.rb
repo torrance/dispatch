@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930004525) do
+ActiveRecord::Schema.define(:version => 20120930064543) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20120930004525) do
     t.string   "pseudonym"
     t.datetime "start"
     t.string   "location"
-    t.integer  "status",         :default => 1,     :null => false
+    t.integer  "status",         :default => 0,     :null => false
     t.string   "url"
     t.string   "url_name"
     t.boolean  "hidden",         :default => false, :null => false
