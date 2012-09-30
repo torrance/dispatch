@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818042844) do
+ActiveRecord::Schema.define(:version => 20120930004525) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -23,20 +23,22 @@ ActiveRecord::Schema.define(:version => 20120818042844) do
   end
 
   create_table "contents", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.text     "summary",                       :null => false
-    t.text     "body",                          :null => false
+    t.string   "title",                             :null => false
+    t.text     "summary",                           :null => false
+    t.text     "body",                              :null => false
     t.string   "category"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "user_id"
-    t.string   "type",       :default => "nil", :null => false
+    t.string   "type",           :default => "nil", :null => false
     t.string   "pseudonym"
     t.datetime "start"
     t.string   "location"
-    t.integer  "status",     :default => 1,     :null => false
+    t.integer  "status",         :default => 1,     :null => false
     t.string   "url"
     t.string   "url_name"
+    t.boolean  "hidden",         :default => false, :null => false
+    t.integer  "hidden_user_id"
   end
 
   add_index "contents", ["status"], :name => "index_contents_on_moderation"
@@ -116,6 +118,14 @@ ActiveRecord::Schema.define(:version => 20120818042844) do
     t.datetime "updated_at",                            :null => false
     t.boolean  "active",             :default => false, :null => false
     t.integer  "role",               :default => 0,     :null => false
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "content_id", :null => false
+    t.integer  "vote",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

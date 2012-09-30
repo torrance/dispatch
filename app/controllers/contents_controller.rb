@@ -46,6 +46,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
+    @type = @content.type.downcase # In the case of submissions, params[:type] is empty
     authorize! :read, @content
 
     # If we've accessed this content using the wrong path, redirect to canonical
@@ -66,6 +67,10 @@ class ContentsController < ApplicationController
     else
       @show_hidden_comments = false
     end
+
+    # Load vote for the current user (only applies to mods)
+    v = Vote.where(:user_id => current_user, :content_id => @content.id).first
+    @vote = v.nil? ? 0 : v.vote
 
     # Find related articles
     begin
@@ -91,18 +96,6 @@ class ContentsController < ApplicationController
       redirect_to :root, :notice => "Your #{@type} has been deleted."
     else
       redirect_to :back, :notice => "An error occurred trying to delete your #{@type}"
-    end
-  end
-
-  def moderate
-    @content = Content.find(params[:id])
-    authorize! :moderate, @content
-
-    @content.status = params[:status]
-    if @content.save
-      redirect_to :back
-    else
-      redirect_to :back, :notice => "An error occurred moderating this content #{@content.errors.full_messages}"
     end
   end
 

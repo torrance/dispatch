@@ -10,7 +10,8 @@ Dispatch::Application.routes.draw do
   resources :contents, :only => [] do
     resources :comments, :only => [:create, :update, :destroy]
     member do
-      put 'moderate'
+      post 'vote/:vote' => 'moderate#vote', :as => :vote
+      put 'hide/:hide' => 'moderate#hide', :as => :hide
     end
   end
 

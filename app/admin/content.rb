@@ -27,7 +27,11 @@ ActiveAdmin.register Content do
       end
     end
     column :status do |content|
-      Content::STATES[content.status]
+      if content.hidden?
+        "Hidden"
+      else
+        Content::STATES[content.status]
+      end
     end
     column :created_at
     column :updated_at
@@ -58,7 +62,6 @@ ActiveAdmin.register Content do
       f.input :pseudonym
       f.input :user
       f.input :created_at
-      f.input :status, :as => :select, :collection => Content::STATES.each_with_index.map{ |state, i| [state, i] }
     end
     f.buttons
   end

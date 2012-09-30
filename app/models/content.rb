@@ -26,7 +26,7 @@ class Content < ActiveRecord::Base
 
   # Moderation states are stored in the database as an integer, based on the array
   # indices in Content::MODERATION.
-  STATES = ['Hidden', 'Normal', 'Sub-feature', 'Feature']
+  STATES = ['Normal', 'Sub-feature', 'Feature']
 
   # Enable tags for all content
   acts_as_taggable
@@ -36,8 +36,10 @@ class Content < ActiveRecord::Base
 
   # Set associations
   belongs_to :user
+  belongs_to :hidden_user, :class_name => 'User'
   has_many :images
-  has_many :comments, :dependent => :destroy 
+  has_many :comments, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
 
   accepts_nested_attributes_for :images, :allow_destroy => true,
     :reject_if => proc { |image_attributes| image_attributes[:id].blank? && image_attributes[:image].blank? }
@@ -58,12 +60,12 @@ class Content < ActiveRecord::Base
   # Scopes
   default_scope :include => :user, :include => :images, :include => :tags
 
-  scope :hidden, where(:status => 0)
-  scope :visible, where('status > 0')
-  scope :normal, where(:status => 1)
-  scope :subfeatured, where(:status => 2)
-  scope :featured, where(:status => 3)
-  scope :featurish, where('status >= 2')
+  scope :hidden, where(:hidden => true)
+  scope :visible, where(:hidden => false)
+  scope :normal, where(:status => 0)
+  scope :subfeatured, where(:status => 1)
+  scope :featured, where(:status => 2)
+  scope :featurish, where('status >= 1')
   scope :recent, order('created_at DESC')
   scope :has_image, joins("INNER JOIN images AS image_flag ON image_flag.content_id = contents.id")
 
@@ -90,12 +92,8 @@ class Content < ActiveRecord::Base
     Content::STATES[status]
   end
 
-  def hidden?
-    status == 0
-  end
-
   def feature?
-    status >= 2
+    status >= 1
   end
 
   def tags_limit
@@ -129,6 +127,19 @@ class Content < ActiveRecord::Base
   # The body minus the first paragraph
   def rest_of_body
     body.partition(/\r\n\r\n|\n\n|\r\r|$/)[2]
+  end
+
+  def total_votes
+    votes.reduce(0) { |sum, v| sum + v.vote }
+  end
+
+  def hide(user, state)
+    self.hidden = state
+    # We only care which user hid the content
+    unless state.to_i.zero?
+      self.hidden_user_id = user.id
+    end
+    save
   end
 
   # We manually index to solr so that we can handle any exceptions
