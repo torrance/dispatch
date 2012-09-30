@@ -67,6 +67,10 @@
     <div class="threecol last events">
       <h3>Upcoming Events</h3>
 
+      <% unless @events.any? %>
+        <p>There are no upcoming events. <br /><%= link_to "Add an event.", new_event_path %></p>
+      <% end %>
+
       <% @events.each do |event| %>
         <div class="event-details"><%= "#{event.location}, #{long_event_date(event.start)}" %></div>
         <h4><%= link_to event.title, event, :class => 'plain-link' %></h4>
