@@ -62,11 +62,6 @@ class ContentsController < ApplicationController
 
     # Load all visible comments, except for editors who see all by default.
     @comments = @content.comments.oldest
-    if current_user && (current_user.editor? || params[:show_hidden_comments])
-      @show_hidden_comments = true
-    else
-      @show_hidden_comments = false
-    end
 
     # Load vote for the current user (only applies to mods)
     v = Vote.where(:user_id => current_user, :content_id => @content.id).first

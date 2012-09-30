@@ -63,4 +63,12 @@ module ContentsHelper
   def category(content)
     content.type == 'Event' ? 'Event' : content.category
   end
+
+  def show_hidden_comments?
+    if current_user && (current_user.editor? || params[:show_hidden_comments])
+      true
+    else
+      false
+    end
+  end
 end

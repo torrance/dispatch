@@ -13,7 +13,6 @@ $(function() {
 
   textarea.keyup(function() {
     var length = textarea.val().length;
-    console.log(length);
     var remaining = 300 - length;
     if (remaining > 0) {
       text.html("" + remaining + " characters remaining");

@@ -142,7 +142,7 @@
 
 <div id="comments">
   <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment, 
-    :locals => { :show_hidden_comments => @show_hidden_comments } %>
+    :locals => { :show_hidden_comments => show_hidden_comments? } %>
 </div>
 
 <% if can? :create, @comment %>

@@ -1,1 +1,2 @@
-$('#comments').html("<%=j render 'comments/comments', :comments => @comments %>");
+$('#comments').html("<%=j render :partial => 'comments/comment', :collection => @comments, :as => :comment, 
+    :locals => { :show_hidden_comments => show_hidden_comments? } %>");
