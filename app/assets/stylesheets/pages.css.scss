@@ -1,4 +1,17 @@
 #page {
   font-size: 17px;
   line-height: 1.5em;
+
+  code {
+    font-size: 13px;
+    line-height: 1.2em;
+    background: $background-light;
+    padding: 0 1em;
+    overflow: hidden;
+    display: block;
+  }
+
+  table td {
+    background: $background-light;
+  }
 }
