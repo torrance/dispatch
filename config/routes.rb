@@ -38,7 +38,7 @@ Dispatch::Application.routes.draw do
 
   resources :users
 
-  get ':path' => 'pages#show', :as => :page
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

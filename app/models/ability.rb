@@ -9,7 +9,6 @@ class Ability
       can :manage, Article
       can :manage, Event
       can :manage, Repost
-      can :manage, Page
       can [:read, :update, :moderate, :destroy], Comment
       can :create, Comment, :content_hidden? => false, :content_locked? => false
       can [:read, :update, :moderate], User # Can't create a user (except via activeadmin)

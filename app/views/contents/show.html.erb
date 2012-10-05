@@ -7,7 +7,7 @@
 
 <div id="content" class="<%= @type %>">
   <div class="row">
-    <h1 class="twelvecol page-title"><%= @content.title %> <% if can? :update, @content %><%= link_to "(edit #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
+    <h1 class="twelvecol"><%= @content.title %> <% if can? :update, @content %><%= link_to "(edit #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
   </div>
 
   <div class="row">

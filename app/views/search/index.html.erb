@@ -2,7 +2,7 @@
 
 <div id="search" class="row">
   <div class="eightcol first">
-    <h1 class="page-title">Search<%= " for “#{params[:q]}”" if params[:q].present? %></h1>
+    <h1>Search<%= " for “#{params[:q]}”" if params[:q].present? %></h1>
 
     <% if @contents.empty? %>
       <p>No pages were found that matched your search. Have you tried being less specific in your search?</p>

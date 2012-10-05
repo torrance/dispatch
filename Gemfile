@@ -65,6 +65,8 @@ gem 'sunspot_rails'
 gem 'kaminari'
 gem 'rails_autolink'
 gem 'cancan'
+gem 'high_voltage'
+
 # Active admin and its dependencies
 gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
 gem 'meta_search', '>= 1.1'

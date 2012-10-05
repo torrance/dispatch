@@ -5,7 +5,7 @@
       <% if @primary_feature.images.any? %>
         <%= image_tag @primary_feature.images.first.image.url(:primary_feature), :class => 'border' %>
       <% end %>
-      <h1 class="page-title"><%= link_to @primary_feature.title, @primary_feature, :class => 'plain-link' %></h1>
+      <h1><%= link_to @primary_feature.title, @primary_feature, :class => 'plain-link' %></h1>
       <p class="metadata"><%= feature_date(@primary_feature.created_at) %> &nbsp;|&nbsp; <%= category(@primary_feature) %></p>
       <p class="summary"><%= @primary_feature.summary %></p>
     </div>

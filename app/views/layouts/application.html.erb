@@ -79,7 +79,17 @@
         </div>
       </div>
 
-      <%= yield %>
+      <% # We add a little more markup for static pages %>
+      <% if @pages_flag %>
+        <div id="page" class="row">
+          <div class="eightcol first">
+            <%= yield %>
+          </div>
+        </div>
+      <% elsif %>
+        <% # Otherwise just yield. We'll handle container markup in the view. %>
+        <%= yield %>
+      <% end %>
 
     </div>
 
@@ -102,10 +112,9 @@
         <div class="threecol">
           <h3>Quick Links</h3>
           <ul class="undecorated-list">
-            <li><a href="#">Indymedia FAQ</a></li>
-            <li><a href="#">Write for Indymedia</a></li>
-            <li><a href="#">Donate to Indymedia</a></li>
-            <li><a href="#">Join the editorial collective</a></li>
+            <li><%= link_to "Indymedia FAQ", page_path('faq') %></li>
+            <li><%= link_to "Write for Indymedia", page_path('write-for-indymedia') %></li>
+            <li><%= link_to "Support Indymedia", page_path('support') %></li>
             <li><a href="<%= submissions_path %>">Submission feed</a></li>
           </ul>
         </div>

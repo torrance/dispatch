@@ -98,6 +98,7 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     has_scope (0.5.1)
+    high_voltage (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
     inherited_resources (1.3.1)
@@ -230,6 +231,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   galetahub-simple_captcha!
+  high_voltage
   jquery-rails
   jquery-rails-aristo
   kaminari
