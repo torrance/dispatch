@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Repost < Content
   attr_accessible :url, :url_name, :as => [:default, :editor]
 
@@ -40,7 +42,7 @@ class Repost < Content
 
   def head_paragraph
     if body.empty?
-      summary + " [Read more.](#{url})"
+      summary + " [» Read more](#{url})"
     else
       super
     end
