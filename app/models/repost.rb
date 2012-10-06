@@ -27,4 +27,22 @@ class Repost < Content
     string :tag_list, :multiple => true
     string :type
   end
+
+  # We don't actually record the permision value. We default to false unless
+  # the body attribute already has content.
+  def repost_permission?
+    if body.nil? || body.empty?
+      false
+    else
+      true
+    end
+  end
+
+  def head_paragraph
+    if body.empty?
+      summary + " [Read more.](#{url})"
+    else
+      super
+    end
+  end
 end

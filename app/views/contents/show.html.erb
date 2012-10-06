@@ -123,8 +123,10 @@
       <% end %>
     </div>
 
-    <div class="eightcol first summary">
-      <%= content_filter @content.first_paragraph %>
+    <div class="eightcol first">
+      <div class="summary">
+        <%= content_filter @content.head_paragraph %>
+      </div>
     </div>
 
     <div class="body sevencol first">

@@ -49,11 +49,22 @@
       </div>
     </div>
 
-    <div class="row">
+    <% if @content.repost? %>
+      <div id="repost-permission" class="row">
+        <div class="eightcol first">
+          <div class="field">
+            <%= check_box_tag :repost_permission, 1, @content.repost_permission? %>
+            <%= label_tag :repost_permission, "Do you have permission to post the full text?" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div id="body" class="row">
       <div class="eightcol first">
 
         <div class="field">
-          <%= f.label :body, :class => 'required' %>
+          <%= f.label :body, :class => @content.repost? ? '' : 'required' %>
           <%= f.text_area :body, :class=> "markitup" %>
           <div id="live-preview">
             <h5>Live Preview</h5>

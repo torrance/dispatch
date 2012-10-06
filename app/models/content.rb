@@ -45,7 +45,8 @@ class Content < ActiveRecord::Base
     :reject_if => proc { |image_attributes| image_attributes[:id].blank? && image_attributes[:image].blank? }
 
   # Validations
-  validates :title, :summary, :body, :presence => true
+  validates :title, :summary, :presence => true
+  validates :body, :presence => true, :unless => :repost?
   validates :category, :tag_list, :presence => true, :unless => :event?
   validates :title, :length => { :maximum => 255 }
   validates :summary, :length => { :maximum => 305 }
@@ -120,7 +121,7 @@ class Content < ActiveRecord::Base
     errors.add(:title, "^It looks as though your title is in ALL CAPS. There's no need to scream: try using normal case.") if title == title.upcase
   end
 
-  def first_paragraph
+  def head_paragraph
     body.partition(/\r\n\r\n|\n\n|\r\r|$/)[0]
   end
 

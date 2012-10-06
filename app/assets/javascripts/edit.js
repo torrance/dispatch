@@ -185,4 +185,26 @@ $(function() {
       getHtml(text, setHtml);
     }, 400);
   });
+});
+
+/**
+ * Repost permission
+ */
+$(function() {
+  var permission = $("form.content #repost-permission input");
+  var body = $('form.content #body');
+  console.log(permission);
+
+  if (permission.length !== 0 && !permission.is(':checked')) {
+    body.hide();
+  }
+
+  permission.change(function() {
+    if (permission.is(':checked')) {
+      body.slideDown('fast');
+    }
+    else {
+      body.slideUp('fast');
+    }
+  });
 })
