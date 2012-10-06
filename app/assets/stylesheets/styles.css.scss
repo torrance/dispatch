@@ -134,6 +134,15 @@ ul.undecorated-list {
   margin: 0;
 }
 
+ul.inline {
+  margin: 0;
+}
+
+ul.inline li {
+  display: inline;
+  margin-right: 0.5em;
+}
+
 img {
   @include border-box;
 }
@@ -156,6 +165,11 @@ blockquote {
 
 table {
   width: 100%;
+
+  td {
+    vertical-align: top;
+    padding: 1em;
+  }
 }
 
 /**

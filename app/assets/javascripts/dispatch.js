@@ -53,6 +53,12 @@ $(function() {
   });
 
   /**
+   * Indymedia modal
+   */
+  $('#indymedia-network-modal').fancybox({
+  });
+
+  /**
    * 'Social' media buttons
    */
   var facebookInit = function(d, s, id) {

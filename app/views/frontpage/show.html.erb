@@ -43,15 +43,15 @@
 
   <div class="row feature-links">
     <div class="fourcol first">
-      <a class="learn" href="#"><strong>Learn how to publish</strong> <br />to Indymedia</a>
+      <%= link_to "<strong>Learn how to publish</strong> <br />to Indymedia".html_safe, page_path('write-for-indymedia'), :class => 'learn' %>
     </div>
 
     <div class="fourcol">
-      <a class="faq" href="#"><strong>Got a question?</strong> <br />Take a look at the FAQ</a>
+      <%= link_to "<strong>Got a question?</strong> <br />Take a look at the FAQ".html_safe, page_path('faq'), :class => 'faq' %>
     </div>
 
     <div class="fourcol last">
-      <a class="donate" href="#"><strong>Support Indymedia</strong> <br/>We need to raise $2,000 this year</a>
+      <%= link_to "<strong>Support Indymedia</strong> <br />We need to rainse $1,00 this year".html_safe, page_path('support'), :class => 'donate' %>
     </div>
   </div>
 
