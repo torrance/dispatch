@@ -13,5 +13,10 @@
 
   table td {
     background: $background-light;
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 }
