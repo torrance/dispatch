@@ -23,4 +23,10 @@ class Image < ActiveRecord::Base
     :sub_feature => ["235x150#", :jpg],
     :tiny => ["80x80#", :jpg]
   }
+
+  before_post_process :skip_if_invalid?
+
+  def skip_if_invalid?
+    false unless self.valid?
+  end
 end
