@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     render 'application/403', :status => 403
   end
 
-  rescue_from ActiveRecord::RecordNotFound do |e|
+  def error404
     render 'application/404', :status => 404
   end
   

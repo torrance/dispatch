@@ -40,6 +40,8 @@ Dispatch::Application.routes.draw do
 
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
+  match "/404" => 'application#error404'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
