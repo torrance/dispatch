@@ -148,15 +148,15 @@ $(function() {
   var body = $('form.content #body textarea');
 
   if (permission.length !== 0 && !permission.is(':checked')) {
-    body.attr('disabled', 'disabled');
+    body.attr('disabled', 'disabled').addClass('disabled');
   }
 
   permission.change(function() {
     if (permission.is(':checked')) {
-      body.removeAttr('disabled');
+      body.removeAttr('disabled').removeClass('disabled');
     }
     else {
-      body.attr('disabled', 'disabled');
+      body.attr('disabled', 'disabled').addClass('disabled');
     }
   });
 })
