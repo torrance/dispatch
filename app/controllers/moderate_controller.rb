@@ -8,6 +8,7 @@ class ModerateController < ApplicationController
     @vote = Vote.cast_vote(@content.id, current_user.id, params[:vote].to_i)
 
     if @vote.save
+      ModerationNotifications.vote(@vote, params[:vote].to_i).deliver
       redirect_to :back
     else
       redirect_to :back, :notice => "An error occurred moderating this content #{@content.errors.full_messages}"

@@ -1,0 +1,7 @@
+Hello editor,
+
+<%= "#{@user.display_name} has #{@action} '#{@content.title}'." %>
+
+<%= "The #{@content.type.downcase} is now a #{Content::STATES[@content.status].downcase}." %>
+
+<%= polymorphic_url @content %>

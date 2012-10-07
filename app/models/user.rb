@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options :minimum => 6, :if => :require_password?
   end
 
+  def self.editors
+    User.where(:role => 1)
+  end
+
   def self.can_reset_password?(email)
     user = self.find_by_smart_case_login_field(email)
     if user && user.active?
@@ -33,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def pretty_email_address
-    "#{display_name} <#{email}>"
+    "\"#{display_name}\" <#{email}>"
   end
 
   def editor?
