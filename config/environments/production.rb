@@ -52,7 +52,7 @@ Dispatch::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'indymedia.org.nz' }
+  config.action_mailer.default_url_options = { :host => 'flax.indymedia.org.nz' }
 
   # Enable threaded mode
   # config.threadsafe!
