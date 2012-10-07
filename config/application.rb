@@ -72,8 +72,5 @@ module Dispatch
     # Use memcache across all environments for caching
     config.cache_store = :dalli_store, 'localhost',
         { :namespace => 'dispatch', :expires_in => 1.day, :compress => true, :keep_alive => true }
-
-    # Dynamic error pages
-    config.exceptions_app = self.routes
   end
 end

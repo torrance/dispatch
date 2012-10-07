@@ -5,11 +5,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_session, :current_user, :content_path
 
-  rescue_from CanCan::AccessDenied do |e|
+  rescue_from CanCan::AccessDenied, :with => :render_403
+  rescue_from ActionController::RoutingError, :with => :render_404
+  rescue_from ActionController::UnknownAction, :with => :render_404
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+
+  def render_403
     render 'application/403', :status => 403
   end
 
-  def error404
+  def render_404
     render 'application/404', :status => 404
   end
   
