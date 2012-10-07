@@ -53,6 +53,51 @@ $(function() {
 });
 
 /**
+ * Live preview
+ */
+$(function() {
+  var textarea = $('form.content textarea.markitup');
+  var preview = $('form.content #live-preview .html');
+  var initialized = false;
+
+  var getHtml = function(text, callback) {
+    $.post('/content-filter/markdown.json', { 'text': text }, function(data) {
+      callback(data.html);
+    });
+  };
+
+  var setHtml = function(html) {
+    preview.html(html);
+  };
+
+  // Stolen from http://stackoverflow.com/questions/2219924/
+  var typewatch = (function(){
+    var timer = 0;
+    return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+    }  
+  })();
+
+  textarea.keyup(function() {
+    typewatch(function() {
+      if (!initialized) {
+        $('form.content #live-preview').slideDown('fast');
+        initialized = true;
+      }
+
+      text = textarea.val();
+      if (text == '') {
+        $('form.content #live-preview').slideUp('fast');
+        initialized = false;
+      }
+
+      getHtml(text, setHtml);
+    }, 400);
+  });
+});
+
+/**
  * Add datepicker to all input fields with 'datepicker' class.
  */
 $(function() {
