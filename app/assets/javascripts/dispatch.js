@@ -56,6 +56,8 @@ $(function() {
    * Indymedia modal
    */
   $('#indymedia-network-modal').fancybox({
+    maxWidth: 700,
+    margin: 40
   });
 
   /**
