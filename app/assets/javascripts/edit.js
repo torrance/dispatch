@@ -140,71 +140,23 @@ $(function() {
   });
 });
 
-
-/**
- * Live preview
- */
-$(function() {
-  var textarea = $('form.content textarea.markitup');
-  var preview = $('form.content #live-preview .html');
-  var initialized = false;
-
-  var getHtml = function(text, callback) {
-    $.post('/content-filter/markdown.json', { 'text': text }, function(data) {
-      callback(data.html);
-    });
-  };
-
-  var setHtml = function(html) {
-    preview.html(html);
-    preview.scrollTop(preview[0].scrollHeight);
-  };
-
-  // Stolen from http://stackoverflow.com/questions/2219924/
-  var typewatch = (function(){
-    var timer = 0;
-    return function(callback, ms){
-      clearTimeout (timer);
-      timer = setTimeout(callback, ms);
-    }  
-  })();
-
-  textarea.keyup(function() {
-    typewatch(function() {
-      if (!initialized) {
-        $('form.content #live-preview').slideDown('fast');
-        initialized = true;
-      }
-
-      text = textarea.val();
-      if (text == '') {
-        $('form.content #live-preview').slideUp('fast');
-        initialized = false;
-      }
-      
-      getHtml(text, setHtml);
-    }, 400);
-  });
-});
-
 /**
  * Repost permission
  */
 $(function() {
   var permission = $("form.content #repost-permission input");
-  var body = $('form.content #body');
-  console.log(permission);
+  var body = $('form.content #body textarea');
 
   if (permission.length !== 0 && !permission.is(':checked')) {
-    body.hide();
+    body.attr('disabled', 'disabled');
   }
 
   permission.change(function() {
     if (permission.is(':checked')) {
-      body.slideDown('fast');
+      body.removeAttr('disabled');
     }
     else {
-      body.slideUp('fast');
+      body.attr('disabled', 'disabled');
     }
   });
 })

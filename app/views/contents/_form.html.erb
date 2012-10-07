@@ -49,33 +49,34 @@
       </div>
     </div>
 
-    <% if @content.repost? %>
-      <div id="repost-permission" class="row">
-        <div class="eightcol first">
-          <div class="field">
-            <%= check_box_tag :repost_permission, 1, @content.repost_permission? %>
-            <%= label_tag :repost_permission, "Do you have permission to post the full text?" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
     <div id="body" class="row">
       <div class="eightcol first">
-
         <div class="field">
+
+          <% if @content.repost? %>
+            <div id="repost-permission">
+              <%= f.check_box :repost_permission %>
+              <%= f.label :repost_permission, "Do you have permission to post the full text?" %>
+            </div>
+          <% end %>
+
           <%= f.label :body, :class => @content.repost? ? '' : 'required' %>
           <%= f.text_area :body, :class=> "markitup" %>
+
           <div id="live-preview">
             <h5>Live Preview</h5>
             <div class="html"></div>
           </div>
+
         </div>
 
       </div>
       <div class="fourcol last">
         <div class="help">
           <p class="first-paragraph">This is your main <%= @type %> text. You can see what it will look like in the live preview below, once you start typing.</p>
+          <% if @content.repost? %>
+            <p>If you don't have permission to post the full text, that's OK. We'll just use your summary and link off to the original article.</p>
+          <% end %>
           <p class="last-paragraph">You can use Markdown formatting. See <%= link_to "Text formatting help.", page_path("text-formatting"), :target => '_blank' %></a></p>
         </div>
       </div>

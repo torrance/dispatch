@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Repost < Content
-  attr_accessible :url, :url_name, :as => [:default, :editor]
+  attr_accessible :url, :url_name, :repost_permission, :as => [:default, :editor]
 
   # Custom setters
   # Prepend url values with http:// if necessary
@@ -30,21 +30,19 @@ class Repost < Content
     string :type
   end
 
-  # We don't actually record the permision value. We default to false unless
-  # the body attribute already has content.
-  def repost_permission?
-    if body.nil? || body.empty?
-      false
+  def head_paragraph
+    if repost_permission?
+      super
     else
-      true
+      summary + " [» Read more](#{url})"
     end
   end
 
-  def head_paragraph
-    if body.empty?
-      summary + " [» Read more](#{url})"
-    else
+  def rest_of_body
+    if repost_permission?
       super
+    else
+      ""
     end
   end
 end
