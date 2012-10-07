@@ -68,6 +68,7 @@ $(function() {
   /**
    * 'Social' media buttons
    */
+  /*
   var facebookInit = function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -114,5 +115,5 @@ $(function() {
       left: e.pageX + 20,
       top: e.pageY
     });
-  });
+  });*/
 });
