@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.fancybox
-//= require jquery.placeholder_polyfill
+//= require jquery.placeholderfix
 //= require dispatch

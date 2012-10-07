@@ -5,6 +5,11 @@ $(function() {
   $('body').removeClass('no-js').addClass('has-js');
 
   /**
+   * Run placeholder polyfill
+   */
+  $(':text').placeholderFix();
+
+  /**
    * Control visibility of publish panel
    */
   var publishButton = $('#publish ul');
