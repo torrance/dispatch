@@ -22,7 +22,7 @@ class SearchController < ApplicationController
 
   protected
   def search(search_string)
-    Sunspot.search(Article, Event) do |s|
+    Sunspot.search(Article, Repost, Event) do |s|
       s.fulltext search_string
 
       # Don't search hidden content
