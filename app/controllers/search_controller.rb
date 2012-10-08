@@ -26,7 +26,7 @@ class SearchController < ApplicationController
       s.fulltext search_string
 
       # Don't search hidden content
-      s.with(:status).greater_than(0)
+      s.with(:hidden).equal_to(false)
 
       # Configure facets.
       s.facet :category

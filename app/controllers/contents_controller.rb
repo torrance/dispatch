@@ -70,12 +70,12 @@ class ContentsController < ApplicationController
     # Find related articles
     begin
       search = Sunspot.more_like_this(@content) do
-        fields :title, :summary, :body
+        fields :title, :summary, :body, :tag_list
         minimum_term_frequency 2
         minimum_word_length 4
         paginate :page => 1, :per_page => 4
         # Don't search hidden content
-        with(:status).greater_than(0)
+        with(:hidden).equal_to(false)
       end
       @related_content =  search.results
     rescue Errno::ECONNREFUSED

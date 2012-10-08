@@ -9,8 +9,11 @@ class Event < Content
     text :title, :more_like_this => true
     text :summary, :more_like_this => true
     text :body, :more_like_this => true
+    # Tags will be empty, but we're adding to avoid issue searching for related content
+    text :tag_list, :more_like_this => true
     time :created_at, :trie => true
     integer :status
+    boolean :hidden
     string :category
     string :type   
   end
