@@ -70,7 +70,7 @@ class ContentsController < ApplicationController
     # Find related articles
     begin
       search = Sunspot.more_like_this(@content) do
-        fields :title, :summary, :body, :tag_list
+        fields :title, :tag_list, :summary
         minimum_term_frequency 2
         minimum_word_length 4
         paginate :page => 1, :per_page => 4
