@@ -94,7 +94,7 @@ html, body {
 }
 
 body {
-  font: 13px/1.5em $body-fontstack;
+  font: 13px/1.6em $body-fontstack;
   color: $body-text-color;
 }
 
@@ -453,7 +453,7 @@ img.handle {
     left: 80px;
     font-size: 16px;
     line-height: 16px;
-    text-shadow: 0px -1px 0px #222;
+    text-shadow: 0px 0px 2px #222;
   }
 
   #site-name:hover {
