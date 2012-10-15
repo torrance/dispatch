@@ -46,7 +46,27 @@
 }
 
 @font-face {
-  font-family: 'Adelle SemiBold';
+  font-family: 'Adelle';
+  src: font_url('AdelleRegular.eot');
+  src: font_url('AdelleRegular.eot?') format('embedded-opentype'),
+  font_url('AdelleRegular.woff') format('woff'),
+  font_url('AdelleRegular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Adelle';
+  src: font_url('AdelleItalic.eot');
+  src: font_url('AdelleItalic.eot?') format('embedded-opentype'),
+  font_url('AdelleItalic.woff') format('woff'),
+  font_url('AdelleItalic.ttf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Adelle';
   src: font_url('AdelleSemiBold.eot');
   src: font_url('AdelleSemiBold.eot?') format('embedded-opentype'),
   font_url('AdelleSemiBold.woff') format('woff'),
@@ -56,7 +76,7 @@
 }
 
 @font-face {
-  font-family: 'Adelle SemiBold';
+  font-family: 'Adelle';
   src: font_url('AdelleSemiBoldItalic.eot');
   src: font_url('AdelleSemiBoldItalic.eot?') format('embedded-opentype'),
   font_url('AdelleSemiBoldItalic.woff') format('woff'),
@@ -74,7 +94,7 @@ html, body {
 }
 
 body {
-  font: 14px/1.5em $body-fontstack;
+  font: 13px/1.5em $body-fontstack;
   color: $body-text-color;
 }
 
@@ -433,7 +453,6 @@ img.handle {
     left: 80px;
     font-size: 16px;
     line-height: 16px;
-    font-weight: bold;
     text-shadow: 0px -1px 0px #222;
   }
 
