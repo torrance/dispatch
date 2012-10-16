@@ -30,20 +30,4 @@ class Repost < Content
     string :tag_list, :multiple => true
     string :type
   end
-
-  def head_paragraph
-    if repost_permission?
-      super
-    else
-      summary + " [» Read more](#{url})"
-    end
-  end
-
-  def rest_of_body
-    if repost_permission?
-      super
-    else
-      ""
-    end
-  end
 end

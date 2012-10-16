@@ -121,15 +121,6 @@ class Content < ActiveRecord::Base
     errors.add(:title, "^It looks as though your title is in ALL CAPS. There's no need to scream: try using normal case.") if title == title.upcase
   end
 
-  def head_paragraph
-    body.partition(/\r\n\r\n|\n\n|\r\r|$/)[0]
-  end
-
-  # The body minus the first paragraph
-  def rest_of_body
-    body.partition(/\r\n\r\n|\n\n|\r\r|$/)[2]
-  end
-
   def total_votes
     votes.reduce(0) { |sum, v| sum + v.vote }
   end

@@ -127,12 +127,12 @@
 
     <div class="eightcol first">
       <div class="summary">
-        <%= content_filter @content.head_paragraph %>
+        <%= simple_filter @content.summary %>
       </div>
     </div>
 
     <div class="body sevencol first">
-      <%= content_filter @content.rest_of_body %>
+      <%= content_filter @content.body %>
     </div>
   </div>
 </div>
