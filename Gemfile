@@ -39,6 +39,7 @@ group :development, :development_with_caching, :test do
   gem 'rspec-rails'
   # Provides an instance of apache solr for dev purposes
   gem 'sunspot_solr'
+  gem 'capistrano'
 end
 
 group :test do
@@ -68,6 +69,6 @@ gem 'cancan'
 gem 'high_voltage'
 
 # Active admin and its dependencies
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'activeadmin', '>= 0.5.0'
 gem 'meta_search', '>= 1.1'
 
