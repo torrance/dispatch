@@ -49,7 +49,7 @@ class Content < ActiveRecord::Base
   validates :body, :presence => true, :unless => :repost?
   validates :category, :tag_list, :presence => true, :unless => :event?
   validates :title, :length => { :maximum => 255 }
-  validates :summary, :length => { :maximum => 305 }
+  validates :summary, :length => { :maximum => 255 }
   validate :pseudonym,  :length => { :maximum => 40 },
     :message => "^Author name is too long (maximum length 40 characters)."
   validates :status, :inclusion => { :in => 0...(self::STATES.length) }

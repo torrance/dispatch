@@ -13,13 +13,13 @@ $(function() {
 
   textarea.keyup(function() {
     var length = textarea.val().length;
-    var remaining = 300 - length;
+    var remaining = 250 - length;
     if (remaining > 0) {
       text.html("" + remaining + " characters remaining");
     }
     else {
-      var overflow = length - 300;
-      text.html("<span class='overflow'>" + overflow + " characters too long</span> (300 character maximum)");
+      var overflow = length - 250;
+      text.html("<span class='overflow'>" + overflow + " characters too long</span> (250 character maximum)");
     }
   });
   textarea.trigger('keyup'); // Handle existing text.
