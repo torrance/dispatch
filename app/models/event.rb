@@ -18,7 +18,7 @@ class Event < Content
     string :type   
   end
 
-  scope :upcoming, where("start > ?", DateTime.now.beginning_of_day).order("start ASC")
+  scope :upcoming, lambda { where("start > ?", DateTime.now.beginning_of_day).order("start ASC") }
 
   def start_cannot_be_in_past
     if new_record? && start < DateTime.now.beginning_of_day
