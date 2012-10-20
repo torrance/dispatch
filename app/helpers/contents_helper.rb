@@ -71,4 +71,11 @@ module ContentsHelper
       false
     end
   end
+
+  def comment_count(content)
+    count = content.comment_count
+    if count > 0
+      content_tag(:span, count.to_s, :class => 'comment-count')
+    end
+  end
 end

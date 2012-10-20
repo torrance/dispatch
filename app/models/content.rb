@@ -125,6 +125,10 @@ class Content < ActiveRecord::Base
     votes.reduce(0) { |sum, v| sum + v.vote }
   end
 
+  def comment_count
+    comments.count
+  end
+
   def hide(user, state)
     self.hidden = state
     # We only care which user hid the content

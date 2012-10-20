@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :content
 
-  default_scope :include => :user, :include => :content
+  default_scope :include => :user
 
   scope :recent, order('created_at DESC')
   scope :oldest, order('created_at ASC')
