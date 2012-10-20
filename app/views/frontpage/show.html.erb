@@ -72,8 +72,8 @@
       <% end %>
 
       <% @events.each do |event| %>
-        <div class="event-details"><%= "#{event.location}, #{long_event_date(event.start)}" %></div>
         <h4><%= link_to event.title, event, :class => 'plain-link' %></h4>
+        <div class="event-details"><%= "#{event.location}, #{long_event_date(event.start)}" %></div>
       <% end %>
     </div>
   </div>
