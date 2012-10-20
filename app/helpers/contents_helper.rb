@@ -61,7 +61,7 @@ module ContentsHelper
   end
 
   def category(content)
-    content.type == 'Event' ? 'Event' : content.category
+    content.type == 'Event' ? 'Events' : content.category
   end
 
   def show_hidden_comments?
