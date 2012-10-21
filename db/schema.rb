@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007063642) do
+ActiveRecord::Schema.define(:version => 20121020235646) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -45,11 +45,6 @@ ActiveRecord::Schema.define(:version => 20121007063642) do
   add_index "contents", ["status"], :name => "index_contents_on_moderation"
   add_index "contents", ["type"], :name => "index_contents_on_type"
 
-  create_table "events", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "images", :force => true do |t|
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -59,19 +54,6 @@ ActiveRecord::Schema.define(:version => 20121007063642) do
     t.datetime "image_updated_at"
     t.integer  "content_id"
     t.integer  "weight",             :default => 0, :null => false
-  end
-
-  create_table "pages", :force => true do |t|
-    t.string   "title"
-    t.string   "path"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "reposts", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "simple_captcha_data", :force => true do |t|
