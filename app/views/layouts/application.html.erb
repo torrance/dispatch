@@ -82,7 +82,7 @@
       <% # We add a little more markup for static pages %>
       <% if @pages_flag %>
         <div id="page" class="row">
-          <div class="eightcol first">
+          <div class="tencol first">
             <%= yield %>
           </div>
         </div>
@@ -113,7 +113,7 @@
           <h3>Quick Links</h3>
           <ul class="undecorated-list">
             <li><%= link_to "Indymedia FAQ", page_path('faq') %></li>
-            <li><%= link_to "Write for Indymedia", page_path('write-for-indymedia') %></li>
+            <li><%= link_to "Publish to Indymedia", page_path('publish-to-indymedia') %></li>
             <li><%= link_to "Support Indymedia", page_path('support') %></li>
             <li><a href="http://docs.indymedia.org.nz">Documents wiki</a></li>
             <li><%= link_to "Submission feed", submissions_path %></li>
