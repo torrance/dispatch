@@ -118,7 +118,10 @@ class Content < ActiveRecord::Base
   end
 
   def all_caps
-    errors.add(:title, "^It looks as though your title is in ALL CAPS. There's no need to scream: try using normal case.") if title == title.upcase
+    # 5 is an arbitrary number, where the title is long enough for this error to be meaningful
+    if title.length > 5 and title == title.upcase 
+      errors.add(:title, "^It looks as though your title is in ALL CAPS. There's no need to scream: try using normal case.")
+    end
   end
 
   def total_votes
