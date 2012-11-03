@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020235646) do
+ActiveRecord::Schema.define(:version => 20121103053625) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20121020235646) do
     t.datetime "updated_at",                :null => false
     t.integer  "status",     :default => 1, :null => false
   end
+
+  add_index "comments", ["content_id", "status"], :name => "index_comments_on_content_id_and_status"
+  add_index "comments", ["content_id"], :name => "index_comments_on_content_id"
+  add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
+  add_index "comments", ["status"], :name => "index_comments_on_status"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "contents", :force => true do |t|
     t.string   "title",                                :null => false
@@ -42,8 +48,12 @@ ActiveRecord::Schema.define(:version => 20121020235646) do
     t.boolean  "repost_permission"
   end
 
+  add_index "contents", ["created_at"], :name => "index_contents_on_created_at"
+  add_index "contents", ["hidden"], :name => "index_contents_on_hidden"
   add_index "contents", ["status"], :name => "index_contents_on_moderation"
+  add_index "contents", ["status"], :name => "index_contents_on_status"
   add_index "contents", ["type"], :name => "index_contents_on_type"
+  add_index "contents", ["user_id"], :name => "index_contents_on_user_id"
 
   create_table "images", :force => true do |t|
     t.datetime "created_at",                        :null => false
@@ -55,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20121020235646) do
     t.integer  "content_id"
     t.integer  "weight",             :default => 0, :null => false
   end
+
+  add_index "images", ["content_id"], :name => "index_images_on_content_id"
 
   create_table "simple_captcha_data", :force => true do |t|
     t.string   "key",        :limit => 40
@@ -103,6 +115,9 @@ ActiveRecord::Schema.define(:version => 20121020235646) do
     t.integer  "role",               :default => 0,     :null => false
   end
 
+  add_index "users", ["active"], :name => "index_users_on_active"
+  add_index "users", ["email"], :name => "index_users_on_email"
+
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "content_id", :null => false
@@ -110,5 +125,7 @@ ActiveRecord::Schema.define(:version => 20121020235646) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "votes", ["content_id"], :name => "index_votes_on_content_id"
 
 end
