@@ -77,6 +77,7 @@
     font-size: 11px;
     line-height: 1.1em;
     margin-bottom: 20px;
+    min-height: 51px;
     font-family: $sans-serif-fontstack;
   }
 
@@ -357,6 +358,21 @@ form.content {
     @include border-box;
     width: 50%;
     height: 130px;
+  }
+
+  /* Creative commons license */
+  .actions {
+    .submit {
+      float: left;
+    }
+  }
+
+  .creative-commons {
+    margin: 0 0 0 3em;
+    font-size: 12px;
+    font-family: $sans-serif-fontstack;
+    line-height: 1.4em;
+    width: 80%;
   }
 }
 
