@@ -10,7 +10,7 @@ class Content < ActiveRecord::Base
     'Government & Law',
     'History',
     'Immigration & Borders',
-    'Maori & Tino Rangitiratanga',
+    'Maori & Tino Rangatiratanga',
     'Media & Reviews',
     'Opinion & Blogs',
     'People',
