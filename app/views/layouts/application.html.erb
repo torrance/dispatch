@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? "#{ yield(:title) } | Aotearoa Indymedia" : 'Aotearoa Indymedia' %></title>
+  <meta name="generator" content="Dispatch https://github.com/torrance/dispatch" />
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+  <!-- Default image for facebook -->
+  <meta property="og:image" content="<%= image_path("logo-large.png") %>" />
+</head>
+<body class="no-js">
+  <div class="container page-wrapper">
+    <div id="header">
+      <div class="row first-row">
+
+        <div class="eightcol first">
+          <a id="logo" href="/"><img src="<%= asset_path 'logo-small.png' %>" /></a>
+          <a id="site-name" href="/">Aotearoa Independent Media Centre</a>
+        </div>
+
+        <div class="twocol">
+          <%= form_tag search_path, :method => 'get', :class => 'search dark-search' do %>
+            <%= text_field_tag :q, '', :class => 'text', :placeholder => 'Search' %>
+            <%= submit_tag "Search", :class => 'submit' %>
+          <% end %>
+        </div>
+
+        <div id="publish" class="twocol last">
+          <a class="button button-large" href="#">Publish</a>
+          <ul class="undecorated-list">
+            <li>
+              <a href="<%= new_article_path %>">
+                <h5>Article</h5>
+                <p>Write a news story or upload images</p>
+              </a>
+            </li>
+            <li>
+              <a href="<%= new_repost_path %>">
+                <h5>Repost</h5>
+                <p>Repost an article or blog from another site</p>
+              </a>
+            </li>
+            <li>
+              <a href="<%= new_event_path %>">
+                <h5>Event</h5>
+                <p>Publicise an upcoming event</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="row second-row">
+
+        <div class="twocol last floatright">
+          <% if current_user %>
+            <%= link_to "Hi, #{current_user.display_name}", current_user, :class => 'plain-link' %> | <%= link_to 'Logout', logout_path, :class => 'plain-link' %>
+          <% else %>
+            <%= link_to 'Login | Register', login_path, :class => 'plain-link' %>
+          <% end %>
+        </div>
+
+        <div class="sixcol first floatright">
+          <%= link_to "What is Indymedia?", page_path('what-is-indymedia') %>
+        </div>
+
+      </div> <!-- /row -->
+    </div> <!-- /header -->
+
+    <div id="main">
+
+      <div class="row">
+        <div class="twelvecol">
+          <% if notice %>
+            <p id="notice"><%= notice %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <% # We add a little more markup for static pages %>
+      <% if @pages_flag %>
+        <div id="page" class="row">
+          <div class="tencol first">
+            <%= yield %>
+          </div>
+        </div>
+      <% elsif %>
+        <% # Otherwise just yield. We'll handle container markup in the view. %>
+        <%= yield %>
+      <% end %>
+
+    </div>
+
+    <div id="footer-push"></div>
+  </div> <!-- /page-wrapper -->
+
+  <div class="container footer-wrapper">
+    <div id="footer">
+
+      <div class="row">
+        <div class="threecol first">
+          <img src="<%= asset_path 'logo-little.png' %>" />
+          <h3>Aotearoa Independent <br />Media Centre</h3>
+          <%= form_tag search_path, :method => 'get', :class => 'search dark-search' do %>
+            <%= text_field_tag :q, '', :class => 'text', :placeholder => 'Search' %>
+            <%= submit_tag "Search", :class => 'submit' %>
+          <% end %>
+        </div>
+
+        <div class="threecol">
+          <h3>Quick Links</h3>
+          <ul class="undecorated-list">
+            <li><%= link_to "Indymedia FAQ", page_path('faq') %></li>
+            <li><%= link_to "Publish to Indymedia", page_path('publish-to-indymedia') %></li>
+            <li><%= link_to "Support Indymedia", page_path('support') %></li>
+            <li><%= link_to "Join the collective", page_path('join') %></li>
+            <li><a href="http://docs.indymedia.org.nz">Documents wiki</a></li>
+            <li><%= link_to "Submission feed", submissions_path %></li>
+          </ul>
+        </div>
+
+        <div class="threecol">
+          <h3>The Indymedia Network</h3>
+          <ul class="undecorated-list">
+            <li><a href="http://www.indymedia.org/">www.indymedia.org</a></li>
+            <li><a href="http://indymedia.org.au/">Indymedia Australia</a></li>
+            <li><a href="http://www.indymediascotland.org/">Indymedia Scotland</a></li>
+            <li><a href="http://www.indybay.org/">San Francisco Indybay</a></li>
+            <li><a id="indymedia-network-modal" href="#indymedia-network">View all+</a></li>
+          </ul>
+        </div>
+
+        <div class="threecol last">
+          <h3>Contact Us</h3>
+          <ul class="undecorated-list">
+            <li><a class="email" href="mailto:aotearoa@indymedia.org">Email</a></li>
+            <%# <li><a class="twitter" href="https://twitter.com/AotearoaIndy">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/pages/Aotearoa-Indymedia/124568360892416">Facebook</a></li> %>
+          </ul>
+          <p>Questions, feedback or anything you would like to get off your chest, feel free to contact us.</p>
+        </div>
+
+      </div> <!-- /row -->
+    </div> <!-- /footer -->
+  </div> <!-- /footer-wrapper -->
+  <!-- Indymedia network -->
+  <div id="indymedia-network">
+    <h3>The Indymedia Network</h4>
+
+    <h6>Global</h6>
+    <ul class="inline">
+      <li><a href="http://www.indymedia.org">www.indymedia.org</a></li>
+    </ul>
+
+    <h6>Oceania</h6>
+    <ul class="inline">
+      <li><a href="http://www.indymedia.org.nz/">Aotearoa</a></li>
+      <li><a href="http://brisbane.indymedia.org/">Brisbane</a></li>
+      <li><a href="http://burma.indymedia.org/">Burma</a></li>
+      <li><a href="http://darwin.indymedia.org">Darwin</a></li>
+      <li><a href="http://jakarta.indymedia.org/">Jakarta</a></li>
+      <li><a href="http://manila.indymedia.org/">Manila</a></li>
+      <li><a href="http://melbourne.indymedia.org/">Melbourne</a></li>
+      <li><a href="http://perth.indymedia.org/">Perth</a></li>
+      <li><a href="http://qc.indymedia.org">Qc</a></li>
+      <li><a href="http://sydney.indymedia.org/">Sydney</a></li>
+    </ul>
+
+    <h6>Latin America</h6>
+    <ul class="inline">
+      <li><a href="http://argentina.indymedia.org/">argentina</a></li>
+      <li><a href="http://bolivia.indymedia.org/">bolivia</a></li>
+      <li><a href="http://www.midiaindependente.org">brasil</a></li>
+      <li><a href="http://chiapas.indymedia.org/">chiapas</a></li>
+      <li><a href="http://chile.indymedia.org">chile</a></li>
+      <li><a href="http://chilesur.indymedia.org">chile sur</a></li>
+      <li><a href="http://colombia.indymedia.org/">colombia</a></li>
+      <li><a href="http://ecuador.indymedia.org/">ecuador</a></li>
+      <li><a href="http://mexico.indymedia.org/">mexico</a></li>
+      <li><a href="http://peru.indymedia.org">peru</a></li>
+      <li><a href="http://indymediapr.org">puerto rico</a></li>
+      <li><a href="http://qollasuyu.indymedia.org/">qollasuyu</a></li>
+      <li><a href="http://rosario.indymedia.org/">rosario</a></li>
+      <li><a href="http://santiago.indymedia.org">santiago</a></li>
+      <li><a href="http://tijuana.indymedia.org/">tijuana</a></li>
+      <li><a href="http://uruguay.indymedia.org/">uruguay</a></li>
+      <li><a href="http://valparaiso.indymedia.org">valparaiso</a></li>
+      <li><a href="http://venezuela.indymedia.org/">venezuela</a></li>
+    </ul>
+
+    <h6>Europe</h6>
+    <ul class="inline">
+      <li><a href="http://abruzzo.indymedia.org">abruzzo</a></li>
+      <li><a href="http://alacant.indymedia.org/">alacant</a></li>
+      <li><a href="http://andorra.indymedia.org">andorra</a></li>
+      <li><a href="http://antwerpen.indymedia.org">antwerpen</a></li>
+      <li><a href="http://armenia.indymedia.org/">armenia</a></li>
+      <li><a href="http://athens.indymedia.org/">athens</a></li>
+      <li><a href="http://austria.indymedia.org/">austria</a></li>
+      <li><a href="http://barcelona.indymedia.org/">barcelona</a></li>
+      <li><a href="http://belarus.indymedia.org/">belarus</a></li>
+      <li><a href="http://belgrade.indymedia.org">belgrade</a></li>
+      <li><a href="http://bristol.indymedia.org/">bristol</a></li>
+      <li><a href="http://bulgaria.indymedia.org">bulgaria</a></li>
+      <li><a href="http://calabria.indymedia.org">calabria</a></li>
+      <li><a href="http://croatia.indymedia.org">croatia</a></li>
+      <li><a href="http://cyprus.indymedia.org">cyprus</a></li>
+      <li><a href="http://emiliaromagna.indymedia.org/">emilia-romagna</a></li>
+      <li><a href="http://estrecho.indymedia.org">estrecho / madiaq</a></li>
+      <li><a href="http://euskalherria.indymedia.org/">euskal herria</a></li>
+      <li><a href="http://galiza.indymedia.org">galiza</a></li>
+      <li><a href="http://de.indymedia.org/">germany</a></li>
+      <li><a href="http://grenoble.indymedia.org">grenoble</a></li>
+      <li><a href="http://hungary.indymedia.org">hungary</a></li>
+      <li><a href="http://www.indymedia.be/">indymedia.be</a></li>
+      <li><a href="http://www.indymedia.ie/">ireland</a></li>
+      <li><a href="http://istanbul.indymedia.org/">istanbul</a></li>
+      <li><a href="http://italy.indymedia.org/">italy</a></li>
+      <li><a href="http://laplana.indymedia.org">la plana</a></li>
+      <li><a href="http://liege.indymedia.org">liege</a></li>
+      <li><a href="http://lille.indymedia.org">lille</a></li>
+      <li><a href="http://lombardia.indymedia.org/">lombardia</a></li>
+      <li><a href="http://madrid.indymedia.org/">madrid</a></li>
+      <li><a href="http://malta.indymedia.org">malta</a></li>
+      <li><a href="http://marseille.indymedia.org">marseille</a></li>
+      <li><a href="http://nantes.indymedia.org">nantes</a></li>
+      <li><a href="http://napoli.indymedia.org">napoli</a></li>
+      <li><a href="http://indymedia.nl">netherlands</a></li>
+      <li><a href="http://nice.indymedia.org">nice</a></li>
+      <li><a href="http://www.indymedia.no/">norway</a></li>
+      <li><a href="http://ovl.indymedia.org">oost-vlaanderen</a></li>
+      <li><a href="http://paris.indymedia.org/">paris/île-de-france</a></li>
+      <li><a href="http://patras.indymedia.org/">patras</a></li>
+      <li><a href="http://piemonte.indymedia.org">piemonte</a></li>
+      <li><a href="http://poland.indymedia.org">poland</a></li>
+      <li><a href="http://pt.indymedia.org/">portugal</a></li>
+      <li><a href="http://roma.indymedia.org">roma</a></li>
+      <li><a href="http://romania.indymedia.org">romania</a></li>
+      <li><a href="http://russia.indymedia.org/">russia</a></li>
+      <li><a href="http://piter.indymedia.ru">saint-petersburg</a></li>
+      <li><a href="http://scotland.indymedia.org">scotland</a></li>
+      <li><a href="http://sweden.indymedia.org/">sverige</a></li>
+      <li><a href="http://switzerland.indymedia.org/">switzerland</a></li>
+      <li><a href="http://thessaloniki.indymedia.org/">thessaloniki</a></li>
+      <li><a href="http://torun.indymedia.org/">torun</a></li>
+      <li><a href="http://toscana.indymedia.org/">toscana</a></li>
+      <li><a href="http://193.189.147.16/cmitlse/">toulouse</a></li>
+      <li><a href="http://ukraine.indymedia.org/">ukraine</a></li>
+      <li><a href="http://www.indymedia.org.uk/">united kingdom</a></li>
+      <li><a href="http://valencia.indymedia.org">valencia</a></li>
+    </ul>
+
+    <h6>Africa</h6>
+    <ul class="inline">
+      <li><a href="http://ambazonia.indymedia.org/">ambazonia</a></li>
+      <li><a href="http://canarias.indymedia.org">canarias</a></li>
+      <li><a href="http://estrecho.indymedia.org">estrecho / madiaq</a></li>
+      <li><a href="http://kenya.indymedia.org/">kenya</a></li>
+      <li><a href="http://nigeria.indymedia.org/">nigeria</a></li>
+      <li><a href="http://southafrica.indymedia.org/">south africa</a></li>
+    </ul>
+
+    <h6>Canada</h6>
+    <ul class="inline">
+      <li><a href="http://hamilton.indymedia.org/">hamilton</a></li>
+      <li><a href="http://londonontario.indymedia.org">london, ontario</a></li>
+      <li><a href="http://maritimes.indymedia.org/">maritimes</a></li>
+      <li><a href="http://montreal.indymedia.org/">montreal</a></li>
+      <li><a href="http://ontario.indymedia.org/">ontario</a></li>
+      <li><a href="http://ottawa.indymedia.ca">ottawa</a></li>
+      <li><a href="http://quebec.indymedia.org/">quebec</a></li>
+      <li><a href="http://thunderbay.indymedia.org/">thunder bay</a></li>
+      <li><a href="http://bc.indymedia.org/">vancouver</a></li>
+      <li><a href="http://victoria.indymedia.org/">victoria</a></li>
+      <li><a href="http://windsor.indymedia.org/">windsor</a></li>
+      <li><a href="http://winnipeg.indymedia.org">winnipeg</a></li>
+    </ul>
+
+    <h6>United States</h6>
+    <ul class="inline">
+      <li><a href="http://arizona.indymedia.org/">arizona</a></li>
+      <li><a href="http://arkansas.indymedia.org/">arkansas</a></li>
+      <li><a href="http://asheville.indymedia.org/">asheville</a></li>
+      <li><a href="http://atlanta.indymedia.org/">atlanta</a></li>
+      <li><a href="http://austin.indymedia.org/">austin</a></li>
+      <li><a href="http://baltimore.indymedia.org/">baltimore</a></li>
+      <li><a href="http://bigmuddyimc.org/">big muddy</a></li>
+      <li><a href="http://binghamton.indymedia.org">binghamton</a></li>
+      <li><a href="http://boston.indymedia.org/">boston</a></li>
+      <li><a href="http://buffalo.indymedia.org/">buffalo</a></li>
+      <li><a href="http://cvilleindymedia.org/">charlottesville</a></li>
+      <li><a href="http://chicago.indymedia.org/">chicago</a></li>
+      <li><a href="http://cleveland.indymedia.org/">cleveland</a></li>
+      <li><a href="http://colorado.indymedia.org/">colorado</a></li>
+      <li><a href="http://columbus.indymedia.org">columbus</a></li>
+      <li><a href="http://dc.indymedia.org/">dc</a></li>
+      <li><a href="http://hawaii.indymedia.org/">hawaii</a></li>
+      <li><a href="http://houston.indymedia.org">houston</a></li>
+      <li><a href="http://www.hm.indymedia.org/">hudson mohawk</a></li>
+      <li><a href="http://kcindymedia.org/">kansas city</a></li>
+      <li><a href="http://la.indymedia.org/">la</a></li>
+      <li><a href="http://madison.indymedia.org/">madison</a></li>
+      <li><a href="http://maine.indymedia.org/">maine</a></li>
+      <li><a href="http://miami.indymedia.org/">miami</a></li>
+      <li><a href="http://www.michiganimc.org/">michigan</a></li>
+      <li><a href="http://milwaukee.indymedia.org/">milwaukee</a></li>
+      <li><a href="http://twincities.indymedia.org/">minneapolis/st. paul</a></li>
+      <li><a href="http://nh.indymedia.org">new hampshire</a></li>
+      <li><a href="http://newjersey.indymedia.org/">new jersey</a></li>
+      <li><a href="http://newmexico.indymedia.org/">new mexico</a></li>
+      <li><a href="http://neworleans.indymedia.org/">new orleans</a></li>
+      <li><a href="http://chapelhill.indymedia.org/">north carolina</a></li>
+      <li><a href="http://www.ntimc.org/">north texas</a></li>
+      <li><a href="http://nyc.indymedia.org/">nyc</a></li>
+      <li><a href="http://www.okimc.org">oklahoma</a></li>
+      <li><a href="http://www.phillyimc.org/">philadelphia</a></li>
+      <li><a href="http://pittsburgh.indymedia.org">pittsburgh</a></li>
+      <li><a href="http://portland.indymedia.org/">portland</a></li>
+      <li><a href="http://richmond.indymedia.org/">richmond</a></li>
+      <li><a href="http://rochester.indymedia.org/">rochester</a></li>
+      <li><a href="http://rogueimc.org/">rogue valley</a></li>
+      <li><a href="http://reboot.stlimc.org">saint louis</a></li>
+      <li><a href="http://sandiego.indymedia.org/">san diego</a></li>
+      <li><a href="http://sf.indymedia.org/">san francisco</a></li>
+      <li><a href="http://www.indybay.org/">san francisco bay area</a></li>
+      <li><a href="http://sbindymedia.org/">santa barbara</a></li>
+      <li><a href="http://www.indybay.org/santacruz/">santa cruz, ca</a></li>
+      <li><a href="http://sarasota.indymedia.org">sarasota</a></li>
+      <li><a href="http://seattle.indymedia.org/">seattle</a></li>
+      <li><a href="http://tampabay.indymedia.org">tampa bay</a></li>
+      <li><a href="http://tnimc.org/">tennessee</a></li>
+      <li><a href="http://indymedia.us/">united states</a></li>
+      <li><a href="http://www.ucimc.org/">urbana-champaign</a></li>
+      <li><a href="http://vermont.indymedia.org/">vermont</a></li>
+      <li><a href="http://wmass.indymedia.org/">western mass</a></li>
+      <li><a href="http://worcester.indymedia.org">worcester</a></li>
+    </ul>
+
+    <h6>East Asia</h6>
+    <ul class="inline">
+      <li><a href="http://burma.indymedia.org/">burma</a></li>
+      <li><a href="http://jakarta.indymedia.org/">jakarta</a></li>
+      <li><a href="http://japan.indymedia.org/">japan</a></li>
+      <li><a href="http://manila.indymedia.org/">manila</a></li>
+      <li><a href="http://qc.indymedia.org">qc</a></li>
+    </ul>
+
+    <h6>South Asia</h6>
+    <ul class="inline">
+      <li><a href="http://india.indymedia.org/">india</a></li>
+      <li><a href="http://mumbai.indymedia.org/">mumbai</a></li>
+    </ul>
+
+    <h6>West Asia</h6>
+    <ul class="inline">
+      <li><a href="http://armenia.indymedia.org/">armenia</a></li>
+      <li><a href="http://beirut.indymedia.org">beirut</a></li>
+      <li><a href="http://israel.indymedia.org/">israel</a></li>
+      <li><a href="http://www.indymedia.org/en/static/palestine">palestine</a></li>
+    </ul>
+
+  </div>
+
+  <!-- Piwik -->
+  <script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://<%= Rails.application.config.piwik[:url] %>/" : "http://<%= Rails.application.config.piwik[:url] %>/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try {
+      var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <%= Rails.application.config.piwik[:id] %>);
+      piwikTracker.trackPageView();
+      piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+  </script>
+  <noscript><p><img src="http://<%= Rails.application.config.piwik[:url] %>/piwik.php?idsite=<%= Rails.application.config.piwik[:id] %>" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Tracking Code -->
+</body>
+</html>

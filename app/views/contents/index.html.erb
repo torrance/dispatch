@@ -1,0 +1,13 @@
+<div id="submissions" class="row">
+  <div class="twelvecol">
+    <h1>Submissions feed</h1>
+  </div>
+
+  <div class="eightcol first">
+    <p class="submissions">All submissions are listed here. This includes content that has been marked as unrelated to Aoteaora Indymedia or otherwise in breach of our editorial policy. Hidden content will not be indexed in search engines.</p>
+
+    <%= render "contents/contents", :contents => @contents %>
+
+    <%= paginate @contents %>
+  </div>
+</div>

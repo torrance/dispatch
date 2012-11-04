@@ -1,0 +1,48 @@
+#page {
+  font-size: 16px;
+  line-height: 1.6em;
+
+  h1 {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 0.3em;
+  }
+
+  code {
+    font-size: 13px;
+    line-height: 1.2em;
+    background: $background-light;
+    padding: 0 1em;
+    overflow: hidden;
+    display: block;
+  }
+
+  table td {
+    background: $background-light;
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  ol.big-numbers {
+    font-size: 35px;
+    line-height: 35px;
+    color: #ddd;
+    margin-left: 1em;
+
+    li {
+      margin: 1em 0;
+    }
+
+    p {
+      color: $body-text-color;
+      font-size: 16px;
+      line-height: 1.6em;
+    }
+  }
+
+  img {
+    border: 1px solid #ccc;
+  }
+}

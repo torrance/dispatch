@@ -1,0 +1,180 @@
+<%= content_for(:title) { @content.title } %>
+<%# Specify metadata for facebook %>
+<% if @content.images.any? %>
+  <%= content_for(:head) { "<meta property=\"og:image\" content=\"#{ActionController::Base.asset_host + @content.images.first.image.url}\" />".html_safe } %>
+<% end %>
+<%= content_for(:head) { "<meta property=\"og:description\" content=\"#{@content.summary}\" />".html_safe } %>
+
+<div id="content" class="<%= @type %>">
+  <div class="row">
+    <h1 class="twelvecol"><%= @content.title %> <% if can? :update, @content %><%= link_to "(edit #{@type})", [:edit, @content], :class => 'edit-own-content' %><% end %></h1>
+  </div>
+
+  <div class="row">
+    <div class="fourcol floatright last sidebar">
+      <% if @content.hidden? %>
+        <div class="sidebar-block">
+          <p class="error first-paragraph last-paragraph">This item has been hidden.</p>
+        </div>
+      <% elsif @content.author?(current_user) && @content.locked? %>
+        <div class="sidebar-block">
+          <p class="error first-paragraph last-paragraph">Your <%= @type %> is now locked for editing.</p>
+        </div>
+      <% end %>
+
+      <% if current_user && current_user.editor? %>
+        <div class="editor-tools sidebar-block">
+          <h3>Editor tools</h3>
+
+          <p>Moderation state: <strong><%= @content.status_name %></strong></p>
+
+          <% if @content.votes.any? %>
+            <ul>
+              <% @content.votes.each do |vote| %>
+                <li><%= sprintf("%s (%+d)", (vote.user_id ? link_to(vote.user.display_name, vote.user) : "Nobody"), vote.vote).html_safe %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+          <ul class="no-indentation">
+            <% if @content.status < 2 && @vote < 1 %>
+              <li><%= link_to "Vote up", vote_content_path(@content, 1), :method => :post %></li>
+            <% end %>
+            <% if @content.status > 0 && @vote > -1 %>
+              <li><%= link_to "Vote down", vote_content_path(@content, -1), :method => :post %></li>
+            <% end %>
+            <% if @content.hidden? %>
+              <li><%= link_to "Unhide #{@type}", hide_content_path(@content, 0), :method => :put %></li>
+            <% else %>
+              <li><%= link_to "Hide #{@type}", hide_content_path(@content, 1), :method => :put %></li>
+            <% end %>
+            <li><%= link_to "Edit #{@type}", [:edit, @content] %></li>
+            <li><%= link_to "Delete #{@type}", @content, :method => :delete, :data => { :confirm => "Are you sure you want to delete this #{@type}?" } %></li>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if @content.event? %>
+        <div class="event-details sidebar-block">
+          <p class="first-paragraph"><%= long_event_date(@content.start) %></p>
+          <p class="last-paragraph"><%= @content.location %></p>
+        </div>
+      <% end %>
+
+      <% if @content.article? %>
+        <div class="attribution sidebar-block">
+          <p class="first-paragraph">by <%= link_to_author @content %> </p>
+          <p class="last-paragraph"><%= long_content_date @content.created_at %></p>
+        </div>
+      <% end %>
+
+      <% if @content.repost? %>
+        <div class="attribution sidebar-block">
+          <p class="first-paragraph"><%= link_to @content.url_name, @content.url, :class => "repost" %></p>
+          <p class="last-paragraph"><%= long_content_date @content.created_at %></p>
+        </div>
+      <% end %>
+
+      <% if @content.article? || @content.repost? %>
+        <div class="metadata sidebar-block">
+          <h3><%= @content.category %></h3>
+          <p class="tags last-paragraph"><%= @content.tag_list %></p>
+        </div>
+      <% end %>
+
+      <% if @content.event? || @content.repost? %>
+        <div class="sidebar-block">
+          <p class="first-paragraph last-paragraph">Posted by <%= link_to_author @content %></p>
+        </div>
+      <% end %>
+
+      <% if @content.images.length > 1 %>
+        <div class="image-gallery sidebar-block">
+          <div class="float-overflow">
+            <% @content.images.each_with_index do |image, i| %>
+              <% if i < 2 %>
+                <%= link_to image_tag(image.image.url :gallery_thumbnail), image.image.url(:gallery_full), :class => "image #{cycle('odd', 'even')}", :rel => "gallery" %>
+              <% else %>
+                <%= link_to image.image.url, image.image.url(:gallery_full), :class => 'image', :style => 'display: none;', :rel => "gallery" %>
+              <% end %>
+            <% end %>
+          </div>
+          <%= link_to "Show all #{@content.images.length} images", "#", :id => "show-all-images" %>
+        </div>
+      <% end %>
+
+      <p class="creative-commons">
+        This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+      </p>
+
+      <% if false %>
+      <div class="social-media-buttons">
+        <%= image_tag "socialmediaicons.png", :class => 'social-media-buttons' %>
+        <p id="social-media-tooltip"><strong>Click to enable</strong><br />
+        Why? Facebook, Twitter and Google track people via their social media buttons which is against Indymedia policy.</p>
+        <div class="fb-like" data-href="<%= current_url %>" data-send="false" data-layout="box_count" data-width="47" data-show-faces="false"></div>
+        <g:plusone href="<%= current_url %>" size="tall"></g:plusone>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= current_url %>" data-count="vertical"></a>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="eightcol first">
+      <% if image = @content.images.first %>
+        <%= image_tag image.image.url(:article), :class => 'border', :id => 'image-feature' %>
+      <% end %>
+    </div>
+
+    <div class="eightcol first">
+      <div class="summary">
+        <%= simple_filter @content.summary %>
+      </div>
+    </div>
+
+    <div class="body sevencol first">
+      <%= content_filter @content.body %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="sevencol first">
+    <h3 class="comment">Comments</h3>
+    <div><%= comment_text(@comments, @content, @show_hidden_comments) %></div>
+  </div>
+</div>
+
+<div id="comments">
+  <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment, 
+    :locals => { :show_hidden_comments => show_hidden_comments? } %>
+</div>
+
+<% if can? :create, @comment %>
+  <div class="row">
+    <div class="sevencol first">
+      <%= render 'comments/form', :comment => @comment, :content => @content %>
+    </div>
+  </div>
+<% end %>
+
+<% if @related_content.any? %>
+  <div id="related-content">
+
+    <div class="row">
+      <h3>Related Content</h3>
+    </div>
+
+    <div class="row">
+    <% @related_content.each do |related_content| %>
+      <div class="threecol <%= cycle "first", "second", "third", "last" %>">
+        <p class="meta"><%= short_content_date related_content.created_at %></p>
+        <% if related_content.images.any? %>
+          <%= image_tag related_content.images.first.image.url(:sub_feature) %>
+        <% end %>
+        <h4><%= link_to related_content.title, content_path(related_content), :class => 'plain-link' %></h4>
+        <p class="summary"><%= related_content.summary %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% end %>

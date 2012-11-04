@@ -1,0 +1,98 @@
+<div id="login-register" class="row">
+
+  <div class="sixcol first">
+    <h2>Login</h2>
+
+    <%= form_for @user_session, :url => login_path do |f| %>
+      <% if @user_session.errors.any? %>
+        <div id="error_explanation">
+          <h3>We weren't able to log you in</h3>
+
+          <ul>
+          <% @user_session.errors.full_messages.each do |msg| %>
+            <li><%= msg.html_safe %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <strong>Already had an account before the site upgrade?</strong> No problem. Your account and password are unchanged. Simply login with the email address you used to register your account.
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => 'text' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class => 'text' %>
+      </div>
+
+      <div class="field">
+        <%= f.check_box :remember_me %> <%= f.label :remember_me, :class => 'inline' %><br />
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Login", :class => 'submit' %> <%= link_to 'Forgot password?', reset_password_path %>
+      </div>
+    <% end %>
+
+  </div> <!-- /sixcol -->
+
+  <div class="sixcol last">
+
+    <h2>Register</h2>
+
+    <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h3>Oops, we couldn't create your account</h3>
+
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => 'text' %>
+        <p class="description">
+          Your email address is used to log in. It will never be made public.
+        </p>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %> 
+        <%= f.password_field :password, :class => 'text' %>
+        <p class="description">
+          Minimum 6 characters.
+        </p>
+      </div>
+
+      <div class="field">
+        <%= f.label :display_name %>
+        <%= f.text_field :display_name, :class => 'text' %>
+        <p class="description">
+          Your display name is your unique public facing name and can be changed at any time.
+        </p>
+      </div>
+
+      <div class="field">
+        <%= show_simple_captcha %>
+        <p class="description">
+          To protect against spam, please copy the letters you see into the text field (case insensitive).
+        </p>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Register", :class => 'submit' %>
+      </div>
+    <% end %>
+
+  </div> <!-- /sixcol -->
+</div> <!-- /row -->

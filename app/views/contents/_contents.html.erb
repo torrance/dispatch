@@ -1,0 +1,14 @@
+<% contents.each do |content| %>
+  <div class="content-listing">
+    <div class="meta">
+      <%= short_content_date(content.created_at) %><br />
+      <strong><%= category(content) %></strong>
+    </div>
+
+    <div class="content <%= "with-image" if content.images.any? %>">
+      <%= image_tag content.images.first.image.url(:feature_square), :class => 'border' if content.images.any? %>
+      <h2><%= link_to content.title, content_path(content), :class => 'plain-link' %> <%= comment_count content %></h2>
+      <p class="summary"><%= content.summary %>
+    </div>
+  </div>
+<% end %>

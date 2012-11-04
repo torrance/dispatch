@@ -1,0 +1,51 @@
+form.comment {
+  .actions p {
+    float: right;
+    margin: -0.3em 20px 0 0;
+    text-align: right;
+    line-height: 1.2em;
+  }
+
+  .actions input.submit {
+    float: right;
+    margin: 0;
+  }
+}
+
+h3.comment {
+  background: $background-light image_url("comments.png") no-repeat 9px 7px;
+  padding: 3px;
+  padding-left: 35px;
+  margin-top: 40px;
+  line-height: 1.5em;
+}
+
+div.comment {
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  p {
+    margin-top: 0;
+  }
+
+  .comment-metadata {
+    background: $background-light image_url("speechmark.png") repeat-x right bottom;
+    padding: 5px 10px 17px;
+    text-align: right;
+    line-height: 1.3em;
+
+    .author a {
+      color: $body-text-color;
+    }
+
+    .date, .editor-tools {
+      font-size: 12px;
+    }
+  }
+}
+
+div.hidden-comment {
+  .comment-metadata {
+    background: #fadede image_url("speechmark-hidden.png") repeat-x right bottom;
+  }
+}

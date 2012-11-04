@@ -1,0 +1,22 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  datetime:
+    distance_in_words:
+      less_than_x_minutes: "Just now"
+      x_minutes:
+        one: "%{count} minute ago"
+        other: "%{count} minutes ago"
+      about_x_minutes:
+        one: "About %{count} minute ago"
+        other: "About %{count} minutes ago"
+      about_x_hours:
+        one: "About %{count} hour ago"
+        other: "About %{count} hours ago"
+      x_days:
+        one: "%{count} day ago"
+        other: "%{count} days ago"
+      about_x_days: 
+        one: "About %{count} day ago"
+        other: "About %{count} days ago"

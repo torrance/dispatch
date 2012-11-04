@@ -1,0 +1,14 @@
+<% newswire.each do |newswire| %>
+  <div class="date"><%= short_newswire_date(newswire.created_at) %></div>
+  <div class="newswire-item">
+    <div class="<%= newswire.feature? ? "expanded" : "collapsed" %>">
+      <% if newswire.images.any? %>
+        <%= image_tag newswire.images.first.image.url(:gallery_thumbnail), :class => 'border' %>
+      <% end %>
+      <h4><%= link_to newswire.title, content_path(newswire), :class => 'plain-link' %> <%= comment_count newswire %></h4>
+      <p class="summary"><%= newswire.summary %></p>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to_next_page @newswire, '<span>Show more</span>'.html_safe, :id => 'pager',  :remote => true, :params => { :anchor => 'newswire' } %>

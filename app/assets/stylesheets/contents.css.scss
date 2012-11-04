@@ -1,0 +1,383 @@
+#content {
+  margin-top: -10px;
+
+  h1 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px dashed #ccc;
+  }
+
+  .edit-own-content {
+    font-size: 14px;
+  }
+
+  #image-feature {
+    margin-bottom: 14px;
+  }
+
+  .sidebar {
+    p.error {
+      background: image_url('error-small.png') no-repeat 0 4px;
+      padding-left: 25px;
+    }
+
+    .sidebar-block {
+      padding: 15px;
+      background: $background-light;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .attribution {
+    .first-paragraph {
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    .last-paragraph {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .repost {
+      background: image_url('link.png') no-repeat 0 4px;
+      padding-left: 20px;
+    }
+  }
+
+  .metadata {
+    p {
+      background: image_url("tags.png") no-repeat 0 2px;
+      padding-left: 18px;
+      margin-top: 0.5em;
+    }
+  }
+
+  .event-details {
+    p {
+      font-size: 18px;
+      padding-left: 25px;
+    }
+
+    p.first-paragraph {
+      background: image_url("clock.png") no-repeat 0 3px;
+    }
+
+    p.last-paragraph {
+      background: image_url("location.png") no-repeat 0 3px;
+    }
+  }
+
+  .creative-commons {
+    background: image_url('creative-commons.png') no-repeat 0 3px;
+    padding-left: 100px;
+    font-size: 11px;
+    line-height: 1.1em;
+    margin-bottom: 20px;
+    min-height: 51px;
+    font-family: $sans-serif-fontstack;
+  }
+
+  .creative-commons:hover {
+    opacity: 1;
+  }
+
+  .image-gallery {
+    a.image {
+      margin-bottom: 10px;
+      float:left;
+      width: 47%;
+    }
+
+    img {
+      width: 100%;  
+    }
+
+    a.odd {
+      margin-right: 10px;
+    }
+  }
+
+  div.social-media-buttons {
+    height: 75px;
+    overflow: hidden;
+
+    .fb_iframe_widget, #___plusone_0, iframe.twitter-share-button {
+      float: left;
+      margin-right: 20px;
+      height: 61px;
+      overflow: hidden;
+    }
+
+    .fb_iframe_widget  {
+      margin-right: 13px;
+    }
+
+    #social-media-tooltip {
+      display: none;
+      width: 150px;
+      padding: 10px;
+      background: $background-light;
+      position: absolute;
+      @include box-shadow(0, 0, 5px, 0px, #ddd)
+    }
+  }
+
+  #show-all-images {
+    display: block;
+    margin: -8px 0 -5px;
+    text-indent: 25px;
+    background: image_url("image.png") no-repeat 0 2px;
+  }
+
+  .summary {
+    font-size: 19px;
+    line-height: 1.6em;
+    border-left: 5px solid $link-color;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 0;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .body {
+    font-size: 15px;
+    line-height: 1.6em;
+  }
+
+  .body > p:last-child:after {
+    content: image_url("square.png");
+  }
+}
+
+#content.event {
+  h1 {
+    background: image_url("calendar-event.png") no-repeat 0 8px;
+    padding-left: 75px;
+  }
+}
+
+#related-content {
+  margin-top: 3em;
+  
+  h3 {
+    background: image_url("related.png") no-repeat 0px 6px;
+    padding-left: 30px;
+    line-height: 1.5em;
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 0;
+  }
+
+  .meta {
+    background: $background-light;
+    padding: 1px 5px;
+    font-size: 13px;
+    border-top: 4px solid $link-color;
+    margin-bottom: 10px;
+    color: $body-text-light;
+    font-family: $sans-serif-fontstack;
+  }
+
+  img {
+   margin: 0 0 5px;
+  }
+
+  p {
+    margin: 0.4em 0;
+  }
+}
+
+/* eg. on the user page and the search page */
+.content-listing {
+  overflow: hidden;
+  margin-bottom: 2em;
+
+  .meta {
+    background: $background-light;
+    font-family: $sans-serif-fontstack;
+    border-left: 2px solid $link-color;
+    text-align: right;
+    padding: 4px;
+    width: 20.56%; /* two col width within an eight col column */
+    float: left;
+    @include border-box;
+    font-size: 13px;
+    line-height: 1.4em;
+  }
+
+  .content {
+    margin-left: 20.56% + 5.8%; /* two col plus gutter width in an eight col column */
+
+    img {
+      width: 20%;
+      float: left;
+    }
+
+    h2 {
+      margin-top: 0;
+      line-height: 1;
+      font-size: 16px;
+    }
+
+    .summary {
+      margin: 0.2em 0;
+    }
+  }
+
+  .with-image {
+    h2, .summary {
+      margin-left: 23%;
+    }
+  }
+}
+
+.has-js form.content .summary-field p.description {
+  display: block;
+}
+
+form.content {
+  .summary-field p.description {
+    text-align: right;
+    display: none; /* Hide if js if not enabled */
+  }
+
+  .overflow {
+    color: red;
+    font-weight: bold;
+  }
+
+  div.file {
+    padding: 1em 0;
+    border-bottom: 1px dashed $link-color;
+  }
+
+  div.file input.text {
+    width: auto;
+  }
+
+  div.file img {
+    vertical-align: middle;
+    margin-right: 2em;
+  }
+
+  .add-field {
+    background: image_url("plus.png") no-repeat 0 2px;
+    padding-left: 16px;
+  }
+
+  /* Repost permission */
+  #repost-permission {
+    float: right;
+
+    label {
+      font-size: 13px;
+      display: inline;
+      margin-left: 0.5em;
+    }
+
+    input {
+      display: inline;
+    }
+  }
+
+  /* Live preview */
+  #live-preview {
+    display: none;
+  }
+
+  #live-preview h5 {
+    background: image_url("eye.png") no-repeat 0 5px;
+    padding-left: 23px;
+  }
+
+  #live-preview .html {
+    padding: 8px;
+    background: #fff;
+    border: 1px #BBB solid;
+    max-height: 250px;
+    overflow-y: scroll;
+  }
+
+  /* Repost fields */
+  .url {
+    float: left;
+    width: 60%;
+    @include border-box;
+  }
+
+  .url-name {
+    float: left;
+    width: 40%;
+    @include border-box;
+  }
+
+  /* Tag and category fields */
+  .categorize .category {
+    float: left;
+    width: 40%;
+    @include border-box;
+    height: 150px;
+  }
+
+  .category select {
+    width: 100%;
+  }
+
+  .categorize .tags {
+    float: left;
+    width: 60%;
+    @include border-box;
+    height: 150px;
+  }
+
+  /* Event date fields */
+  .datepicker {
+    display: none;
+  }
+
+  .ui-datepicker-trigger {
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .datetime, .location {
+    float: left;
+    @include border-box;
+    width: 50%;
+    height: 130px;
+  }
+}
+
+#submissions {
+  p.submissions {
+    margin-bottom: 3em;
+  }
+}
+
+.comment-count {
+  background: image-url('comment-count.png') no-repeat;
+  height: 15px;
+  width: 17px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 11px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: -2px;
+  margin: 0 0 0 5px;
+}

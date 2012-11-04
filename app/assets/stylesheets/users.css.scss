@@ -1,0 +1,66 @@
+#login-register, #reset-password {
+  form {
+    background: $background-light;
+    @include border-box;
+    padding: 1px 15px;
+  }
+
+  input.text {
+    max-width: 320px;
+  }
+
+  h1, h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+}
+
+#user {
+  .fourcol {
+    border-left: 1px dashed #aaa;
+    margin-left: -1px;
+  }
+
+  /* User display name */
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .edit-own-user {
+    background: image_url("edit.png") no-repeat 0 0;
+    padding-left: 20px;
+  }
+
+  .no-content {
+    padding: 5px 15px;
+    font-size: 17px;
+    margin: 0;
+    background: $background-light;
+  }
+
+  /* Comments title */
+  h4 {
+    background: $background-light image_url("comments.png") no-repeat 5px 4px;
+    padding: 2px 5px 2px 30px;
+    margin-top: 4em;
+    line-height: 1.5em;
+  }
+
+  .comment {
+    p.body {
+      background: $background-light image_url("user-speechmark.png") no-repeat 0 bottom;
+      padding: 10px;
+      padding-bottom: 26px;
+      margin-bottom: 0;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.4em;
+      margin-top: 0;
+    }
+  }
+}

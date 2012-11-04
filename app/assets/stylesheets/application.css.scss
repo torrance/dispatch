@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ */
+ //= require jqueryui-aristo/aristo
+
+/**
+ * Mixins and global variables
+ */
+
+$body-fontstack: Adelle, Cambria, Georgia, serif;
+
+$heading-fontstack: Adelle, Cambria, Georgia, serif;
+
+$sans-serif-fontstack: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+
+$body-text-color: #4e443c;
+$body-text-light: #827871;
+$background-light: #F0F2ED;
+$link-color: #73AD3F;
+$dark-brown: #353B2F;
+$light-green: #90bd66;
+$dark-green: #66943B;
+
+@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
+  -moz-box-shadow:    $horizontal $vertical $blur $spread $color;
+  -webkit-box-shadow: $horizontal $vertical $blur $spread $color;
+  box-shadow:         $horizontal $vertical $blur $spread $color;
+}
+
+@mixin box-shadow-none {
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+}
+
+@mixin border-box {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+  *behavior: stylesheet_url("boxsizing.htc");
+}
+
+@import "grid";
+@import "styles";
+@import "contents";
+@import "pages";
+@import "comments";
+@import "users";
+@import "markitup-simple";
+@import "markitup-buttons";
+@import "jquery.fancybox";
+@import "aristo-overrides";
+@import "search";
+@import "frontpage";
+@import "indymedia-network";
+@import "errors";

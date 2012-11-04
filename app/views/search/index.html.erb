@@ -1,0 +1,37 @@
+<%= content_for(:title) { 'Search' } %>
+
+<div id="search" class="row">
+  <div class="eightcol first">
+    <h1>Search<%= " for “#{params[:q]}”" if params[:q].present? %></h1>
+
+    <% if @contents.empty? %>
+      <p>No pages were found that matched your search. Have you tried being less specific in your search?</p>
+    <% end %>
+
+    <%= render 'contents/contents', :contents => @contents %>
+
+    <%= paginate @search.hits %>
+  </div>
+
+  <div class="fourcol last">
+    <%= form_tag search_path, :method => 'get', :class => 'search' do %>
+      <%= text_field_tag :q, params[:q], :class => 'text', :placeholder => 'Search' %>
+      <%= submit_tag "Search", :class => 'submit' %>
+    <% end %>
+
+    <% @facet_types.each do |f| %>
+      <% if (facet_rows = @search.facet(f[:attribute]).rows) && facet_rows.any? %>
+        <h3>Filter by <%= f[:name] %></h3>
+        <ul class="facet no-indentation">
+          <% facet_rows.take(8).each do |row| %>
+            <li><%= link_to row.value, url_for(params.merge f[:attribute] => row.value, 'page' => 1) %> (<%= row.count %>)</li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <ul class="facet no-indentation">
+      <li><%= link_to "Clear all filters", url_for(q: params['q']) %></li>
+    </ul>
+  </div>
+</div>

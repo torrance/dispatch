@@ -1,0 +1,21 @@
+.ui-datepicker table .ui-state-hover {
+  background: $link-color;
+  text-shadow: 0 1px 1px $dark-brown;
+  border: none;
+}
+
+.ui-datepicker table .ui-state-highlight {
+  border-color: $link-color;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+  background: $light-green;
+  border-color: $light-green;
+  text-shadow: 0 1px 1px $link-color;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+  background: $light-green;
+  text-shadow: 0 1px 1px $link-color;
+  border-color: $link-color;
+}

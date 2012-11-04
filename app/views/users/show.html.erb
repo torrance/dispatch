@@ -1,0 +1,39 @@
+<%= content_for(:title) { @user.display_name } %>
+
+<div id="user" class="row">
+  <div class="eightcol first">
+    <% if @contents.any? %>
+      <div id="content-listing">
+        <%= render 'contents', :contents => @contents %>
+      </div>
+    <% else %>
+      <p class="no-content"><%= current_user == @user ? 'You have' : @user.display_name + ' has' %> not yet published any items.</p>
+    <% end %>
+  </div>
+
+  <div class="fourcol last">
+    <h1><%= @user.display_name %></h1>
+
+    <% if @user.biography.present? %>
+      <%= simple_filter @user.biography %>
+    <% end %>
+
+    <p><%= user_stats(@user) %></p>
+
+    <% if can? :update, @user %>
+      <p><%= link_to 'Edit my user settings', edit_user_path(@user), :class => 'edit-own-user' %></p>
+    <% end %>
+
+    <h4>Recent comments</h4>
+
+    <%= "<p>#{@user.display_name} has not yet made any comments.</p>".html_safe if @comments.empty? %>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <p class="body">
+          <%= truncate comment.body, :length => 150, :separator => ' ' %>
+        </p>
+        <p class="meta"><%= link_to comment.content.title, comment.content %> <br /><%= comment_date comment.created_at %></p>
+      </div>
+    <% end %>
+  </div>
+</div> 

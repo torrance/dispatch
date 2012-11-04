@@ -1,0 +1,149 @@
+<h1>Text formatting help</h1>
+
+<p>Text formatting on Indymedia uses a simple format known as <a href="http://daringfireball.net/projects/markdown/syntax">Markdown.</a> You can style your articles however you like either by using the formatting toolbar or by following these few simple rules.</p>
+
+<h2>Paragraphs and line breaks</h2>
+
+<p>Paragraphs and line breaks work very simply: a single return will create a line break and a double return will create a paragraph.</p>
+
+<p>The following will text will create two paragraphs:</p>
+
+<code>
+<p>Call me Ishmael. Some years ago- never mind how long precisely- having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</p>
+
+<p>It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself…</p>
+</code>
+
+<h2>Links</h2>
+
+<p>Bare urls (eg. “http://www.example.com”) will automatically become clickable. If you want to provide text for your link, use this format: [Link text](http://www.example.com).</p>
+
+<code>
+<p>Now, when I say that I am in the habit of going to sea (see http://en.wikipedia.org/wiki/Sea) whenever I begin to grow hazy about the eyes, and begin to be over conscious of my [lungs](http://en.wikipedia.org/wiki/Lungs), I do not mean to have it inferred that I ever go to sea as a passenger.</p>
+</code>
+
+<p>which becomes…</p>
+
+<code>
+<p>Now, when I say that I am in the habit of going to sea (see <a href="http://en.wikipedia.org/wiki/Sea">http://en.wikipedia.org/wiki/Sea</a>) whenever I begin to grow hazy about the eyes, and begin to be over conscious of my <a href="http://en.wikipedia.org/wiki/Lungs">lungs</a>, I do not mean to have it inferred that I ever go to sea as a passenger.</p>
+</code>
+
+<h2>Bold</h2>
+ 
+<p>You can set text to bold by wrapping it in double asterisks (**) on either side.</p>
+
+<code>
+<p>But look! here come <strong>**more crowds**</strong>, pacing straight for the water, and seemingly bound for a dive. <strong>**Strange!**</strong></p>
+</code>
+
+<h2>Italics</h2>
+
+<p>Italics can be achieved by wrapping text in underscores (_) on either side.</p>
+
+<code>
+<p>Nothing will content them but the <em>_extremest_</em> limit of the land; loitering under the shady lee of yonder warehouses <em>_will not suffice._</em> No.</p>
+</code>
+
+<h2>Subheadings</h2>
+
+<p>You can create subheadings (and sub-subheadings) by preceeding a line with two or three hashes (## or ###) and a space.</p>
+
+<code>
+<h4>## Subheading</h4>
+
+<p>Once more. Say you are in the country; in some high land of lakes. Take almost any path you please, and ten to one it carries you down in a dale, and leaves you there by a pool in the stream.</p>
+
+<h5>### Sub-subheading</h5>
+
+<p>There is magic in it. Let the most absent-minded of men be plunged in his deepest reveries- stand that man on his legs, set his feet a-going, and he will infallibly lead you to water, if water there be in all that region.</p>
+</code>
+
+<h2>Lists</h2>
+
+<p>You can created unordered lists by preceeding each line in the list by a dash (-), a plus sign (+) or an asterisk (*):</p>
+
+<table>
+  <tr>
+    <td>
+      <code>
+      <ul class="undecorated-list">
+      <li>- Take two cups of sugar</li>
+      <li>- Mix well with the flour</li>
+      <li>- Place in the oven at 180 degrees</li>
+      </ul>
+      </code>
+    </td>
+    <td>
+      <code>
+      <ul>
+      <li>Take two cups of sugar</li>
+      <li>Mix well with the flour</li>
+      <li>Place in the oven at 180 degrees</li>
+      </ul>
+      </code>
+    </td>
+  </tr>
+</table>
+
+<p>You can even create nested lists by indenting the nested items by 4 spaces.</p>
+
+<table>
+  <tr>
+    <td>
+      <code>
+      <ul class="undecorated-list">
+      <li>- Take two cups of sugar</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;- Ensure the sugar lump free</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;- Aerate the sugar with a fork</li>
+      <li>- Mix well with the flour</li>
+      </ul>
+      </code>
+    </td>
+    <td>
+      <code>
+      <ul>
+      <li>Take two cups of sugar</li>
+      <ul>
+      <li>Ensure the sugar is lump free</li>
+      <li>Aerate the sugar with a fork</li>
+      </ul>
+      <li>Mix well with the flour</li>
+      </ul>
+      </code>
+    </td>
+  </tr>
+</table>
+
+<h2>Numbered lists</h2>
+
+<p>You can create a numbered list by preceeding each line of the list with a number followed by a period and a space (1. ). The numbers don't matter as they will be computed automatically.</p>
+
+<table>
+  <tr>
+    <td>
+      <code>
+        <ul class="undecorated-list">
+          <li>1. Item 1</li>
+          <li>2. Item 2</li>
+          <li>5. The numbers don't matter</li>
+        </ul>
+      </code>
+    </td>
+    <td>
+      <code>
+        <ol>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>The numbers don't matter</li>
+        </ol>
+      </code>
+    </td>
+  </tr>
+</table>
+
+<h2>Blockquotes</h2>
+
+<p>If you want to quote someone at length, you can use a blockquote to set apart the quote from the rest of your text. To do this, precede the paragraph by a greater-than sign (>) and space.</p>
+
+<code><p>&gt; No, when I go to sea, I go as a simple sailor, right before the mast, plumb down into the fore-castle, aloft there to the royal mast-head. True, they rather order me about some, and make me jump from spar to spar, like a grasshopper in a May meadow.</p>
+</code>

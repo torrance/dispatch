@@ -1,0 +1,9 @@
+drupal_user:
+  id: 1
+  email: drupaluser@domain.com
+  crypted_password: 5f4dcc3b5aa765d61d8327deb882cf99 # md5 hash of "password"
+  password_salt:
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  perishable_token: <%= Authlogic::Random.friendly_token %>
+  active: true
+  display_name: Drupal User

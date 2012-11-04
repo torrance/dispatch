@@ -1,0 +1,199 @@
+#frontpage {
+  p {
+    margin: 0.4em 0;
+  }
+
+  .primary-feature {
+    border-right: 1px dashed #ccc;
+    margin-right: -1px;
+
+    h1 {
+      margin-bottom: 0.4em;
+      margin-top: 0.2em;
+      font-size: 24px;
+    }
+
+    .metadata {
+      background: $background-light;
+      font-family: $sans-serif-fontstack;
+      padding-left: 5px;
+      font-size: 12px;
+      color: $body-text-light;
+    }
+
+    .summary {
+      font-size: 16px;
+      line-height: 1.6em;
+    }
+  }
+
+  .feature {
+    margin-bottom: 2em;
+    overflow: hidden;
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      font-size:  17px;
+    }
+
+    img {
+      float: right;
+      width: 20.56%;
+      margin-bottom: 0.25em;
+    }
+
+    .metadata {
+      background: $background-light;
+      font-family: $sans-serif-fontstack;
+      padding-left: 5px;
+      font-size: 12px;
+      margin: 0.5em 0;
+      color: $body-text-light;
+    }
+
+    .summary {
+      font-size: 14px;
+      line-height: 1.6em;
+    }
+  }
+
+  .feature-with-image {
+    h2, .metadata {
+      margin-right: 23%;
+    }
+  }
+
+  .categories {
+    margin-top: 3em;
+
+    .category {
+      border-top: 4px solid $link-color;
+      background: $background-light;
+      padding: 1px 5px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: $body-text-light;
+      font-family: $sans-serif-fontstack;
+    }
+
+    img {
+      margin: 0 0 5px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .feature-links {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    font-size: 15px;
+    line-height: 1.5em;
+
+    a {
+      display: block;
+      color: $body-text-color;
+      background: $background-light url("") no-repeat 15px 10px;
+      padding: 5px 10px 5px 40px;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a.donate {
+      background-image: image_url("heart.png");
+    }
+
+    a.faq {
+      background-image: image_url("info.png");
+    }
+
+    a.learn {
+      background-image: image_url("speechmarks.png");
+    }
+  }
+
+  .newswire {
+    h3 {
+      background: $background-light;
+      border-left: 4px solid $link-color;
+      padding: 3px 10px;
+      margin-bottom: 1.5em;
+      margin-top: 0;
+    }
+
+    .ninecol {
+      position: relative;
+    }
+
+    .date {
+      position: absolute;
+      left: 0;
+      color: $link-color;
+      font-family: $heading-fontstack;
+      font-size: 14px;
+      width: 18.16%; /* twocol width within a ninecol column */
+      text-align: right;
+    }
+
+    .newswire-item {
+      margin-bottom: 1em;
+      margin-left: 18.16 + 5.13%; /* twocol width + gutter width within a ninecol column */
+      overflow: hidden;
+
+      h4 {
+        font-size: 14px;
+        margin: 0.2em 0 0 0;
+      }
+
+      img {
+        float: left;
+        margin-right: 1em;
+        width: 18.16%;
+      }
+
+      .collapsed {
+        height: 1.5em;
+
+        h4 {
+          display: inline;
+          margin: 0;
+        }
+
+        img {
+          display: none;
+        }
+
+        .comment-count {
+          display: none;
+        }
+
+        .summary {
+          display: inline;
+          color: #d3d9db;
+          -webkit-transition: color 0.8s;
+          -moz-transition: color 0.8s;
+          -o-transition: color 0.8s;
+          transition: color 0.8s;
+          cursor: pointer;
+          line-height: 1.2em;
+        }
+      }
+    }
+
+    .newswire-item:hover {
+      .summary {
+        color: $body-text-color;
+      }
+    }
+  }
+
+  .events {
+    h4 {
+      margin: 1em 0 0;
+    }
+  }
+}

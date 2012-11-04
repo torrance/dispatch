@@ -1,0 +1,11 @@
+#page-not-found, #access-denied {
+  h1 {
+    background: image_url("error.png") no-repeat 0 7px;
+    padding-left: 30px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}

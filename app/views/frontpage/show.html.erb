@@ -1,0 +1,80 @@
+<div id="frontpage">
+  <div class="row">
+    <%# Primary feature %>
+    <div class="sixcol first primary-feature">
+      <% if @primary_feature.images.any? %>
+        <%= image_tag @primary_feature.images.first.image.url(:primary_feature), :class => 'border' %>
+      <% end %>
+      <h1><%= link_to @primary_feature.title, @primary_feature, :class => 'plain-link' %></h1>
+      <p class="metadata"><%= feature_date(@primary_feature.created_at) %> &nbsp;|&nbsp; <%= category(@primary_feature) %> <%= comment_count @primary_feature %></p>
+      <p class="summary"><%= @primary_feature.summary %></p>
+    </div>
+
+    <%# The rest of the the features... %>
+    <div class="sixcol last">
+      <% @features.each do |feature| %>
+        <div class="feature <%= "feature-with-image" if feature.images.any? %>">
+          <% if feature.images.any? %>
+            <%= image_tag feature.images.first.image.url(:feature_square), :class => 'border' %>
+          <% end %>
+
+          <h2><%= link_to feature.title, feature, :class => 'plain-link' %></h2>
+          
+          <p class="metadata"><%= feature_date(feature.created_at) %> &nbsp;|&nbsp; <%= category(feature) %>  <%= comment_count feature %></p>
+
+          <p class="summary"><%= feature.summary %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row categories">
+    <% @subfeatures.each do |subfeature| %>
+      <div class="threecol <%= cycle "first", "second", "third", "last" %>">
+        <div class="category"><%= category(subfeature) %></div>
+        <% if subfeature.images.any? %>
+          <%= image_tag subfeature.images.first.image.url(:sub_feature) %>
+        <% end %>
+        <h3><%= link_to subfeature.title, subfeature, :class => 'plain-link' %> <%= comment_count subfeature %></h3>
+        <p><%= subfeature.summary %></p>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="row feature-links">
+    <div class="fourcol first">
+      <%= link_to "<strong>Learn how to publish</strong> <br />to Indymedia".html_safe, page_path('publish-to-indymedia'), :class => 'learn' %>
+    </div>
+
+    <div class="fourcol">
+      <%= link_to "<strong>Got a question?</strong> <br />Take a look at the FAQ".html_safe, page_path('faq'), :class => 'faq' %>
+    </div>
+
+    <div class="fourcol last">
+      <%= link_to "<strong>Support Indymedia</strong> <br />We need to raise $1,000 this year".html_safe, page_path('support'), :class => 'donate' %>
+    </div>
+  </div>
+
+  <div class="row newswire">
+    <div class="ninecol first">
+      <h3><%= content_tag :a, 'Newswire', :name => "newswire", :class => 'anchor' %></h3>
+
+      <div id="newswire-items">
+        <%= render 'newswire', :newswire => @newswire %>
+      </div>
+    </div>
+
+    <div class="threecol last events">
+      <h3>Upcoming Events</h3>
+
+      <% unless @events.any? %>
+        <p>There are no upcoming events. <br /><%= link_to "Add an event.", new_event_path %></p>
+      <% end %>
+
+      <% @events.each do |event| %>
+        <h4><%= link_to event.title, event, :class => 'plain-link' %></h4>
+        <div class="event-details"><%= "#{event.location}, #{long_event_date(event.start)}" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

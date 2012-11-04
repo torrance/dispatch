@@ -1,0 +1,16 @@
+#search {
+  h1 {
+    /* Set title to same height as search box in RHS. */
+    line-height: 1;
+    margin-bottom: 1.5em;
+  }
+
+  .fourcol {
+    border-left: 1px dashed #aaa;
+    margin-left: -1px;
+  }
+}
+
+ul.facet {
+  list-style-image: image_url("cog.png");
+}
