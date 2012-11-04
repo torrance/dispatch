@@ -45,7 +45,7 @@ Dispatch::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
-  config.action_controller.asset_host = "http://flax.indymedia.org.nz"
+  config.action_controller.asset_host = "http://www.indymedia.org.nz"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -53,7 +53,7 @@ Dispatch::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'flax.indymedia.org.nz' }
+  config.action_mailer.default_url_options = { :host => 'indymedia.org.nz' }
 
   # Enable threaded mode
   # config.threadsafe!
@@ -70,7 +70,7 @@ Dispatch::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.piwik = {
-    id: 3,
+    id: 1,
     url: "piwik.indymedia.org.nz"
   }
 end

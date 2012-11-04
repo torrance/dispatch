@@ -1,5 +1,5 @@
 class ModerationNotifications < ActionMailer::Base
-  default to: User.editors.map(&:pretty_email_address).join(', '),
+  default to: 'imc-aotearoa-ed@lists.indymedia.org',
           from: 'Aotearoa Indymedia <noreply@indymedia.org.nz>'
 
   def vote(vote, diff)
