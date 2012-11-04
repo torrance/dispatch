@@ -46,4 +46,6 @@ Dispatch::Application.configure do
     id: 3,
     url: "piwik.indymedia.org.nz"
   }
+
+  config.rakismet.test = true
 end

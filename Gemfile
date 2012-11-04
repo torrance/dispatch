@@ -67,6 +67,7 @@ gem 'kaminari'
 gem 'rails_autolink'
 gem 'cancan'
 gem 'high_voltage'
+gem 'rakismet', '>= 1.0.0'
 
 # Active admin and its dependencies
 gem 'activeadmin', '>= 0.5.0'

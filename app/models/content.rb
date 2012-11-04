@@ -28,6 +28,10 @@ class Content < ActiveRecord::Base
   # indices in Content::MODERATION.
   STATES = ['Normal', 'Sub-feature', 'Feature']
 
+  # Enable and configure rakismet
+  include Rakismet::Model
+  rakismet_attrs :content => :body, :author => :author_name
+
   # Enable tags for all content
   acts_as_taggable
 

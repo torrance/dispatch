@@ -53,6 +53,17 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def not_spam?(model)
+      if model.spam?
+        # We also test for valid model, so that we can preset user with
+        # all validation errors in one lot.
+        model.errors.add(:base, "We're sorry, but your submission has been identified as spam. You will not be able to publish it.")
+        false
+      else
+        true
+      end
+    end
+
     def content_path(content, args={})
       if content.hidden?
         submission_path content, args

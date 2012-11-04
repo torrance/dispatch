@@ -18,7 +18,7 @@ class ContentsController < ApplicationController
     @content.user = current_user
     authorize! :create, @content
 
-    if (current_user || valid_captcha?(@content)) && @content.save
+    if (current_user || valid_captcha?(@content)) && not_spam?(@content) && @content.save
       redirect_to content_path(@content), notice: "Your #{@type} was successfully created."
     else
       (998..999).each { |weight| @content.images.build(:weight => weight) }
