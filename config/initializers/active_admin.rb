@@ -121,6 +121,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.batch_actions = true
+  config.batch_actions = true
   
 
   # == Controller Filters
