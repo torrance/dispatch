@@ -6,7 +6,7 @@ set :user, 'indymedia'
 set :deploy_to, "/var/www/www.indymedia.org.nz"
 
 set :repository,  "https://github.com/torrance/dispatch.git"
-set :branch, 'develop'
+set :branch, 'master'
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
