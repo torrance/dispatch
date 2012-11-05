@@ -121,6 +121,10 @@ class Content < ActiveRecord::Base
     type == "Article"
   end
 
+  def formatted_summary
+    summary
+  end
+
   def all_caps
     # 5 is an arbitrary number, where the title is long enough for this error to be meaningful
     if title.length > 5 and title == title.upcase 

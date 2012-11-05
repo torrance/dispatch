@@ -30,4 +30,20 @@ class Repost < Content
     string :tag_list, :multiple => true
     string :type
   end
+
+  def formatted_summary
+    if repost_permission?
+      summary
+    else
+      summary + " <a href='#{url}'>» Read more</a>".html_safe
+    end
+  end
+
+  def body
+    if repost_permission?
+      super
+    else
+      ''
+    end
+  end
 end
