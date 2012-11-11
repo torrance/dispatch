@@ -57,10 +57,16 @@ class Content < ActiveRecord::Base
   validate :pseudonym,  :length => { :maximum => 40 },
     :message => "^Author name is too long (maximum length 40 characters)."
   validates :status, :inclusion => { :in => 0...(self::STATES.length) }
-  validates :category, :inclusion => { :in => self::CATEGORIES,
-    :message => "^You need to select a valid category." }, :unless => :event?
+  validates :category, :inclusion => {
+    :in => self::CATEGORIES,
+    :message => "^You need to select a valid category."
+  }, :unless => :event?
   validate :tags_limit
   validate :all_caps
+  validates :body, :language => {
+    :language => :en,
+    :message => "^We're sorry, but your submission has been identified as spam. You will not be able to publish it."
+  }
 
   # Scopes
   default_scope :include => :user, :include => :images, :include => :tags
