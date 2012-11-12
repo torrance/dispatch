@@ -11,7 +11,7 @@ class LanguageValidator < ActiveModel::EachValidator
     # so long as the desired language is among them. If there are fewer than 30 words,
     # we don't require a definite answer.
     word_count = value.split.size
-    if word_count > 30 && languages[options[:language].to_s].nil?
+    if word_count > 30 && languages.empty? || !languages.empty? && languages[options[:language].to_s].nil?
       record.errors[attribute] << (options[:message] || "is not the correct language")
     end
   end
