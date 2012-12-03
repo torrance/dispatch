@@ -1,5 +1,5 @@
 class ModerationNotifications < ActionMailer::Base
-  default to: 'imc-aotearoa-ed@lists.indymedia.org',
+  default to: 'imc-aotearoa-ed@lists.indymedia.org.nz',
           from: 'Aotearoa Indymedia <noreply@indymedia.org.nz>'
 
   def vote(vote, diff)
