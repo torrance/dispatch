@@ -127,7 +127,10 @@
 
     <div class="eightcol first">
       <div class="summary">
-        <%= simple_filter @content.formatted_summary %>
+       <%= simple_filter @content.summary %>
+       <% if @content.repost? && !@content.repost_permission? %>
+         <%= link_to "&raquo; Read more".html_safe, @content.url  %>
+       <% end %>
       </div>
     </div>
 
