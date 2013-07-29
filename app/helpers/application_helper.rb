@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def simple_filter(text)
-    auto_link simple_format(text), :html => { :rel => 'nofollow'}
+    auto_link simple_format(html_escape text), :html => { :rel => 'nofollow'}
   end
 
   def current_url

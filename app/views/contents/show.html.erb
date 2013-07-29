@@ -3,7 +3,7 @@
 <% if @content.images.any? %>
   <%= content_for(:head) { "<meta property=\"og:image\" content=\"#{ActionController::Base.asset_host + @content.images.first.image.url}\" />".html_safe } %>
 <% end %>
-<%= content_for(:head) { "<meta property=\"og:description\" content=\"#{@content.summary}\" />".html_safe } %>
+<%= content_for(:head) { "<meta property=\"og:description\" content=\"#{html_escape @content.summary}\" />".html_safe } %>
 
 <div id="content" class="<%= @type %>">
   <div class="row">
