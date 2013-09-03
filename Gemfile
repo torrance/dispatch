@@ -51,7 +51,7 @@ end
 # Factory girl to be moved to dev/testing group once we go live
 gem 'factory_girl_rails'
 
-gem 'authlogic'
+gem 'authlogic', :git => 'git://github.com/torrance/authlogic.git'
 gem 'dalli'
 gem 'pg'
 gem 'redcarpet', '~> 2.1'
