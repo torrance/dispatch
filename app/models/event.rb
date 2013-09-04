@@ -5,7 +5,7 @@ class Event < Content
   validates :start, :location, :presence => true
 
   # Solr search configuration
-  searchable do
+  searchable :auto_index => false do
     text :title, :more_like_this => true
     text :summary, :more_like_this => true
     text :body, :more_like_this => true
