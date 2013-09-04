@@ -36,29 +36,28 @@ gem 'jquery-rails'
 
 group :development, :development_with_caching, :test do
   # Use rspec instead of Test::Unit
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14'
   # Provides an instance of apache solr for dev purposes
   gem 'sunspot_solr'
   gem 'capistrano'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
-  gem 'faker'
   gem 'database_cleaner'
   gem 'email_spec'
 end
 
-# Factory girl to be moved to dev/testing group once we go live
-gem 'factory_girl_rails'
 
 gem 'authlogic', :git => 'git://github.com/torrance/authlogic.git'
 gem 'dalli'
 gem 'pg'
 gem 'redcarpet', '~> 2.1'
 gem 'paperclip', '~> 3.1'
-# We use dynamic form to display custom form error messages.""
+# We use dynamic form to display custom form error messages.
 gem 'dynamic_form'
-gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 # Aristo is a jQuery-ui theme
 gem 'jquery-rails-aristo'
 gem 'acts-as-taggable-on', '~> 2.3.1'
