@@ -66,7 +66,7 @@ class Content < ActiveRecord::Base
   validates :body, :language => {
     :language => :en,
     :message => "^We're sorry, but your submission has been identified as spam. You will not be able to publish it."
-  }
+  }, :if => "Rails.env.production?"
 
   # Scopes
   default_scope :include => :user, :include => :images, :include => :tags
