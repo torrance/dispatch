@@ -154,7 +154,7 @@ class Content < ActiveRecord::Base
   # We manually index to solr so that we can handle any exceptions
   # that might be thrown if, eg., solr is down.
   def search_index
-    index!
+    solr_index!
   rescue Errno::ECONNREFUSED
     logger.error "Solr connection refused: unable to index new content (id: #{id})."
   end
