@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Event do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a valid factory" do
+    event = create(:event)
+    expect(event).to be_valid
+  end
 end
