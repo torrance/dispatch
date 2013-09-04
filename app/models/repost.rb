@@ -16,6 +16,7 @@ class Repost < Content
   # URL regex taken from http://www.railsmine.net/2010/09/ruby-way-to-do-url-validation.html
   validates :url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix,
     :message => "^The original url doesn't appear to be a valid address" }
+  validates :url_name, length: { maximum: 255 }
 
   # Solr search configuration
   searchable :auto_index => false do
